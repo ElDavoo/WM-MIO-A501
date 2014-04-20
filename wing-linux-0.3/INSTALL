@@ -1,0 +1,90 @@
+Introduction
+============
+
+Wing Linux is designed to be run directly from your storage card -- no need for repartitioning
+or complex installation.
+
+Installation
+------------
+
+    1) Download the latest Wing Linux CAB file
+
+    2) Install it to your phone (either directly or using ActiveSync)
+
+    3) Click on Start -> Programs -> Wing Linux to start
+
+    4) Follow the on screen instructions.  First bootup takes a long time -- please
+       be patient.
+
+If you encounter screen problems, skip to step 9 under the dedicated partition guide below.
+
+Once your system is booted, you can follow step 11 below to connect to your phone via USB.
+
+
+Logging In Remotely
+-------------------
+
+If you'd like to control the phone from another computer, plug in a USB cord to it
+and configure your usb0 device (from Linux) as follows:
+
+   # sudo ifconfig usb0 10.100.0.2 up
+
+Ubuntu users may have to run this several times before it takes effect.
+
+Now you can ssh into the phone as follows:
+
+   # ssh root@10.100.0.1
+
+The password is "wing".
+
+
+Troubleshooting
+---------------
+
+Q: When I boot, I see a lot of scrolling text, then my screen fades to white and appears
+   to freeze.
+
+A: Wing Linux features the ability to auto-detect screen configuration at bootup.  But,
+   this doesn't work for everyone, so new kernel options for configuring your screen are
+   provided:
+
+       heraldlcd=screen:[0|1]{,noinitdisable}
+
+          or
+
+       heraldlcd=custscreen,xres:<num>,yres:<num>,hfp:<num>,hbp:<num>,hsw:<num>,vfp:<num>,vbp:<num>,vsw:<num>,ivs:[0|1],ihs:[0|1],ipc:[0|1],pixelclock:<num>
+
+   These options can be placed in the "/Storage Card/linux/default.txt" file at the end of
+   the line that starts "set CMDLINE".
+
+   The first of the two forms allows you to choose between two predefined screen configurations.
+   Optionally you can also disable some initialization code that causes problems for some.
+
+   There are two parts to this: the screen and the noinitdisable part.  For screen, you can
+   choose between two configurations -- 0 or 1.  Screen 0 is used mostly in T-Mobile Wing
+   hardware, though it has been known to cause white screen problems for some.  If this
+   happens to you, try screen 1.
+
+   If neither of those result in a usable display, try them both, but add the 'noinitdisable'
+   flag.  This instructs the video driver not to reset the video, but instead assume it's
+   already initialzed.
+
+   If none of this results in a usable configuration, this is where the second form of the
+   options comes in.  This form allows you to explicity set the video timing parameters:
+
+       xres = Resolution of the screen in the X dimension
+       yres = Reoslution of the screen in the Y direction
+       hfp  = Horizontal front porch
+       hbp  = Horizontal back porch
+       hsw  = Horizontal scan width
+       vfp  = Vertical front porch
+       vbp  = Vertical back porch
+       vsw  = Vertical scan width
+       ivs  = Inverted vertical scan (1 = yes, 0 = no)
+       ihs  = Inverted horizontal scan (1 = yes, 0 = no)
+       ipc  = Inverted pixel clock (1 = yes, 0 = no)
+       pixelclock = Clock rate of each dot
+
+   For help in using this, please send the contents of "/Storage Card/linux/dispdump.txt"
+   to Cory Maccarrone <darkstar6262@gmail.com>.
+

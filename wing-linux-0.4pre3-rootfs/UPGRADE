@@ -1,0 +1,11 @@
+Upgrade Instructions
+--------------------
+
+To upgrade, simply uninstall Wing Linux from your phone like any other program.  You will also
+need to remove the /Storage Card/linux directory.  Note that any user data you created in previous
+versions will be lost.
+
+If you are upgrading from previous partitioned installs, no work is needed -- simply install the
+CAB file according to the installation instructions.  At bootup, you'll be presented with a menu
+allowing you to boot either from the new Wing Linux installation or your existing partition.
+

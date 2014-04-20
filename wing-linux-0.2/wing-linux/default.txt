@@ -1,0 +1,5 @@
+set MTYPE 1232
+set KERNEL "zImage20"
+set CMDLINE "debug psplash=false loglevel=7 root=/dev/mmcblk0p3 init=/sbin/init console=tty0 video=omapfb:accel fbcon=rotate:3"
+log "earlylog.txt"
+bootlinux

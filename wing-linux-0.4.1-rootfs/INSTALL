@@ -1,0 +1,111 @@
+Introduction
+============
+
+Wing Linux is designed to be run directly from your storage card -- no need for repartitioning
+or complex installation.
+
+Installation
+------------
+
+The following is the normal installation procedure and does not require any manual
+partitioning.  It will install Wing Linux to a filesystem image residing on your
+fat32-formatted SD card.
+
+    1) Download the latest Wing Linux Zip file and unzip it
+
+    2) Install the wing-linux-[version]-rootfs.cab file to your phone (either directly or using
+       ActiveSync).  Ensure you install it to Storage Card (not internal memory) -- it won't run
+       anywhere else.
+
+    3) Now, install the .cab file for your phone.  Without this, Wing Linux will not work.  Remember
+       to install it to storage card as well.
+
+    4) Click on Start -> Programs -> Wing Linux to start
+
+    5) Follow the on screen instructions.  First bootup takes a long time -- please
+       be patient.
+
+If you encounter screen problems, skip to the "Troubleshooting" section below.
+
+Once your system is booted, you can follow the section "Logging in Remotely" to connect
+to it via SSH.
+
+
+Installing to a Dedicated Partition
+-----------------------------------
+
+Installation to a partition has a speed advantage over the normal installation method,
+but requires more work to set up and maintain.
+
+For these steps, you will need to be using Linux on your computer and have an SD
+card reader.  You can use the WM5Storage program on your phone to turn your phone
+into a mass storage device, but I don't recommend this method as it's much slower
+than using the SD card directly.
+
+    1) Begin by partitioning your SD card on your Linux computer.  I recommend the following
+       scheme:
+
+        Partition 1: VFAT (fat32) partition covering most of your SD card
+        Partition 2: Linux (ext3) partition at least 250mb in size
+
+    2) Place your SD card back into your phone and follow all steps in the "Installation"
+       section above through step 3 to install Wing Linux onto your fat32 partition
+
+    3) Remove your SD card again and attach it to your computer.  Mount both the fat32
+       and ext3 partitions.
+
+    4) As root, extract the rootfs.tar.gz file (located in the linux/ directory on your
+       vfat partition) to your ext3 partition.  For example, if your vfat partition is
+       /media/disk and your ext3 partition is /media/disk-1, do the following:
+
+           cd /media/disk-1
+           sudo tar -xzvf /media/disk/linux/rootfs.tar.gz
+
+    5) Unmount both partitions and detach the SD card from your computer, reinstalling
+       it back into your device.
+
+    6) Delete the file "/Storage Card/linux/rootfs.img.status" -- this will bypass the
+       installation program that normally installs Wing Linux to your vfat partition.
+
+    7) Click on Start -> Programs -> Wing Linux to start Wing Linux
+
+    8) Wing Linux will start booting from your partition.
+
+
+Logging In Remotely
+-------------------
+
+If you'd like to control the phone from another computer, plug in a USB cord to it
+and configure your usb0 device (from Linux) as follows:
+
+   # sudo ifconfig usb0 10.100.0.2 up
+
+Ubuntu users may have to run this several times before it takes effect.
+
+Now you can ssh into the phone as follows:
+
+   # ssh root@10.100.0.1
+
+The password is "wing".
+
+
+Troubleshooting
+---------------
+
+Q: When I boot, I see a lot of scrolling text, then my screen fades to white and appears
+   to freeze.
+
+A: Normally, the video settings for your board configuration should be detected and used
+   automatically.  If this fails, the display could be white and non-responsive.
+
+   In this case, please submit the contents of "/Storage Card/linux/dispdump.txt"
+   to a new thread on the Wing Linux forums (see http://wing-linux.sf.net) along with
+   an account of all steps you took to start Wing Linux.  Include as detailed a description
+   as possible as to what you saw on the screen throughout the whole startup process.  This
+   will greatly help us debug the problem.
+
+   Note that if you're attempting to run Wing Linux on a device that isn't supported, there's
+   no guarantee that anything will work, but if we have this information, we can try and get
+   your device supported.  Be sure to try all board configurations before giving up though,
+   as one configuration may work better than another.
+

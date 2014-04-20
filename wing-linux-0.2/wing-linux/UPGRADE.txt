@@ -1,0 +1,25 @@
+Upgrade Instructions
+--------------------
+
+To upgrade from the 0.1 release, follow these instructions.  You'll need to be in Linux
+for this.
+
+1) Using your Linux computer, mount the Linux partition and your Windows partition on your
+   SD card.  I assume your SD card is at /dev/sdb -- adjust if necessary.
+
+   Run the following:
+
+       # sudo mkdir -p /card/windows /card/linux
+       # sudo mount /dev/sdb1 /card/windows
+       # sudo mount /dev/sdb3 /card/linux
+
+2) Delete all files on the Linux partition.
+
+   You may want to back up anything important before doing this.  BE VERY CAREFUL WITH
+   THESE NEXT COMMANDS -- A TYPO COULD RESULT IN MASSIVE DATA LOSS!
+
+       # cd /card/linux
+       # sudo rm -rf *
+
+3) Continue with instructions in INSTALL, starting from step 4.
+

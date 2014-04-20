@@ -1,0 +1,6 @@
+set MTYPE 1461
+set KERNEL "zImage"
+set INITRD "initramfs.cpio.gz"
+set CMDLINE "debug quiet psplash=false loglevel=7 init=/sbin/init console=tty0 video=omapfb:accel fbcon=rotate:3 4"
+log "earlylog.txt"
+bootlinux

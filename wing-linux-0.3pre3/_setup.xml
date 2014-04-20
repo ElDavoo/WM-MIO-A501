@@ -1,0 +1,82 @@
+<wap-provisioningdoc>
+    <characteristic type="Install">
+        <parm name="InstallPhase" value="install" />
+        <parm name="OSVersionMin" value="4.0" />
+        <parm name="OSVersionMax" value="5.99" />
+        <parm name="BuildNumberMin" value="0" />
+        <parm name="BuildNumberMax" value="-536870912" />
+        <parm name="AppName" value="Wing Linux 0.3pre3" />
+        <parm name="InstallDir" value="\linux" translation="install" />
+        <parm name="NumDirs" value="3" />
+        <parm name="NumFiles" value="10" />
+        <parm name="NumRegKeys" value="0" />
+        <parm name="NumRegVals" value="0" />
+        <parm name="NumShortcuts" value="1" />
+    </characteristic>
+    <characteristic type="FileOperation">
+        <characteristic type="%InstallDir%" translation="install">
+            <characteristic type="MakeDir" />
+            <characteristic type="default.txt" translation="install">
+                <characteristic type="Extract">
+                    <parm name="Source" value="default.txt" />
+                </characteristic>
+            </characteristic>
+            <characteristic type="haret-0.5.2.exe" translation="install">
+                <characteristic type="Extract">
+                    <parm name="Source" value="haret-0.5.2.exe" />
+                </characteristic>
+            </characteristic>
+            <characteristic type="initramfs.cpio.gz" translation="install">
+                <characteristic type="Extract">
+                    <parm name="Source" value="initramfs.cpio.gz" />
+                </characteristic>
+            </characteristic>
+            <characteristic type="INSTALL" translation="install">
+                <characteristic type="Extract">
+                    <parm name="Source" value="INSTALL" />
+                </characteristic>
+            </characteristic>
+            <characteristic type="LICENSE" translation="install">
+                <characteristic type="Extract">
+                    <parm name="Source" value="LICENSE" />
+                </characteristic>
+            </characteristic>
+            <characteristic type="rootfs.img.status" translation="install">
+                <characteristic type="Extract">
+                    <parm name="Source" value="rootfs.img.status" />
+                </characteristic>
+            </characteristic>
+            <characteristic type="rootfs.tar.gz" translation="install">
+                <characteristic type="Extract">
+                    <parm name="Source" value="rootfs.tar.gz" />
+                </characteristic>
+            </characteristic>
+            <characteristic type="startup.txt" translation="install">
+                <characteristic type="Extract">
+                    <parm name="Source" value="startup.txt" />
+                </characteristic>
+            </characteristic>
+            <characteristic type="UPGRADE" translation="install">
+                <characteristic type="Extract">
+                    <parm name="Source" value="UPGRADE" />
+                </characteristic>
+            </characteristic>
+            <characteristic type="zImage" translation="install">
+                <characteristic type="Extract">
+                    <parm name="Source" value="zImage" />
+                </characteristic>
+            </characteristic>
+        </characteristic>
+        <characteristic type="%CE11%" translation="install">
+            <characteristic type="MakeDir" />
+            <characteristic type="Wing Linux.lnk" translation="install">
+                <characteristic type="Shortcut">
+                    <parm name="Source" value="%InstallDir%\haret-0.5.2.exe" translation="install" />
+                </characteristic>
+            </characteristic>
+        </characteristic>
+    </characteristic>
+    <characteristic type="Registry">
+    </characteristic>
+</wap-provisioningdoc>
+

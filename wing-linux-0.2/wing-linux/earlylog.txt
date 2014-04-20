@@ -1,0 +1,18 @@
+HaRET(5)# bootlinux
+boot KERNEL=zImage20 INITRD=
+Opening file zImage20
+boot params: RAMADDR=10000000 RAMSIZE=04000000 MTYPE=1232 CMDLINE='debug psplash=false loglevel=7 root=/dev/mmcblk0p3 init=/sbin/init console=tty0 video=omapfb:accel fbcon=rotate:3'
+Boot FB feedback: 1
+Built virtual to physical page mapping
+Allocated 407 pages (tags=4B700000/1250e000 kernel=4B701000/1250d000 initrd=4B893000/1249b000 index=4B893000/1249b000)
+Built kernel tags area
+Built page index
+Video buffer at 48500100 sx=240 sy=320 mx=60 my=53
+Video Phys FB=20002100 Fonts=12499064
+preload=2264@4B896000/12498000 sj=4B896000 stack=4B894000/1249a000 data=4B895000/12499000 exec=12498128
+Reading 1644996 bytes...
+Read complete
+Launching to physical address 12498010
+Trampoline setup (tram=136@000241C0/1c0241c0/104671c0)
+MMU setup: mmu=A42D0000/102d0000
+Go Go Go...

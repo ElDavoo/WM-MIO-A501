@@ -1,0 +1,159 @@
+Introduction
+============
+
+Wing Linux can be installed in two ways -- run directly from your SD card without modifications,
+and by partiting your SD card with a dedicated partition.
+
+Direct from SD Installation
+---------------------------
+
+1) Copy all of the files in your wing-linux* directory to /Storage Card/linux
+
+2) Run HaRET
+
+3) Follow the on screen instructions.  First bootup takes a long time -- please
+   be patient.
+
+Using a Dedicated Partition
+---------------------------
+
+1) Using a Linux computer, repartition your SD card.  You need something like Partition
+   Magic or some other suitable partitioner (in Linux, you can use gparted to resize your
+   Windows partition.)  Use the following layout:
+
+	Partition 1 (/dev/mmcblk0p1): Primary, FAT32 (vfat) containing your original
+                                      Windows files (any size of your choosing)
+	Partition 2 (/dev/mmcblk0p2): Primary, Linux Swap, 128mb
+	Partition 3 (/dev/mmcblk0p3): Primary, EXT3 (Linux), at least 256mb
+
+   I've tested this with a partition scheme of 650mb for partition 3, 1.2gb for partition 1
+   and 128mb for partition 2 (on a 2gb card).
+
+2) Format the swap and Linux partitions.
+
+   For this you'll need a Linux computer.  Run the following (I assume your SD card is
+   at /dev/sdb -- adjust if different):
+
+       # sudo mkswap /dev/sdb2
+       # sudo mkfs.ext3 /dev/sdb3
+
+   I'm assuming the layout in step 1 as well.
+
+3) Mount the new Linux partition and your Windows partition.
+
+   Still from Linux, run the following:
+
+       # sudo mkdir -p /card/windows /card/linux
+       # sudo mount /dev/sdb1 /card/windows
+       # sudo mount /dev/sdb3 /card/linux
+
+4) Unzip the entire contents of the rootfs.tar.gz archive to your Linux partition on your
+   SD card.  I'm assuming you unzipped the install archive in $HOME:
+
+       # cd /card/linux
+       # sudo tar -xzvf $HOME/wing-linux/rootfs.tar.gz
+       # cd ..
+
+5) Copy the Windows portion of the installer to the Windows partition.  Again, I assume
+   you unzipped the install archive in $HOME.
+
+       # cd /card/windows
+       # sudo mkdir linux
+       # sudo cp $HOME/wing-linux*/{haret-0.5.2.exe,default.txt,startup.txt,zImage} linux
+       # cd ..
+
+6) Unmount the two partitions:
+
+       # sudo umount /card/windows
+       # sudo umount /card/linux
+
+7) (Optional) Remove the /card mountpoints
+
+       # cd /
+       # sudo rm -rf card
+
+8) Reinstall the SD card into your phone (or reboot your phone if you used WM5Storage)
+
+9) Configure default.txt
+
+   === Screen Configuration ===
+
+   Version 0.3 features a new kernel option for configuring your screen.  This is to help
+   as many different configurations function with the same kernel as possible:
+
+       heraldlcd=screen:[0|1]{,noinitdisable}
+
+   There are two parts to this: the screen and the noinitdisable part.  For screen, you can
+   choose between two configurations -- 0 or 1.  Screen 0 is used mostly in T-Mobile Wing
+   hardware, though it has been known to cause white screen problems for some.  If this
+   happens to you, try screen 1.
+
+   If neither of those result in a usable display, try them both, but add the 'noinitdisable'
+   flag.  This instructs the video driver not to reset the video, but instead assume it's
+   already initialzed.
+
+   If none of this results in a usable configuration, send the contents of "dispdump.txt"
+   (in the folder you placed HaRet) to Cory Maccarrone <darkstar6262@gmail.com>.
+
+   You can find this switch in your 'set CMDLINE' line in default.txt.
+
+   An example with screen 1 and the 'noinitdisable' flag:
+
+       heraldlcd=screen:1,noinitdisable
+
+
+   === System Runlevel ===
+
+   The Linux system supports booting into three different modes -- Android, GPE, and
+   text console.  The default.txt file that comes with your distribution is preconfigured
+   to boot into Android.  To modify this, find the line:
+
+       set CMDLINE "debug quiet psplash=false loglevel=7 root=/dev/mmcblk0p3 init=/sbin/init console=tty0 video=omapfb:accel heraldlcd=screen:0 4"
+
+   The last number, '4', is the important one:
+
+       5 --> Text console
+       4 --> Android
+
+   Once you're done, save and quit.
+
+   ======================================================================================
+   NOTE FOR ANDROID: The keyboard and buttons are not functioning enough to allow Android
+   to reboot your phone properly.  As such, if you want to reboot, either use the reset
+   button to soft reset, or log in through USB and run "reboot".
+   ======================================================================================
+
+10) Start haret-0.5.2.exe from the wing-linux folder on your storage card.
+
+    At this point, Linux should boot.  If all went well, you should see the main interface
+    (Android or text console).
+
+11) (Optional) Plug in a USB cord to SSH into the phone.
+
+    If you'd like to control the phone from another computer, plug in a USB cord to it
+    and configure your usb0 device (from Linux) as follows:
+
+       # sudo ifconfig usb0 10.100.0.2 up
+
+    Ubuntu users may have to run this several times before it takes effect.
+
+    Now you can ssh into the phone as follows:
+
+       # ssh root@10.100.0.1
+
+    The password is "wing".
+
+Running Programs
+----------------
+
+If you booted into text console, you can still start Android from either SSH over USB or
+through the text console interface.
+
+  * From the text or SSH console, type:
+
+       # startAndroid
+
+To reboot your phone, run:
+
+       # reboot
+

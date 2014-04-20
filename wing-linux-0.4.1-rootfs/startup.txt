@@ -1,0 +1,4 @@
+log "dispdump.txt"
+pdump 0xfffec000 0x20
+pdump 0xfffee300 255
+

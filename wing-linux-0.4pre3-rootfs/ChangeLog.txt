@@ -1,0 +1,287 @@
+2009-08-11  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/Makefile: Build cab files for each board containing default.txt
+	* buildsys/data/_setup-board.xml: Add template _setup.xml for board cab
+	  files
+	* buildsys/data/_setup-rootfs.xml: Rename from _setup.xml, contains only
+	  common files
+	* buildsys/haret/default-*.txt: Add default.txt files for each board
+
+	* buildsys/oe/android-1.5/ip-up: Make ip-up also affect system
+	  /etc/resolv.conf file
+	* buildsys/oe/android_1.5.bb: Install ip-up script as a script in
+	  /etc/ppp/ip-up.d as well
+
+	* buildsys/oe/linux-herald_2.6.25.bb: Point to latest candidate-android
+	  branch (wing-linux mirror), build for all omap850 boards
+	* buildsys/oe/wing-linux-image.bb: Remove 8250 module references, as it's
+	  compiled into the kernel now
+
+2009-08-07  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/oe/android-1.5/android-env.sh
+	  buildsys/oe/android_1.5.bb: Add in shell environment for Android paths
+
+	* buildsys/oe/wing-linux-image.bb: More udev changes to fix ashmem,
+	  binder, and ttyCSMI0 permissions
+
+2009-08-06  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/oe/initrdscripts/30-wingboot.sh: Modify dialog commands to all
+	  have timeouts and to allow for the input dialog to timeout gracefully
+
+	* buildsys/Makefile: Version bump for 0.4pre3
+
+2009-08-05  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/oe/android-1.5/htc: Add in lights library for the HAL layer of
+	  Android
+	* buildsys/Makefile: Recursively copy contents of oe/android-1.5 to get
+	  the new htc directory
+	* buildsys/oe/android-1.5/init.rc: Modify the LED chmod lines to point to
+	  the correct /sys paths
+	* buildsys/oe/android_1.5.bb: Add in new htc directory to the build
+
+	* buildsys/oe/android-1.5/android-init: Modify touchscreen reference
+	* buildsys/oe/android-1.5/android.sh: Rewrite for /bin/sh
+	* buildsys/oe/android-1.5/init.rc: Comment out /etc and mount lines,
+	  change permissions of /dev/binder and /dev/ashmen
+	* buildsys/oe/android-1.5/kill_android: Modify mount commands, re-mount
+	  /sys
+	* buildsys/oe/android-1.5/start_android: Modify for / instead of /android
+	* buildsys/oe/android_1.5.bb: Modify for / instead of /android, add in
+	  /etc/dbus.conf
+	* buildsys/oe/wing-linux-image.bb: Add in new udev rules and modify
+	  profile for new touchscreen path
+
+2009-08-03  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/oe/linux-herald_2.6.25.bb: Update revision to bring in
+	  touchscreen driver and gpio-keys updates
+	* buildsys/oe/android-1.5/android-init: Run ts_calibrate on first boot or
+	  if "reset_ts" is given on the kernel command-line
+	* buildsys/oe/wing-linux-image.bb: Don't make a /etc/pointercal file with
+	  hard-coded values anymore
+
+2009-07-31  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/oe/linux-herald_2.6.25.bb: Modify SRC_URL to point to new
+	  kernel repo
+	* buildsys/haret/default.txt: Update commandline for linwizard kernel
+
+2009-07-26  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/oe/initrdscripts/init.sh: Modify switch_root command to pass
+	  kernel command line to /sbin/init -- allows runlevel changing via
+	  cmdline as expected
+
+	* buildsys/oe/wing-linux-image.bb: Add module info to /etc/modutils in
+	  addition to /etc/modules to allow second boots to load the modules
+	  correctly; remove more daemons from android startup
+
+2009-07-24  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/oe/linux-herald_2.6.25.bb: Fix path so OE will pull it out
+	  properly
+
+	* buildsys/oe/android_1.5.bb: Make DEPENDS on git-native
+	* buildsys/oe/git: Add git 1.5.4 recipe, modify others to pull out patch
+	  from git.inc
+	* buildsys/oe/local.conf: Add PREFERRED_VERSION_git-native to 1.5.4 for
+	  android
+	* buildsys/Makefile: Install git recipes into build system
+
+	* kernel/arch/arm/configs/htcherald_defconfig: Set
+	  CONFIG_LOCALVERSION_AUTO to n
+
+	* buildsys/oe/linux-herald_2.6.25.bb: Update for 0.4pre2 tag
+
+	* TAG FOR 0.4pre2
+
+2009-07-24  Kumar Shaurya Shankar <kumar.shaurya@gmail.com>
+	* buildsys/oe/android-1.5/apns-conf.xml: Added a few apns from India,
+	  specifically AirTel Delhi, Bangalore, MP
+
+2009-07-23  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/oe/linux-herald_2.6.25.bb: Modify to point to git repository
+
+2009-07-22  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/trunk/oe/android-1.5/android.sh: Don't add link to /dev/ttyS0
+	  for gsm, set mode of bluetooth UART
+	* buildsys/trunk/oe/android-1.5/init.rc: Enable low-memory killer, setup
+	  bluetooth /sys permissions, add hciattach service
+	* buildsys/trunk/oe/wing-linux-image.bb: Add bluetooth modules and don't
+	  prevent package configuration
+
+	* buildsys/trunk/oe/initrdscripts/30-wingboot.sh: make dialogs timeout,
+	  write proper fstab entry for vfat mountpoint
+	* buildsys/trunk/oe/wing-linux-image.bb: don't modify fstab for vfat
+	  mount
+
+2009-07-20  Cory Maccarrone <darkstar6262@gmail.com>
+	* kernel/trunk/arch/arm/configs/htcherald_defconfig: Add rfkill support
+	* arch/arm/mach-omap1/htcherald_bt.c, arch/arm/mach-omap1/htcherald_bt.h:
+	  Implement rfkill support into the driver
+
+	* buildsys/trunk/oe/initrdscripts/30-wingboot.sh: Disable swap file
+	  prompting since we're using compcache now
+
+2009-07-19  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/trunk/oe/initrdscripts/30-wingboot.sh
+	  oe/initramfs-module-wingboot_1.0.bb: Modify installation to use dialog
+	  with progress bars
+
+	* buildsys/trunk/Makefile: Move tags to work/
+
+	* buildsys/trunk/oe/compcache, buildsys/trunk/oe/compcache-module_0.5.3.bb:
+	  Create recipe for compcache 0.5.3
+	* buildsys/trunk/oe/wing-linux-image.bb: Add compcache as dependency,
+	  modify root filesystem to use it
+	* buildsys/trunk/Makefile: Install compcache recipe
+
+2009-07-18  Cory Maccarrone <darkstar6262@gmail.com>
+	* kernel/trunk/arch/arm/configs/htcherald_defconfig: add rtc support,
+	  bluetooth.  Compile 8250 driver as module to avoid initramfs issues.
+	* buildsys/trunk/oe/android-1.5/bluetooth.patch: Patch the build system to
+	  build bluetooth support into Android
+	* buildsys/trunk/oe/android-1.5/reference-ril.patch (mainLoop): modify ril
+	  to look for /dev/ttyCSMI instead of /dev/ttyS
+
+2009-07-16  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/trunk/oe/android-1.5/reference-ril.patch
+	  (requestEnterSimPin): Add quotes around the PIN for the +CPIN command
+	  (onRequest): Implement RIL_REQUEST_SET_FACILITY_LOCK,
+	  RIL_REQUEST_QUERY_FACILITY_LOCK
+
+	* buildsys/trunk/data/_setup.xml: revert to previous revision (asking for
+	  installation location)
+	* buildsys/trunk/Makefile: Create a zip file containing the .cab and the
+	  documentation instead of just the .cab file
+	* buildsys/trunk/doc/INSTALL: Update to make mention of installing it to
+	  the storage card
+
+	* buildsys/trunk/Makefile: Version bump to 0.4pre2
+
+	* buildsys/trunk/oe/wing-linux-image.bb: Add flag in fstab to mount
+	  windows partition read-write
+
+	* kernel/trunk/arch/arm/mach-omap1/htcherald_bt.c: Pull over from
+	  linwizard and add I2C commands to enable/disable the bluetooth
+	* kernel/trunk/arch/arm/mach-omap1/Makefile: Add htcherald_bt.c
+
+	* kernel/trunk/arch/arm/mach-omap1/board-htcherald.c: Swap SW_LID events
+
+2009-07-06  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/trunk/oe/android_1.5.bb (do_install): add
+	  EXTERNAL_STORAGE_STATUS=mounted to default.prop
+	* buildsys/trunk/oe/android-1.5/start_android
+	  buildsys/trunk/oe/android-1.5/kill_android: bind/unbind /media/windows
+	  to /android/sdcard on start/kill of android.  Unmount sys_dev, dev/pts,
+	  dev, and proc on kill.
+
+	* buildsys/trunk/oe/initrdscripts/30-wingboot.sh (install_new_images):
+	  change out of /mnt before attempting to unmount it (fixes loop0
+	  directory issue)
+
+	* buildsys/trunk/oe/android-1.5/rotate_policy.patch: patch to make screen
+	  rotation on landscape mode go the right direction
+	* buildsys/trunk/oe/android_1.5.bb: add rotate_policy.patch as patch
+
+	* kernel/trunk/arch/arm/mach-omap1/board-htcherald.c: Modify keyboard
+	  slide to emit SW_LID
+
+	* kernel/trunk/arch/arm/mach-omap1/board-htcherald.c
+	  kernel/trunk/arch/arm/mach-omap1/htcwizard_bt.c
+	  kernel/trunk/arch/arm/mach-omap1/Makefile: Integrate linwizard bluetooth
+	  support.  Not currently functional.
+
+2009-07-05  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/trunk/oe/initrdscripts/80-loopboot.sh: Add modification to
+	  mount vfat partition as ugo+rwx
+
+2009-07-03  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/trunk/oe/android-1.5/start_android: Don't kill android off the
+	  first time -- causes unpredicable setup behavior.
+
+	* buildsys/trunk/oe/android-1.5/qemu.patch: Add patch to get qemu to build
+	  properly in android
+	* buildsys/trunk/oe/android_1.5.bb: Integrate patch for qemu, fix source
+	  checkout to pull released android 1.5r2 sources instead of trunk
+
+	* buildsys/trunk/oe/linux-herald_2.6.25.bb: Point to 0.4pre1 tag
+
+2009-07-02  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/trunk/oe/android-1.5/reference-ril.patch
+	  (atchannel.h writeline): Insert delay between writes, enable debugging
+	  (reference-ril.c requestSetupDefaultPDP): Write PPP options file
+	  (reference-ril.c initializeCallback): Switch modem off before
+	  initializing
+	* buildsys/trunk/oe/android-1.5/chap-secrets: Add empty chap-secrets for
+	  pppd
+	* buildsys/trunk/oe/android-1.5/ppp_gsm.patch
+	  (PdpConnection.java): patch to prevent NullPointer exception
+	  (PppLink.java): set state to CONNECTING when connecting, add debugging
+	* buildsys/trunk/oe/android-1.5/init_property_service.patch
+	  (property_service.c): Allow pppd_gprs service to start
+	* buildsys/trunk/oe/android-1.5/{ip-up,init.gprs-pppd}: support files for
+	  pppd
+	* buildsys/trunk/oe/android-1.5/init.rc: Enable pppd, remove emulator
+	  cruft, add pppd-gprs service
+	* buildsys/trunk/oe/android-1.5/android.sh: Change permissions on radio
+	  device nodes
+	* buildsys/trunk/oe/android-1.5/kill_android: add debuggerd and pppd
+	* buildsys/trunk/oe/android_1.5.bb: add new files, update install to
+	  create /android/system/etc/ppp and populate, fix /sys/class links
+	* buildsys/trunk/oe/wing-linux-image.bb: Include minicom in distribution,
+	  remove default gateway from network interfaces
+	* buildsys/trunk/oe/android-1.5/start_android: add device_provisioned
+	  property if not present, unmount /android/dev and /android/dev/pts if
+	  mounted
+
+	* buildsys/trunk/data/_setup.xml: Force install to storage card
+
+	* buildsys/trunk/Makefile: version bump to 0.4pre1
+
+2009-06-28  Cory Maccarrone <darkstar6262@gmail.com>
+	* kernel/trunk/drivers/misc/gsm-wizard.c: Import code from ali1234's
+	  linwizard branch
+	* kernel/trunk/include/asm-arm/arch-omap/omap850.h: Add DAGON_MODE define
+	  for GSM module
+
+	* kernel/trunk/arch/arm/configs/htcherald_defconfig: Add PPP support
+
+	* kernel/trunk/drivers/misc/gsm-wizard.c (csmi_tty_n_routine): Convert to
+	  using work queues instead of tasklets to fix scheduling while atomic
+
+2009-06-16  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/trunk/Makefile: Version bump for 0.3
+	* buildsys/tags/0.3/Makefile: Re-tag to correct version number
+
+2009-06-15  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/trunk/data/_setup.xml: Update the version number to 0.3
+	* buildsys/trunk/doc/INSTALL: Modified for release 0.3
+	* buildsys/trunk/doc/UPGRADE: Modified for release 0.3
+	* buildsys/trunk/haret/default.txt: Remove heraldlcd options to allow
+	  autodetect
+	* buildsys/trunk/oe/linux-herald_2.6.25.bb: Update the source URL to point
+	  to tags/0.3
+	* kernel/tags/0.3: Created 0.3 tag of trunk
+	* buildsys/tags/0.3: Created 0.3 tag of trunk
+
+	* buildsys/trunk/oe/android-1.5/start_android: Remove logcat
+
+2009-06-14  Cory Maccarrone <darkstar6262@gmail.com>
+	* kernel/trunk/arch/arm/mach-omap1/board-htcherald.c (gsm_device): Rename
+	  gsm device to wizard-gsm, so the driver will load
+
+	* kernel/trunk/arch/arm/configs/htcherald_defconfig: Disable suspend mode
+	  by default -- it's causing problems
+
+	* kernel/trunk/drivers/video/omap/omapfb_main.c (set_fb_var): If the pixel clock
+	  isn't set, don't try to divide with it.
+	* kernel/trunk/drivers/video/omap/lcd_htcherald.c: Make autodetect default, add LCD
+	  registers
+	  (herald_decode_mode): Create the function to decode video timing
+	  (htcherald_panel_probe): Add autodetection if no valid screen settings
+	  given
+
+	* buildsys/trunk/oe/wing-linux-image.bb (post_root_config): Fix a typo for
+	  the fstab file
+
+	* buildsys/trunk/data/_setup.xml: Setup file for WM6 to install cab files
+	* buildsys/trunk/Makefile (tags/oe_install): Build installable cab file
+	  instad of zip file
+
+	* Started keeping changes

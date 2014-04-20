@@ -1,0 +1,94 @@
+2009-07-03  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/trunk/oe/android-1.5/start_android: Don't kill android off the
+	  first time -- causes unpredicable setup behavior.
+
+	* buildsys/trunk/oe/android-1.5/qemu.patch: Add patch to get qemu to build
+	  properly in android
+	* buildsys/trunk/oe/android_1.5.bb: Integrate patch for qemu, fix source
+	  checkout to pull released android 1.5 sources instead of trunk
+
+	* buildsys/trunk/oe/linux-herald_2.6.25.bb: Point to 0.4pre1 tag
+
+2009-07-02  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/trunk/oe/android-1.5/reference-ril.patch
+	  (atchannel.h writeline): Insert delay between writes, enable debugging
+	  (reference-ril.c requestSetupDefaultPDP): Write PPP options file
+	  (reference-ril.c initializeCallback): Switch modem off before
+	  initializing
+	* buildsys/trunk/oe/android-1.5/chap-secrets: Add empty chap-secrets for
+	  pppd
+	* buildsys/trunk/oe/android-1.5/ppp_gsm.patch
+	  (PdpConnection.java): patch to prevent NullPointer exception
+	  (PppLink.java): set state to CONNECTING when connecting, add debugging
+	* buildsys/trunk/oe/android-1.5/init_property_service.patch
+	  (property_service.c): Allow pppd_gprs service to start
+	* buildsys/trunk/oe/android-1.5/{ip-up,init.gprs-pppd}: support files for
+	  pppd
+	* buildsys/trunk/oe/android-1.5/init.rc: Enable pppd, remove emulator
+	  cruft, add pppd-gprs service
+	* buildsys/trunk/oe/android-1.5/android.sh: Change permissions on radio
+	  device nodes
+	* buildsys/trunk/oe/android-1.5/kill_android: add debuggerd and pppd
+	* buildsys/trunk/oe/android_1.5.bb: add new files, update install to
+	  create /android/system/etc/ppp and populate, fix /sys/class links
+	* buildsys/trunk/oe/wing-linux-image.bb: Include minicom in distribution,
+	  remove default gateway from network interfaces
+	* buildsys/trunk/oe/android-1.5/start_android: add device_provisioned
+	  property if not present, unmount /android/dev and /android/dev/pts if
+	  mounted
+
+	* buildsys/trunk/data/_setup.xml: Force install to storage card
+
+	* buildsys/trunk/Makefile: version bump to 0.4pre1
+
+2009-06-28  Cory Maccarrone <darkstar6262@gmail.com>
+	* kernel/trunk/drivers/misc/gsm-wizard.c: Import code from ali1234's
+	  linwizard branch
+	* kernel/trunk/include/asm-arm/arch-omap/omap850.h: Add DAGON_MODE define
+	  for GSM module
+
+	* kernel/trunk/arch/arm/configs/htcherald_defconfig: Add PPP support
+
+	* kernel/trunk/drivers/misc/gsm-wizard.c (csmi_tty_n_routine): Convert to
+	  using work queues instead of tasklets to fix scheduling while atomic
+
+2009-06-16  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/trunk/Makefile: Version bump for 0.3
+	* buildsys/tags/0.3/Makefile: Re-tag to correct version number
+
+2009-06-15  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/trunk/data/_setup.xml: Update the version number to 0.3
+	* buildsys/trunk/doc/INSTALL: Modified for release 0.3
+	* buildsys/trunk/doc/UPGRADE: Modified for release 0.3
+	* buildsys/trunk/haret/default.txt: Remove heraldlcd options to allow
+	  autodetect
+	* buildsys/trunk/oe/linux-herald_2.6.25.bb: Update the source URL to point
+	  to tags/0.3
+	* kernel/tags/0.3: Created 0.3 tag of trunk
+	* buildsys/tags/0.3: Created 0.3 tag of trunk
+
+	* buildsys/trunk/oe/android-1.5/start_android: Remove logcat
+
+2009-06-14  Cory Maccarrone <darkstar6262@gmail.com>
+	* kernel/trunk/arch/arm/mach-omap1/board-htcherald.c (gsm_device): Rename
+	  gsm device to wizard-gsm, so the driver will load
+
+	* kernel/trunk/arch/arm/configs/htcherald_defconfig: Disable suspend mode
+	  by default -- it's causing problems
+
+	* kernel/trunk/drivers/video/omap/omapfb_main.c (set_fb_var): If the pixel clock
+	  isn't set, don't try to divide with it.
+	* kernel/trunk/drivers/video/omap/lcd_htcherald.c: Make autodetect default, add LCD
+	  registers
+	  (herald_decode_mode): Create the function to decode video timing
+	  (htcherald_panel_probe): Add autodetection if no valid screen settings
+	  given
+
+	* buildsys/trunk/oe/wing-linux-image.bb (post_root_config): Fix a typo for
+	  the fstab file
+
+	* buildsys/trunk/data/_setup.xml: Setup file for WM6 to install cab files
+	* buildsys/trunk/Makefile (tags/oe_install): Build installable cab file
+	  instad of zip file
+
+	* Started keeping changes

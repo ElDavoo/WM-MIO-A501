@@ -1,0 +1,36 @@
+2009-06-15  Cory Maccarrone <darkstar6262@gmail.com>
+	* buildsys/trunk/data/_setup.xml: Update the version number to 0.3
+	* buildsys/trunk/doc/INSTALL: Modified for release 0.3
+	* buildsys/trunk/doc/UPGRADE: Modified for release 0.3
+	* buildsys/trunk/haret/default.txt: Remove heraldlcd options to allow
+	  autodetect
+	* buildsys/trunk/oe/linux-herald_2.6.25.bb: Update the source URL to point
+	  to tags/0.3
+	* kernel/tags/0.3: Created 0.3 tag of trunk
+	* buildsys/tags/0.3: Created 0.3 tag of trunk
+
+	* buildsys/trunk/oe/android-1.5/start_android: Remove logcat
+
+2009-06-14  Cory Maccarrone <darkstar6262@gmail.com>
+	* kernel/trunk/arch/arm/mach-omap1/board-htcherald.c (gsm_device): Rename
+	  gsm device to wizard-gsm, so the driver will load
+
+	* kernel/trunk/arch/arm/configs/htcherald_defconfig: Disable suspend mode
+	  by default -- it's causing problems
+
+	* kernel/trunk/drivers/video/omap/omapfb_main.c (set_fb_var): If the pixel clock
+	  isn't set, don't try to divide with it.
+	* kernel/trunk/drivers/video/omap/lcd_htcherald.c: Make autodetect default, add LCD
+	  registers
+	  (herald_decode_mode): Create the function to decode video timing
+	  (htcherald_panel_probe): Add autodetection if no valid screen settings
+	  given
+
+	* buildsys/trunk/oe/wing-linux-image.bb (post_root_config): Fix a typo for
+	  the fstab file
+
+	* buildsys/trunk/data/_setup.xml: Setup file for WM6 to install cab files
+	* buildsys/trunk/Makefile (tags/oe_install): Build installable cab file
+	  instad of zip file
+
+	* Started keeping changes
