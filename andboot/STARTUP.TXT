@@ -1,0 +1,6 @@
+# ggli mtype sono 2694 o 452 x zimagework 1461,1232,1229
+Set mtype 1461
+set KERNEL zImage42
+Set INITRD "initramfs.cpio.gz"
+set cmdline "video=omapfb:accel root=/dev/mmcblk0p3 init=/sbin/linuxrc no_console_suspend ppp.nostart=1 debug rootdelay=04 psplash=true loglevel=6 console=tty0  heraldlcd=screen:0 3  mddi.width=240 mddi.height=320 lcd.density=120"
+bootlinux
