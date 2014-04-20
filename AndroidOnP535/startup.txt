@@ -1,0 +1,5 @@
+set FBDURINGBOOT 0
+set KERNEL zImage
+set MTYPE 1909
+set CMDLINE "debug rootdelay=30 root=/dev/mmcblk0 init=/android.sh mem=64M"
+boot

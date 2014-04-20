@@ -1,0 +1,34 @@
+Android for and only for Asus P535
+
+Based on Google Anroid SDK 1.0, with LCD, Keypad and Touchscreen working properly. 
+
+1. Prepare a spare SD card, format it as EXT2 file system
+2. Extract all files from rootfs.tar.gz to the SD card
+3. Copy other files into any directory in the internal flash memory of your P535
+4. Plug in the SD card
+5. Run file "haret-0.5.2.exe"
+6. Enjoy!
+
+If not running properly, it might be caused by incorrect device name for the SD card. 
+Check the booting information on the LCD screen, some characters as following should be displayed:
+
+[  1.000020]b300    975360 mmcblk0 driver: mmcblk
+[  1.002520]  b301    975359 mmcblk0p1
+
+The "mmcblk0p1" is just the correct device name of the SD card. The ending character in the string may also be some other number other than "1".
+Open the file "startup.txt" with text editor and modify the line:  
+
+set CMDLINE "debug rootdelay=3 root=/dev/mmcblk0 init=/android.sh mem=64M"
+
+to:
+
+set CMDLINE "debug rootdelay=3 root=/dev/mmcblk0p1 init=/android.sh mem=64M"
+
+Then run it again!
+
+
+Video demonstration please visit：
+
+http://www.youtube.com/watch?v=0GZwguPJCmI
+
+If any question, feel free to contact with me by email: reed.huang@gmail.com
