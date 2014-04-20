@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<page>
+	<event type="Load">
+ 		<action execute=":SetVariable" parameters="TColor=#@TilesColor#"/>
+		<action execute=":SetVariable" parameters="BColor=#@BGColor#"/>
+	</event>
+	<icon height="#@Screen.Height#" width="#@Screen.Width#" path="#$THEME_BASE#\Images\#$Variable,BColor#.png"/>
+
+	<import path="#$THEME_BASE#\procedures.xml"/>
+
+	<row name="RowHome" height="#@Screen.Height#" width="#@Screen.Width#"  marginX="0" marginY="5" scrollingmode="Paged">
+		<panel name="Tiles" width="#@Screen.Width#"  height="#@Screen.Height#">
+		   	<icon X="#$Expresion,#@Screen.Width# - 35#" Y="20" name="arrow" width="22" height="22" path="#$THEME_BASE#\Images\#$Variable,BColor#\RightArrow.png">
+		      	<event type="Click">
+			      	<action execute=":Script" parameters="RowHome:Set(PageX,1)"/>
+		      	</event>
+	  		</icon> 
+
+			<icon name="Search_home" width="22" height="22" X="#$Expresion,#@Screen.Width# - 35#" Y="#$Expresion,#@Screen.Height# - 40#" path="#$THEME_BASE#\Images\#$Variable,BColor#\search.btn.png">
+				<event type="Click">
+		  	 		<action execute=":RunProcedure" parameters="ShowHidePanel(Tiles,search.xml)"/>
+				</event>
+	   	 	</icon> 
+		<panel name="Tiles">
+	    	<panel width="#$Expresion,#@Screen.Width# - 50#"  height="#@Screen.Height#"/> 
+			<row name="InTiles" X="0" Y="20" layout="FixedGrid" tileWidth="95" tileHeight="95" scrollingmode="Kinetic" width="#$Expresion,#@Screen.Width# - 50#" height="#$Expresion,#@Screen.Height# - 30#">
+				<widget name="#@Widgets#" containerresizex="false"/>
+				<event type="Load"><action execute=":Script" parameters="InTiles:Set(Lock,true)"/></event>
+			</row>
+   		</panel>
+  		<!--Home Toolbar-->
+		<row name="Toolbar_home" X="0" Y="#$Expresion,#@Screen.Height# - 10#" layout="Free" width="#@Screen.Width#" height="45" scrollingmode="None">
+			<icon X="0" Y="0" width="#@Screen.Width#" height="45" path="#$THEME_BASE#\Images\#$Variable,BColor#\Toolbar_bg.png"/> 
+			<icon X="214" Y="3" width="13" height="3" path="#$THEME_BASE#\Images\#$Variable,BColor#\threedots.png"/>
+			<icon name="TbUp_home" X="200" Y="0" width="40" height="45" visible="true">
+				<event type="Click">
+					<action execute=":RunProcedure" parameters="ShowToolbar(home)"/>
+				</event>
+	   	 	</icon> 
+			<icon name="TbDown_home" X="200" Y="0" width="40" height="45" visible="false">
+				<event type="Click">
+					<action execute=":RunProcedure" parameters="HideToolbar(home)"/>
+				</event>
+	   	 	</icon> 
+	   	 			<panel name="ToolbarIcons_home" X="40" Y="10" layout="Rows" rows="1" marginX="20" marginY="0"> 
+						<icon name="Start" width="25" height="25" path="#$THEME_BASE#\Images\#$Variable,BColor#\start.btn.png">
+							<event type="Click">
+								<action execute=":SendKey" parameters="91"/>
+								<action execute=":RunProcedure" parameters="HideToolbar(home)"/>
+							</event>
+	   	 				</icon> 
+						<icon name="PhoneInfo" width="25" height="25" path="#$THEME_BASE#\Images\CleanRAMSettings.png">
+							<event type="Click">
+		  	 					<action execute=":RunProcedure" parameters="ShowHidePanel(Tiles,info.xml)"/>
+								<action execute=":RunProcedure" parameters="HideToolbar(home)"/>
+							</event>
+			   	 		</icon> 
+						<icon name="AddRemoveTiles" width="25" height="25" path="#$THEME_BASE#\Images\ShoppingList.png">
+							<event type="Click">
+		  	 					<action execute=":EditWidgets" parameters="Widgets"/>
+								<action execute=":RunProcedure" parameters="HideToolbar(home)"/>
+							</event>
+	   	 				</icon> 
+						<icon name="TLsettings" width="25" height="25" path="#$THEME_BASE#\Images\Settings.png">
+							<event type="Click">
+								<action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,settings.xml)"/>
+								<action execute=":RunProcedure" parameters="HideToolbar(home)"/>
+							</event>
+	   			 		</icon> 
+	   	 			</panel> 
+          </row>
+ 	   	</panel> 
+		<pagebreak/>
+  		<!--Programs page-->
+			<import path="#$THEME_BASE#\programs.xml"/>
+ 
+	</row>  
+
+   	<!--Import pages-->
+		<for each="value" in="#$ListFiles,#$THEME_BASE#\Pages\#">
+			<panel name="#@value#" X="#@Screen.Width#" Y="0" layout="Free" width="#@Screen.Width#" height="#@Screen.Height#" scrollingmode="None">
+				<import path="#$THEME_BASE#\Pages\#@value#"/>
+ 			</panel>
+		</for>
+
+	<!--Header-->
+	  	<panel X="0" Y="0" height="30" width="240" layout="Free" scrollingmode="none">
+	  	<panel name="Header" X="0" Y="-17" height="17" width="240" layout="Free" scrollingmode="none">
+			<icon name="bg" X="0" Y="0" width="240" height="17" visible="false" path="#$THEME_BASE#\Images\pixel.black.png" /> 
+			<icon name="mcalls" X="19" Y="0" width="17" height="17" path="#$THEME_BASE#\Images\#$Variable,BColor#\MCalls_#$SystemState,PhoneMissedCalls,map,[0-0|default-1]#.png"/>
+			<icon name="sms" X="38" Y="0" width="17" height="17" path="#$THEME_BASE#\Images\#$Variable,BColor#\USMS_#$SystemState,MessagingSmsUnread,map,[0-0|default-1]#.png"/>
+			<icon name="sound" X="#$Expresion,(#@Screen.Width# - (19*7))#" Y="0" width="19" height="17" path="#$THEME_BASE#\Images\sound#$SystemState,PhoneRingerOff,map,[On-_on|Vibrate-_vibrate|default-_off]#.png"/>
+
+			<icon name="btindicator" X="#$Expresion,(#@Screen.Width# - (19*6))#" Y="3" height="10" width="7" path="#$THEME_BASE#\Images\#$Variable,BColor#\Header\bluetooth#$SystemState,BluetoothStatePowerOn,map,[1-_on|default-]#.png"> 
+				<event type="Click">
+					<action execute=":BlueToothToggle"/>
+				</event>
+			</icon>
+			<icon name="wifiindicator" X="#$Expresion,(#@Screen.Width# - (19*5))#" Y="3" height="10" width="10" path="#$THEME_BASE#\Images\#$Variable,BColor#\Header\wifi#$SystemState,WiFiStatePowerOn,map,[1-_on|default-]#.png"> 
+				<event type="Click">
+					<action execute=":WifiToggle"/>
+				</event>
+			</icon>
+			<icon name="Signal" X="5" Y="3" height="10" width="15" path="#$THEME_BASE#\Images\#$Variable,BColor#\Header\Signal\signal_#$Expresion,#$SystemState,PhoneSignalStrength,intervals,20#*#$SystemState,PhoneRadioOff,map,[1-0|default-1]##.png"/>
+	   	</panel>
+	      	<icon name="battery" X="#$Expresion,(#@Screen.Width# - (19*3) - 5)#" Y="4" height="8" width="15" path="#$THEME_BASE#\Images\#$Variable,BColor#\Header\Battery\battery_#$SystemState,PowerBatteryStrength,intervals,25##$SystemState,PowerBatteryState,map,[2-_charge|default-]#.png"/>
+       		<panel name="TaskbarClock">
+			<if name="#@clockformat#" value="12">
+			<then>
+	       		<text name="clock" X="#$Expresion,(#@Screen.Width# - (19*2))#" Y="0" height="17" width="38" topmargin="1" leftmargin="0" text="#$date,HH:mm#" alignment="Center" fonttype="Segoe UI Light,8,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+			</then>
+			<else>
+	       		<text name="clock" X="#$Expresion,(#@Screen.Width# - (19*2) - 7)#" Y="0" height="17" width="45" topmargin="1" leftmargin="0" text="#$date,hh:mmtt#" alignment="Center" fonttype="Segoe UI Light,8,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+			</else>
+       		</if>
+      		</panel>
+			<icon X="0" Y="0" height="30" width="240"> 
+				<event type="Click">
+					<action execute=":RunProcedure" parameters="ShowHideHeader()"/>
+				</event>
+			</icon>
+	   	</panel>
+
+</page>

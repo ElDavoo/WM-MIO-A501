@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <var name="games" value="" />
+  <var name="Animations" value="False" />
+  <var name="xbliveavatar" value="#$THEME_BASE#\Images\xbliveavatar.png" />
+</root>

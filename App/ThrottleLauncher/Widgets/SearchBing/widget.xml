@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<panel name="SearchBing">
+    <configuration name="SearchBing"
+    description="SearchBing"
+    minthrottleversion="1.1"
+    createdby="APBilbo">
+        <variables>
+        </variables>
+    </configuration>
+    
+    <panel name="SearchBing.SearchResults" X="0" Y="-4000" visible="false">
+    	<panel layout="Cols" cols="1">
+   			<icon path="#$THROTTLE#\Widgets\SearchBing\open.png" width="240" height="7"></icon>
+   			<row width="240" height="#$Expression,#@Screen.Height#-150#" layout="Cols" cols="1" skin="#$THROTTLE#\Widgets\SearchBing\results_skin">
+				<list name="SearchBing" class="UtilPlugins.BingSearch" path="#$THROTTLE#\Plugins\Util\UtilPlugins.dll">
+					<items>
+						<if name="#@Index#" value="0" not="true">
+							<panel>
+					   			<panel width="240"/>
+								<if name="#@Index#" value="1">
+									<event type="Load">
+										<action execute=":Script" parameters="SearchBing.SearchResults:Set(Y,20)"/>
+										<action execute=":Script" parameters="SearchBing:BringToFront()"/>
+										<action execute=":Script" parameters="SearchBing.SearchResults:FadeIn()"/>
+									</event>
+								</if>
+								<panel X="20" Y="4" layout="Cols" marginY="2" cols="1">
+									<event type="Click">
+										<action execute="#$Variable,SearchBing[#@Index#].Url#"/>
+									</event>
+									<text text="#$Variable,SearchBing[#@Index#].Title#" width="200" fontcolor="0,108,211" fonttype="9,false" />
+									<text text="#$Variable,SearchBing[#@Index#].Description#" width="200" fontcolor="255,255,255" fonttype="7,false" />
+									<text text="#$Variable,SearchBing[#@Index#].DisplayUrl#" width="200"  fontcolor="192,192,192" fonttype="7,false" />
+								</panel>
+							</panel>
+						</if>
+					</items>
+				</list>
+			</row>
+			<panel>
+   				<icon path="#$THROTTLE#\Widgets\SearchBing\close.png" width="240" height="16"/>
+				<event type="Click">
+					<action execute=":Script" parameters="SearchBing.SearchResults:Set(Visible,False)"/>
+					<action execute=":Script" parameters="SearchBing.SearchResults:Set(Y,-4000)"/>
+				</event>
+			</panel>
+	    </panel>
+    </panel>
+   	<icon path="#$THROTTLE#\Widgets\SearchBing\search.png" width="240" height="32"/>
+   	<panel X="214" Y="0" width="22" height="22">
+	   	<event type="Click">
+			<action execute=":Script" parameters="SearchBing.SearchResults:Set(Visible,False)"/>
+			<action execute=":Script" parameters="SearchBing.SearchResults:Set(Y,-4000)"/>
+	    	<action execute=":ToPlugin" parameters="SearchBing:Search(#$Variable,SearchBing.SearchQuery#)"/>
+	    </event>
+   	</panel>
+   	<textinput X="12" Y="7" width="198" height="16" multiline="false" fontcolor="0,0,0" fonttype="10,false" default="Search bing..." output="SearchBing.SearchQuery"/>
+</panel>

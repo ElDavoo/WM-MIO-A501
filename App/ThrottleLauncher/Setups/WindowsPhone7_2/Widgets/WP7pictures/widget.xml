@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<panel name="RandomPicture" height="90" width="185">	
+	<configuration name="RandomPicture"
+			description="RandomPicture Tile"
+			minthrottleversion="1.0"
+			comments=""
+			createdby="Fireslave">
+			<variables>
+				<var name="width" description="#L:Width#" default="185" type="integer(10,400)" />
+				<var name="Pics" description="#L:Pictures#" default="" type="separator" />
+				<var name="update" description="#L:Intervals (secs)#" tip="If you want to disable the animation set to cero, this will save battery and the theme will be faster." default="0" type="integer(0,30)" />
+				<var name="path" description="#L:Select Folder#" default="" type="path(*)" />
+				<var name="filter" description="#L:Filter#" default="*.jpg" type="string" />
+			</variables>
+	</configuration>
+	<event type="Click">
+		<action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,pictures.xml)"/>
+	</event>
+	<icon width="185" height="90" path="#$THEME_BASE#\Widgets\WP7pictures\Pictures.jpg"/>
+	<panel>
+		<event type="Load">
+			<action execute=":SetVariable" parameters="CurrentPicture=0"/>
+			<action execute=":SetVariable" parameters="TotalPicture=0"/>
+		</event>
+		<if name="#@RandomPicture.update#" not="true" value="0">
+			<event type="GlobalChange" parameters="#$Expresion,int((#$date,mm#* 60 + #$date,ss#)/#@RandomPicture.update#)#">
+				<action execute=":Script" parameters="picture_#$Variable,CurrentPicture#:FadeOut()"/>
+				<action execute=":Script" parameters="picture_#$Variable,CurrentPicture#:BringToFront()"/>
+				<action execute=":SetVariable" parameters="CurrentPicture=#$Expression,(#$Variable,CurrentPicture# + 1) * (#$Variable,CurrentPicture# &lt; #$Variable,TotalPicture#)#"/>
+				<action execute=":Script" parameters="picture_#$Variable,CurrentPicture#:Set(Visible,True)"/>
+				<action execute=":Script" parameters="picture_#$Variable,CurrentPicture#:Set(Transparency,255)"/>
+			</event>
+		</if>
+		<list name="RandomPictureGenerator" class="UtilPlugins.RandomFile" path="#$THROTTLE#\Plugins\Util\UtilPlugins.dll">
+			<param name="folder" value="#@RandomPicture.path#"/>
+			<param name="pattern" value="#@RandomPicture.filter#"/>
+			<param name="updatetime" value="0"/>
+			<param name="number" value="10"/>
+			<items>
+			<if name="#@Index#" value="0">
+				<panel name="picture_#@Index#">
+					<event type="Load"><action execute=":SetVariable" parameters="TotalPicture=#@Index#"/></event>				
+					<icon width="#@RandomPicture.width#" path=":Thumb:#$Variable,RandomPictureGenerator[#@Index#].FullName#:#@RandomPicture.width#:?"/>
+				</panel>
+			</if>
+			<if name="#@Index#" value="0" not="true">
+				<panel name="picture_#@Index#" visible="false">
+					<event type="Load"><action execute=":SetVariable" parameters="TotalPicture=#@Index#"/></event>				
+					<icon width="#@RandomPicture.width#" path=":Thumb:#$Variable,RandomPictureGenerator[#@Index#].FullName#:#@RandomPicture.width#:?"/>
+				</panel>
+			</if>			
+			</items>
+		</list>	
+	</panel>
+	<text X="10" Y="75" height="15" width="175" alignment="Near" text="Pictures" fontcolor="255,255,255" fonttype="Segoe UI Light,8,true"/>
+</panel>

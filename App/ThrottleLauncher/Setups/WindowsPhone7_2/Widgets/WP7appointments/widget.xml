@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<panel height="90" width="185" name="Appointments">
+	<configuration name="Appointments"
+			description="Appointments widget for ThrottleLauncher 1.0"
+			minthrottleversion="1.0"
+			comments="Shows news from an RSS source."
+			createdby="Alfonso Presa">
+			    <variables>
+					<var name="Seaparator" description="#L:Config#" default="" type="separator" />
+					<var name="MaxItems" description="#L:Max items#" default="20" type="integer(1,20)" />
+			  	</variables>
+	</configuration>
+		<event type="Click">
+			<action execute="calendar.exe" parameters=""/>
+		</event>
+        <icon height="90" width="185" path="#$THEME_BASE#\Images\#$Variable,TColor#.png"/>
+		<panel X="130" Y="5" rotate="26" width="40" height="40">
+			<icon path="#$THEME_BASE#\Widgets\WP7appointments\calendar_no.png" />
+		</panel>
+
+		<event type="GlobalChange" parameters="#$Date,d/M/yyyy#">
+			<action execute=":ToPlugin" parameters="AppointmentsItems:SetRestriction([Start] >= &quot;#$Date,d/M/yyyy 0:0#&quot;)"/>
+		</event>
+    	<row name="Appts" X="5" Y="5" layout="Cols" cols="1" scrollingmode="Kinetic" width="175" height="80">
+			<list name="AppointmentsItems" class="TLPlugins.TasksAppointments" path="#$THROTTLE#\Plugins\TasksAppointments\TasksAppointments.dll">
+				<param name="type" value="Appointments"/>
+				<param name="maxitems" value="#@Appointments.MaxItems#"/>
+				<param name="restrict" value="[Start] >= &quot;#$Date,d/M/yyyy 0:0#&quot;"/>
+				<items>
+					<panel width="175" height="40" display="Block">			
+	                	<text X="2" Y="0" width="170" height="13" alignment="Near" fontcolor="0,0,0" fonttype="Segoe UI Light,8,true" text="#$Variable,AppointmentsItems[#@Index#].Start# - #$Variable,AppointmentsItems[#@Index#].End#"/>
+	                	<text X="5" Y="10" width="170" height="15" alignment="Near" fontcolor="255,255,255" fonttype="Segoe UI Light,9,true" text="#$Variable,AppointmentsItems[#@Index#].Location#"/>
+	                	<text X="5" Y="24" width="170" height="12" alignment="Near" fontcolor="255,255,255" fonttype="Segoe UI Light,7,true" text="#$Variable,AppointmentsItems[#@Index#].ToString#"/>	            	
+					</panel>
+				</items>
+			</list>
+		</row>
+</panel>

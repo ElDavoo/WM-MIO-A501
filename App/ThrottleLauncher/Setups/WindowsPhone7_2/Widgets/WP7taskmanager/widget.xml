@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<panel name="WP7taskmanager">
+  <panel height="90" width="90" visible="true" layout="Free">
+  <icon height="90" width="90" path="#$THEME_BASE#\Images\#$Variable,TColor#.png"/>
+		<text X="10" Y="73" height="15" width="78" alignment="Near" text="Task Manager" fontcolor="255,255,255" fonttype="Segoe UI Light,8,false"/>
+		<icon height="48" width="48" path="#$THEME_BASE#\images\tasks.png" X="24" Y="16" />
+		<event type="Click">
+		<action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,taskmanager.xml)"/>
+	</event>		
+  </panel>
+</panel>

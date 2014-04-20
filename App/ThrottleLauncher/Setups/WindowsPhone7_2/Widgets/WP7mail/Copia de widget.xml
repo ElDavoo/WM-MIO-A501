@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<panel name="mail" height="90" width="90">
+	<configuration name="mail"
+			description="mail Tile"
+			minthrottleversion="1.0"
+			comments=""
+			createdby="Fireslave">
+			<variables>
+			<var name="mail_conf" description="#L:Mail#" default="" type="separator" />
+				<var name="MailAccount" description="#L:Mail account#" default="ActiveSync" type="multiplemailchooser" />
+			</variables>
+	</configuration>
+	<event type="Load">
+		<for each="MailAcountVar" in="#@mail.MailAccount#">
+			<action execute=":SetVariable" parameters="MailAccount#@index#=#@MailAcountVar#"/>
+		</for>
+		<action execute=":SetVariable" parameters="MailAccount=#$Variable,MailAccount0#"/>
+		<action execute=":ToPlugin" parameters="Messaging:#$Variable,MailAccount# Refresh"/>
+	</event>
+	<panel name="TileColorWP7mail">
+		<icon height="90" width="90" path="#$THEME_BASE#\Images\#@TilesColor#.png"/>
+	</panel>
+	<text name="Unread email" X="47" Y="27" height="40" width="43" alignment="Center" leftmargin="0" topmargin="0" textimagesscale="0.5" textimages="#$THEME_BASE#\Images\Numbers\#$char#.png" text="#$Registry,HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Messaging\#$Variable,MailAccount#\Total,map,[0-]#"/>
+			<text X="0" Y="0" fonttype="8,false" width="70" height="15" fontcolor="60,60,60" text="#$Registry,HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Messaging\#$Variable,MailAccount#\Selected# / #$Registry,HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Messaging\#$Variable,MailAccount#\Total#"/>
+	<icon height="90" width="90" path="#$THEME_BASE#\Widgets\WP7mail\UEmails_#$Registry,HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Messaging\#$Variable,MailAccount#\Total,map,[0-0|default-1]#.png"/> 
+	<text X="10" Y="73" height="15" width="78" alignment="Near" text="Outlook " fontcolor="255,255,255" fonttype="Segoe UI Light,8,true"/>
+	<event type="Click">
+		<action execute="\windows\tmail.exe" params="-service &quot;#$Variable,MailAccount#&quot;"/>
+	</event>
+</panel>

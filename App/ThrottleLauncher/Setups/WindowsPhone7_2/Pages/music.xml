@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<event type="LeftRightGesture">
+		<action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,music.xml)" />
+	</event>
+	<panel name="bg_MainMusic" layout="Free">
+	<panel name="MusicBackground">
+		<icon X="0" Y="0" height="#@Screen.Height#" path="#@Music.bgpath#"/>
+	</panel>
+		<icon name="musicplayer_label" X="0" Y="20" height="77" width="410" path="#$THEME_BASE#\Images\#$Variable,BColor#\musicplayer.png">
+	    	<event type="Click">
+				<action execute=":Script" parameters="MusicBackground:Reload()" />
+	    	</event>
+	    </icon> 
+		<!-- icon X="10" Y="145" name="play" width="30" height="30" path="#$THEME_BASE#\Images\#$Variable,BColor#\play.png" -->
+		<icon X="10" Y="145" name="play" width="30" height="30">
+	    	<!-- event type="Click">
+				<action execute=":Script" parameters="Row_MainMusic:Set(PageX,1)" />
+	    	</event -->
+	    </icon> 
+	</panel>
+
+	<row name="Row_MainMusic" X="0" Y="100" width="#@Screen.Width#" height="#$Expresion,#@Screen.Height# - 100#" backgrounditem="bg_MainMusic" scrollingmode="Paged">
+		<row X="0" Y="0" width="#@Screen.Width#" height="#$Expresion,#@Screen.Height# - 100#" layout="Cols" cols="1">
+			<icon X="0" Y="0" width="#$Expresion,#@Screen.Width# - 50#" height="40"/>
+			<applications category="MusicCat" showsubcategories="false" >
+				<panel>
+					<icon X="5" Y="5" path="#@Icon#" exec="#@Execute#" params="#@Parameters#" name="#@Name#" width="30" height="30"/>
+					<text name="Items" X="50" Y="0" width="#$Expresion,#@Screen.Width# - 50#" alignment="Near" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light,20,false" text="#@Name#" leftmargin="0" topmargin="0" spacing="0">
+					<event type="Click"><action execute="#@Execute#" parameters="#@Parameters#"/></event></text>
+				</panel>
+				<icon X="0" Y="0" width="#$Expresion,#@Screen.Width# - 50#" height="10"/>
+			</applications>
+			<panel>
+				<icon X="0" Y="0" width="#$Expresion,#@Screen.Width# - 50#" height="5"/>
+				<text name="Add Item" X="50" Y="0" width="#$Expresion,#@Screen.Width# - 50#" alignment="Near" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light,16,false" text="Add Item" exec=":apps2cat" params="MusicCat" leftmargin="0" topmargin="0" spacing="0"/>
+			</panel>
+		</row>
+		<pagebreak/>
+		<panel name="MusicContainer" X="0" Y="0" width="#@Screen.Width#" height="#$Expresion,#@Screen.Height# - 100#">
+			<!--if name="#@Player#" value="MortPlayer">
+				<row name="Player info" layout="Free" height="#$Expresion,#@Screen.Height# - 100#" width="#@Screen.Width#" scrollingmode="None">
+					<panel name="Cover" X="10" Y="10" width="240" height="140">
+						<icon path="#$THEME_BASE#\Images\Music\album.jpg" exec="wmplayer" height="140" width="140" scrollingmode="None"/> 
+						<icon path="#@Music.WMPCoverPath#\#$Registry,HKEY_CURRENT_USER\Software\Mort\MortPlayer\Remote\TrackArtist#\#$Registry,HKEY_CURRENT_USER\Software\Mort\MortPlayer\Remote\TrackAlbum#.jpg" exec="#@S2PPath#" height="138" width="138"/> 
+						<icon X="175" Y="0" name="plus" width="40" height="40" exec="#$THROTTLE#\Util\MortPControl.exe" params="VolumeUp" path="#$THEME_BASE#\Images\black.png" /> 
+						<icon X="175" Y="100" width="40" height="40" exec="#$THROTTLE#\Util\MortPControl.exe" params="VolumeDown" path="#$THEME_BASE#\Images\black.png" />
+					</panel>
+					<row name="info" X="0" Y="#$Value,#@Screen.Height#,map,[400-175|800-350|320-160|default-320]#" layout="Rows" rows="2" width="240" height="120" scrollingmode="None">
+						<text name="Tittle" width="240" height="20" alignment="Near" fontcolor="255,255,255" fonttype="Segoe UI Light,10,false" text="#$Registry,HKEY_CURRENT_USER\Software\Mort\MortPlayer\Remote\TrackTitle#" leftmargin="10" topmargin="0" spacing="0" /> 
+						<text name="Artist" width="240" height="20" alignment="Near" fontcolor="255,255,255" fonttype="Segoe UI Light,10,false" text="#$Registry,HKEY_CURRENT_USER\Software\Mort\MortPlayer\Remote\TrackArtist#" leftmargin="10" topmargin="0" spacing="0" /> 
+					</row>
+					<panel name="Controls" X="0" Y="#$Value,#@Screen.Height#,map,[400-250|800-500|320-170|default-340]#" layout="Free" width="240" height="40">
+						<icon X="5" Y="10" name="plus" exec="#$THROTTLE#\Util\WMPControl.exe" params="VolumeUp" path="#$THEME_BASE#\icons\Music\plusvol.png" /> 
+						<icon X="210" Y="10" width="40" height="40" exec="#$THROTTLE#\Util\WMPControl.exe" params="VolumeDown" path="#$THEME_BASE#\icons\Music\minusvol.png" />
+						<icon X="10" Y="0" name="Prev" width="40" height="40" exec="#$THROTTLE#\Util\MortPControl.exe" params="Previous" path="#$THEME_BASE#\Images\Music\prev.png"/>
+						<icon X="100" Y="0" name="Play" width="40" height="40" exec="#$THROTTLE#\Util\MortPControl.exe" params="PlayPause" path="#$THEME_BASE#\Images\Music\#$Registry,HKEY_CURRENT_USER\Software\Mort\MortPlayer\Remote\StatePaused,map,[0-pause|default-play]#.png"/>
+						<icon X="190" Y="0" name="Next" width="40" height="40" exec="#$THROTTLE#\Util\MortPControl.exe" params="Next" path="#$THEME_BASE#\Images\Music\next.png" />
+					</panel>
+				</row>
+			</if-->
+			<if name="#@Player#" value="Windows Media Player">
+				<row name="Player info" layout="Free" height="#$Expresion,#@Screen.Height# - 100#" width="#@Screen.Width#" scrollingmode="None">
+					<panel name="Cover" X="8" Y="10" width="230" height="#$Value,#@Screen.Height#,map,[400-135|800-270|320-80|default-160]#">
+						<icon path="#$THEME_BASE#\Images\Music\album.jpg" exec="wmplayer" height="#$Value,#@Screen.Height#,map,[400-135|800-270|320-80|default-160]#" width="#$Value,#@Screen.Height#,map,[400-135|800-270|320-80|default-160]#" scrollingmode="None"/> 
+						<icon path="#@Music.WMPCoverPath#\#$Registry,HKEY_CURRENT_USER\System\State\MediaPlayer\WM/AlbumArtist#\#$Registry,HKEY_CURRENT_USER\System\State\MediaPlayer\WM/AlbumTitle#.jpg" exec="wmplayer" height="#$Value,#@Screen.Height#,map,[400-135|800-270|320-80|default-160]#" width="#$Value,#@Screen.Height#,map,[400-135|800-270|320-80|default-160]#"/> 
+						<text X="143" Y="0" text="volume up" width="80" height="30" alignment="Center" topmargin="5" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"  fonttype="Segoe UI Light,9,false" exec="#$THROTTLE#\Util\WMPControl.exe" params="VolumeUp" path="#$THEME_BASE#\Images\Music\#$Variable,BColor#\volume.png"/> 
+						<text X="143" Y="40" text="volume down" width="80" height="30" alignment="Center" topmargin="5" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light,9,false" exec="#$THROTTLE#\Util\WMPControl.exe" params="VolumeDown" path="#$THEME_BASE#\Images\Music\#$Variable,BColor#\volume.png"/>
+					</panel>
+					<row name="info" X="0" Y="#$Value,#@Screen.Height#,map,[400-175|800-350|320-90|default-180]#" layout="Rows" rows="2" width="240" height="120" scrollingmode="None">
+						<text name="Tittle" width="240" height="20" alignment="Near" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light,10,true" text="#$Registry,HKEY_CURRENT_USER\System\State\MediaPlayer\Title#" leftmargin="10" topmargin="0" spacing="0" /> 
+						<text name="Artist" width="240" height="20" alignment="Near" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light,10,true" text="#$Registry,HKEY_CURRENT_USER\System\State\MediaPlayer\WM/OriginalArtist#" leftmargin="10" topmargin="0" spacing="0" /> 
+					</row>
+					<panel name="Controls" X="0" Y="#$Value,#@Screen.Height#,map,[400-250|800-500|320-170|default-340]#" layout="Free" width="240" height="40">
+						<icon X="10" Y="0" name="Prev" height="40" width="40" exec="#$THROTTLE#\Util\WMPControl.exe" params="Previous" path="#$THEME_BASE#\Images\Music\#$Variable,BColor#\prev.png"/>
+						<icon X="100" Y="0" name="Play" height="40" width="40" exec="#$THROTTLE#\Util\WMPControl.exe" params="PlayPause" path="#$THEME_BASE#\Images\Music\#$Variable,BColor#\play.png"/>
+						<icon X="190" Y="0" name="Next" height="40" width="40" exec="#$THROTTLE#\Util\WMPControl.exe" params="Next" path="#$THEME_BASE#\Images\Music\#$Variable,BColor#\next.png" />
+					</panel>
+				</row>
+			</if>
+			<if name="#@Player#" value="Nitrogen">
+				<row name="Player info" layout="Free" height="#$Expresion,#@Screen.Height# - 100#" width="#@Screen.Width#" scrollingmode="None">
+					<panel name="Cover" X="8" Y="10" width="230" height="#$Value,#@Screen.Height#,map,[400-135|800-270|320-80|default-160]#">
+						<icon path="#$THEME_BASE#\Images\Music\album.jpg" exec="#$PROGRAMS#\Nitrogen.lnk" height="#$Value,#@Screen.Height#,map,[400-135|800-270|320-80|default-160]#" width="#$Value,#@Screen.Height#,map,[400-135|800-270|320-80|default-160]#" scrollingmode="None"/> 
+						<icon name="CoverNitrogen" height="#$Value,#@Screen.Height#,map,[400-135|800-270|320-80|default-160]#" width="#$Value,#@Screen.Height#,map,[400-135|800-270|320-80|default-160]#" path="#$Registry,HKEY_LOCAL_MACHINE\System\State\Nitrogen\AlbumArtFilename#" exec="#$PROGRAMS#\Nitrogen.lnk"/>
+						<text X="143" Y="0" text="volume up" width="80" height="30" alignment="Center" topmargin="5" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light,9,false" exec="#$THROTTLE#\Util\NitrogenControl.exe" params="VolumeUp" path="#$THEME_BASE#\Images\Music\#$Variable,BColor#\volume.png" /> 
+						<text X="143" Y="40" text="volume down" width="80" height="30" alignment="Center" topmargin="5" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light,9,false" exec="#$THROTTLE#\Util\NitrogenControl.exe" params="VolumeDown" path="#$THEME_BASE#\Images\Music\#$Variable,BColor#\volume.png" />
+					</panel>
+					<row name="info" X="0" Y="#$Value,#@Screen.Height#,map,[400-175|800-350|320-90|default-180]#" layout="Rows" rows="2" width="240" height="120" scrollingmode="None">
+						<text name="TittleNitrogen" width="240" height="20" alignment="Near" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light,10,false" text="#$Registry,HKEY_LOCAL_MACHINE\System\State\Nitrogen\SongTitle#" exec="#@NitrogenPath#" leftmargin="10" topmargin="0" spacing="0"/>
+						<text name="ArtistNitrogen" width="240" height="20" alignment="Near" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light,10,false" text="#$Registry,HKEY_LOCAL_MACHINE\System\State\Nitrogen\SongArtist#" leftmargin="10" topmargin="0" spacing="0"/>
+						<!--text name="AlbumNitrogen" X="10" Y="198" width="240" alignment="Near" fontcolor="255,255,255" fonttype="Segoe Light,12,false" text="#$Registry,HKEY_LOCAL_MACHINE\System\State\Nitrogen\AlbumArtFilename#" leftmargin="-214" topmargin="0" spacing="0"/-->
+					</row>
+					<panel name="Controls" X="0" Y="#$Value,#@Screen.Height#,map,[400-250|800-500|320-170|default-340]#" layout="Free" width="240" height="40">
+						<icon X="15" Y="0" name="prv" height="40" width="40"  alignment="Near" exec="#$THROTTLE#\Util\NitrogenControl.exe" params="Previous" path="#$THEME_BASE#\images\Music\#$Variable,BColor#\prev.png"/>
+						<icon X="100" Y="0" name="ply" height="40" width="40" alignment="Center" exec="#$THROTTLE#\Util\NitrogenControl.exe" params="PlayPause" path="#$THEME_BASE#\images\Music\#$Variable,BColor#\#$Registry,HKEY_LOCAL_MACHINE\System\State\Nitrogen\PlayStatus,map,[3-pause|default-play]#.png"/>
+						<icon X="185" Y="0" name="nxt" height="40" width="40" exec="#$THROTTLE#\Util\NitrogenControl.exe" params="Next" path="#$THEME_BASE#\images\Music\#$Variable,BColor#\next.png"/>
+					</panel>
+				</row>
+			</if>
+			<if name="#@Player#" value="slide2play">
+				<row name="Player info" layout="Free" height="#$Expresion,#@Screen.Height# - 100#" width="#@Screen.Width#" scrollingmode="None">
+					<panel name="Cover" X="8" Y="10" width="230" height="#$Value,#@Screen.Height#,map,[400-135|800-270|320-80|default-160]#">
+						<icon path="#$THEME_BASE#\Images\Music\album.jpg" exec="#$PROGRAMS#\S2P.lnk" height="#$Value,#@Screen.Height#,map,[400-135|800-270|320-80|default-160]#" width="#$Value,#@Screen.Height#,map,[400-135|800-270|320-80|default-160]#" scrollingmode="None"/> 
+						<icon path="#$Registry,HKEY_CURRENT_USER\Software\A_C\S2P\CurrentAlbum#" exec="#$PROGRAMS#\S2P.lnk" height="#$Value,#@Screen.Height#,map,[400-135|800-270|320-80|default-160]#" width="#$Value,#@Screen.Height#,map,[400-135|800-270|320-80|default-160]#"/> 
+						<text X="143" Y="0" text="volume up" width="80" height="30" alignment="Center" topmargin="5" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light,9,false" exec="#$THROTTLE#\Util\S2PControl.exe" params="VolumeUp" path="#$THEME_BASE#\Images\Music\#$Variable,BColor#\volume.png" /> 
+						<text X="143" Y="40" text="volume down" width="80" height="30" alignment="Center" topmargin="5" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light,9,false" exec="#$THROTTLE#\Util\S2PControl.exe" params="VolumeDown" path="#$THEME_BASE#\Images\Music\#$Variable,BColor#\volume.png" />
+					</panel>
+					<row name="info" X="0" Y="#$Value,#@Screen.Height#,map,[400-170|800-340|320-90|default-180]#" layout="Rows" rows="3" width="240" height="120" scrollingmode="None">
+						<text name="Tittle" width="240" height="20" alignment="Near" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light,10,false" text="#$Registry,HKEY_CURRENT_USER\Software\A_C\S2P\CurrentTitle#" leftmargin="10" topmargin="0" spacing="0" /> 
+						<text name="Artist" width="240" height="20" alignment="Near" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light,10,false" text="#$Registry,HKEY_CURRENT_USER\Software\A_C\S2P\CurrentArtist#" leftmargin="10" topmargin="0" spacing="0" /> 
+						<text name="Album" width="240" height="20" alignment="Near" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light,10,false" text="#$Registry,HKEY_CURRENT_USER\Software\A_C\S2P\CurrentAlbumName#" leftmargin="10" topmargin="0" spacing="0" /> 
+					</row>
+					<panel name="Controls" X="0" Y="#$Value,#@Screen.Height#,map,[400-250|800-500|320-170|default-340]#" layout="Free" width="240" height="40">
+						<icon X="15" Y="0" name="Prev" height="40" width="40" exec="#$THROTTLE#\Util\S2PControl.exe" params="Previous" path="#$THEME_BASE#\Images\Music\#$Variable,BColor#\prev.png"/>
+						<icon X="100" Y="0" name="Play" height="40" width="40" exec="#$THROTTLE#\Util\S2PControl.exe" params="PlayPause" path="#$THEME_BASE#\Images\Music\#$Variable,BColor#\#$Registry,HKEY_CURRENT_USER\Software\A_C\S2P\Status,map,[0-pause|default-play]#.png"/>
+						<icon X="185" Y="0" name="Next" height="40" width="40" exec="#$THROTTLE#\Util\S2PControl.exe" params="Next" path="#$THEME_BASE#\Images\Music\#$Variable,BColor#\next.png" />
+					</panel>
+				</row>
+			</if>
+		</panel>
+	</row>
+
+</root> 

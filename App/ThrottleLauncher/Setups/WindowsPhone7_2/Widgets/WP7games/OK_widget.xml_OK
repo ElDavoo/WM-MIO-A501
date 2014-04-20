@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<panel name="Games" height="90" width="90">
+	<configuration name="WP7games"
+			description="Games Tile"
+			minthrottleversion="1.0"
+			comments=""
+			createdby="Fireslave">
+			<variables>
+				<var name="games" description="#L:General settings#" default="" type="separator" />
+				<var name="Animations" description="#L:Animated Tile#" tip="If you don't want to use animated tile uncheck it, this will save battery and the theme will be faster" default="true" type="boolean"/>
+				<var name="xbliveavatar" description="#L:Select Xbox Live Avatar#" default="#$THEME_BASE#\Images\xbliveavatar.png" type="path(*.jpg,*.png)" />
+			</variables>
+	</configuration>
+	<if name="#@WP7games.Animations#" value="true">
+		<procedure name="xbAnimation" mode="Threaded" parameters="time">
+		   	<action execute=":Script" parameters="xboxtext:GoToTime(-90,20,1000)"/>
+		   	<action execute=":Script" parameters="xboxavatar:GoToTime(25,20,1000)" take="#@time#"/>
+		   	<action execute=":Script" parameters="xboxavatar:GoToTime(25,90,1000)"/>
+		   	<action execute=":Script" parameters="xboxtext:Set(X,0)"/>
+		   	<action execute=":Script" parameters="xboxtext:Set(Y,-90)"/>
+		    <action execute=":Script" parameters="xboxtext:GoToTime(0,20,1000)" take="#@time#"/>
+		   	<action execute=":Script" parameters="xboxavatar:Set(X,-90)"/>
+		   	<action execute=":Script" parameters="xboxavatar:Set(Y,25)"/>
+		   	<action execute=":Script" parameters="xboxtext:GoToTime(90,20,1000)"/>
+		   	<action execute=":Script" parameters="xboxavatar:GoToTime(25,20,1000)" take="#@time#"/>
+		   	<action execute=":Script" parameters="xboxavatar:GoToTime(25,-117,1000)"/>
+		    <action execute=":Script" parameters="xboxtext:Set(X,0)"/>
+		   	<action execute=":Script" parameters="xboxtext:Set(Y,90)"/>
+		    <action execute=":Script" parameters="xboxtext:GoToTime(0,20,1000)" take="#@time#"/>
+		    <action execute=":Script" parameters="xboxavatar:Set(X,90)"/>
+		   	<action execute=":Script" parameters="xboxavatar:Set(Y,90)"/>
+		</procedure>
+		<event type="Timed" parameters="15">
+			<action execute=":RunProcedure" parameters="xbAnimation(#$Expresion,rnd(4000) + 1000#)"/>
+		</event>		
+	</if>
+	<icon height="90" width="90" path="#$THEME_BASE#\Widgets\WP7games\xb_bg.png"/>
+    <panel name="xboxlive" height="90" width="90">
+		<icon name="xboxtext" X="0" Y="20" width="90" height="50" path="#$THEME_BASE#\Widgets\WP7games\xb_logo.png"/>
+		<icon name="xboxavatar" X="90" Y="90" width="60" height="117" path="#@WP7games.xbliveavatar#"/>
+		<text X="10" Y="75" height="30" width="180" alignment="Near" text="Games" fontcolor="255,255,255" fonttype="Segoe UI Light,8,true"/>
+	</panel>
+	<event type="Click">
+		<action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,games.xml)" />
+		<action execute=":SetVariable" parameters="avatar=#@WP7games.xbliveavatar#"/>
+	</event>
+</panel>

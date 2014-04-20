@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<panel name="System Info">
+	
+	<icon X="7" Y="0" width="110" height="150" path="Widgets\System Info\back_c.png"/>
+	
+	<panel X="43" Y="7" display="Icon">
+		<event type="GlobalChange" parameters="#$SystemState,FreeMemoryPercent#">
+			<action execute=":Script" parameters="SI_FreeMemoryInner:Reload()"/>
+		</event>
+		<event type="Click">
+			<action execute="ctlpnl.exe" parameters="cplmain.cpl,4"/>
+		</event>		
+		<panel name="SI_FreeMemoryInner">
+			<panel X="3" Y="2">
+				<if name="#$Expression,#$SystemState,FreeMemoryPercent# &gt; 10#" value="1">
+					<then>
+						<icon X="0" Y="0" height="21" width="#$Expression, int(65 * #$SystemState,FreeMemoryPercent# / 100)#" path="Widgets\System Info\green.jpg"/>
+					</then>
+					<else>
+						<icon X="0" Y="0" height="21" width="#$Expression, int(65 * #$SystemState,FreeMemoryPercent# / 100)#" path="Widgets\System Info\red.jpg"/>
+					</else>
+				</if>
+			</panel>
+		</panel>
+		<text X="1" Y="5" alignment="Center" width="70" height="20" text="#$SystemState,FreeMemoryPercent#% free" fontcolor="0,0,0" fonttype="8,false"/>			
+		<icon X="0" Y="0" height="25" width="70" path="Widgets\System Info\metter.png"/>
+	</panel>
+	<panel X="43" Y="44" display="Icon">
+		<event type="GlobalChange" parameters="#$SystemState,PowerBatteryStrength#">
+			<action execute=":Script" parameters="SI_BatteryMetterInner:Reload()"/>
+		</event>
+		<event type="Click">
+			<action execute="ctlpnl.exe" parameters="cplmain.cpl,3"/>
+		</event>
+		<panel name="SI_BatteryMetterInner">
+			<panel X="3" Y="2">
+				<if name="#$Expression,#$SystemState,PowerBatteryStrength# &gt; 10#" value="1">
+					<then>
+						<icon X="0" Y="0" height="21" width="#$Expression, int(65 * #$SystemState,PowerBatteryStrength# / 100)#" path="Widgets\System Info\green.jpg"/>
+					</then>
+					<else>
+						<icon X="0" Y="0" height="21" width="#$Expression, int(65 * #$SystemState,PowerBatteryStrength# / 100)#" path="Widgets\System Info\red.jpg"/>
+					</else>
+				</if>
+			</panel>
+		</panel>
+		<text X="1" Y="5" alignment="Center" width="70" height="20" text="#$SystemState,PowerBatteryStrength#%" fontcolor="0,0,0" fonttype="8,false"/>
+		<icon X="0" Y="0" height="25" width="70" path="Widgets\System Info\metter.png"/>
+		<icon X="46" Y="5" width="24" height="15" path="Widgets\System Info\plug.png" visible="#$SystemState,PowerBatteryState,map,[2-true|default-false]#"/>
+	</panel>
+	<panel X="43" Y="79" display="Icon">
+		<event type="GlobalChange" parameters="#$SystemState,FreeDeviceStoragePercent#">
+			<action execute=":Script" parameters="SI_FreeDeviceStorageInner:Reload()"/>
+		</event>
+		<event type="Click">
+			<action execute="ctlpnl.exe" parameters="cplmain.cpl,4"/>
+		</event>		
+		<panel name="SI_FreeDeviceStorageInner">
+			<panel X="3" Y="2">
+				<if name="#$Expression,#$SystemState,FreeDeviceStoragePercent# &gt; 10#" value="1">
+					<then>
+						<icon X="0" Y="0" height="21" width="#$Expression, int(65 * #$SystemState,FreeDeviceStoragePercent# / 100)#" path="Widgets\System Info\green.jpg"/>
+					</then>
+					<else>
+						<icon X="0" Y="0" height="21" width="#$Expression, int(65 * #$SystemState,FreeDeviceStoragePercent# / 100)#" path="Widgets\System Info\red.jpg"/>
+					</else>
+				</if>
+			</panel>
+		</panel>
+		<text X="1" Y="5" alignment="Center" width="70" height="20" text="#$SystemState,FreeDeviceStoragePercent#% free" fontcolor="0,0,0" fonttype="8,false"/>			
+		<icon X="0" Y="0" height="25" width="70" path="Widgets\System Info\metter.png"/>
+	</panel>
+	<panel X="43" Y="116" display="Icon">
+		<event type="GlobalChange" parameters="#$SystemState,FreeStorageCardPercent#">
+			<action execute=":Script" parameters="SI_StorageCardInner:Reload()"/>
+		</event>
+		<event type="Click">
+			<action execute="ctlpnl.exe" parameters="cplmain.cpl,4"/>
+		</event>		
+		<panel name="SI_StorageCardInner">
+			<panel X="3" Y="2">
+				<if name="#$Expression,#$SystemState,FreeStorageCardPercent# &gt; 10#" value="1">
+					<then>
+						<icon X="0" Y="0" height="21" width="#$Expression, int(65 * #$SystemState,FreeStorageCardPercent# / 100)#" path="Widgets\System Info\green.jpg"/>
+					</then>
+					<else>
+						<icon X="0" Y="0" height="21" width="#$Expression, int(65 * #$SystemState,FreeStorageCardPercent# / 100)#" path="Widgets\System Info\red.jpg"/>
+					</else>
+				</if>
+			</panel>
+		</panel>
+		<text X="1" Y="5" alignment="Center" width="70" height="20" text="#$SystemState,FreeStorageCardPercent#% free" fontcolor="0,0,0" fonttype="8,false"/>			
+		<icon X="0" Y="0" height="25" width="70" path="Widgets\System Info\metter.png"/>
+	</panel>
+</panel>

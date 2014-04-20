@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <param name="trasparency" value="false"/>
+  <!-- Page general back color -->
+  <param name="pagebackcolor" value="239,239,239"/>
+  <!-- Page general back color -->
+  <param name="rowbackcolor" value="255,255,255"/>
+  <!-- Texture (remove to use backcolors) -->
+  <!--param name="rowbackimage" value="AppleGold.jpg"/-->
+  <!-- Buttons back image -->
+  <!--<param name="buttonback" value="botback.png"/>-->
+  <!-- Buttons selected over image -->
+  <!--param name="selectionimage" value="sel.png"/-->
+  <!-- Font style (format: "size,bold")-->
+  <param name="fontstyle" value="10,true"/>
+  <!-- Lines color -->
+  <param name="linecolor" value="200,200,200"/>
+  <!-- Text color -->
+  <param name="textcolor" value="200,200,200"/>
+  <!-- OSD Text color -->
+  <param name="osdtextcolor" value="200,200,200"/>
+  <!-- OSD BackColor -->
+  <param name="osdbackcolor" value="0,0,0"/>
+  <!-- Font style (format: "size,bold")-->
+  <param name="osdfontstyle" value="10,false"/>
+<param name="paintline" value="false"/>
+
+  <param name="icontextcolor" value="225,225,225"/>
+  <!--param name="icontextmaxlength" value="1"/>
+  <param name="icontextspacing" value="1"/-->
+  <param name="clickedsizereduction" value="0"/>
+
+</root>

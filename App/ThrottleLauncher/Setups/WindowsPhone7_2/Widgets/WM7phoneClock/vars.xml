@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <var name="phone" value="" />
+  <var name="exephone" value="Phone" />
+  <var name="WP7phoneClock" value="" />
+  <var name="Analog" value="Digital" />
+</root>

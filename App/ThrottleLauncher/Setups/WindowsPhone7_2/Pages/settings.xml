@@ -1,0 +1,397 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<event type="LeftRightGesture">
+        <action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,settings.xml)" />
+	</event>
+
+	<panel name="bg_MainSettings" layout="Free">
+		<icon height="0" width="660"/>
+		<icon X="10" Y="30" height="50" width="140" path="#$THEME_BASE#\Images\#$Variable,BColor#\general_#$Variable,Row_WinSettings.PageX,map,[0-on|default-off]#.png">
+			<event type="Click">
+				<action execute=":Script" parameters="Row_WinSettings:Set(PageX,0)"/>
+			</event>
+		</icon>
+
+		<icon X="150" Y="30" height="50" width="130" path="#$THEME_BASE#\Images\#$Variable,BColor#\theme_#$Variable,Row_WinSettings.PageX,map,[1-on|default-off]#.png">
+			<event type="Click">
+				<action execute=":Script" parameters="Row_WinSettings:Set(PageX,1)"/>
+			</event>
+		</icon>
+		<icon X="290" Y="30" height="50" width="130" path="#$THEME_BASE#\Images\#$Variable,BColor#\people_#$Variable,Row_WinSettings.PageX,map,[2-on|default-off]#.png">
+			<event type="Click">
+				<action execute=":Script" parameters="Row_WinSettings:Set(PageX,2)"/>
+			</event>
+		</icon>
+		<icon X="430" Y="30" height="50" width="130" path="#$THEME_BASE#\Images\#$Variable,BColor#\music_#$Variable,Row_WinSettings.PageX,map,[3-on|default-off]#.png">
+			<event type="Click">
+				<action execute=":Script" parameters="Row_WinSettings:Set(PageX,3)"/>
+			</event>
+		</icon>
+	</panel>
+	<text X="10" Y="10" text="SETTINGS" width="150" height="30" alignment="Near" fonttype="Segoe UI Light,13,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+
+	<row name="Row_WinSettings" X="0" Y="100" width="#@Screen.Width#" height="#$Expresion,#@Screen.Height# - 100#" backgrounditem="bg_MainSettings" scrollingmode="Paged">
+		<row name="Sett_general" height="#$Expresion,#@Screen.Height# - 100#" width="#@Screen.Width#" layout="Cols" cols="1" marginY="5">
+			<icon X="0" Y="0" height="5" width="#@Screen.Width#"/>
+			<panel name="Airplane" display="Icon">
+				<text X="0" Y="0" text="AIRPLANE MODE" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="10" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="radio is #$Value,#$SystemState,PhoneRadioOff,map,[1-0|default-1]##$SystemState,BluetoothStatePowerOn,map,[1-1|default-0]##$SystemState,WiFiStatePowerOn,map,[1-1|default-0]#,map,[000-off|default-on]#" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="10" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<icon X="180" Y="4" height="19" width="45" path="#$THEME_BASE#\Images\#$Variable,BColor#\comm_#$Value,#$SystemState,PhoneRadioOff,map,[1-0|default-1]##$SystemState,BluetoothStatePowerOn,map,[1-1|default-0]##$SystemState,WiFiStatePowerOn,map,[1-1|default-0]#,map,[000-on|default-off]#.png">
+					<event type="Click">
+						<action execute=":PlaneModeToggle"/>
+					</event>
+				</icon>
+				<icon X="183" Y="8" height="11" width="29" path="#$THEME_BASE#\Images\#$Variable,TColor##$Value,#$SystemState,PhoneRadioOff,map,[1-0|default-1]##$SystemState,BluetoothStatePowerOn,map,[1-1|default-0]##$SystemState,WiFiStatePowerOn,map,[1-1|default-0]#,map,[000-|default-off]#.png"/>
+			</panel>
+			<panel name="Carrier" display="Icon">
+				<text X="0" Y="0" text="PHONE" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="10" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="turned #$Value,#$SystemState,PhoneRadioOff,map,[1-off|default-on]#" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="10" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<icon X="180" Y="4" height="19" width="45" path="#$THEME_BASE#\Images\#$Variable,BColor#\comm_#$Value,#$SystemState,PhoneRadioOff,map,[1-off|default-on]#.png">
+					<event type="Click">
+						<action execute=":PhoneToggle"/>
+					</event>
+				</icon>
+				<icon X="183" Y="8" height="11" width="29" path="#$THEME_BASE#\Images\#$Variable,TColor##$Value,#$SystemState,PhoneRadioOff,map,[1-off|default-]#.png"/>
+			</panel>
+			<panel name="Bluetooth" display="Icon">
+				<text X="0" Y="0" text="BLUETOOTH" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="10" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="turned #$Value,#$SystemState,BluetoothStatePowerOn,map,[1-on|default-off]#" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="10" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<icon X="180" Y="4" height="19" width="45" path="#$THEME_BASE#\Images\#$Variable,BColor#\comm_#$Value,#$SystemState,BluetoothStatePowerOn,map,[1-on|default-off]#.png">
+					<event type="Click">
+						<action execute=":BluetoothToggle"/>
+					</event>
+				</icon>
+				<icon X="183" Y="8" height="11" width="29" path="#$THEME_BASE#\Images\#$Variable,TColor##$Value,#$SystemState,BluetoothStatePowerOn,map,[1-|default-off]#.png"/>
+			</panel>
+			<panel name="Wifi" display="Icon">
+				<text X="0" Y="0" text="WIFI" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="10" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="turned #$Value,#$SystemState,WiFiStatePowerOn,map,[1-on|default-off]#" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="10" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<icon X="180" Y="4" height="19" width="45" path="#$THEME_BASE#\Images\#$Variable,BColor#\comm_#$Value,#$SystemState,WiFiStatePowerOn,map,[1-on|default-off]#.png">
+					<event type="Click">
+						<action execute=":WifiToggle"/>
+					</event>
+				</icon>
+				<icon X="183" Y="8" height="11" width="29" path="#$THEME_BASE#\Images\#$Variable,TColor##$Value,#$SystemState,WiFiStatePowerOn,map,[1-|default-off]#.png"/>
+			</panel>
+			<panel name="Clockconfig">
+				<icon X="0" Y="0" height="25" width="#@Screen.Width#"/>
+				<text X="0" Y="0" text="CLOCK FORMAT" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="currently set to #@clockformat# hours" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<event type="Click">
+			  	   	<action execute=":Runprocedure" parameters="ChangeClockFormat()"/>
+					<action execute=":Script" parameters="ClockWidget:Reload()"/>
+				</event>
+			</panel>
+			<panel name="DateTime">
+				<icon X="0" Y="0" height="25" width="#@Screen.Width#"/>
+				<text X="0" Y="0" text="DATE AND TIME" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="change the date and time" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<event type="Click">
+			  	   	<action execute="ctlpnl.exe" parameters="cplmain.cpl,16"/>
+				</event>
+			</panel>
+			<panel name="Regional">
+				<icon X="0" Y="0" height="25" width="#@Screen.Width#"/>
+				<text X="0" Y="0" text="REGIONAL" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="set your region" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<event type="Click">
+			  	   	<action execute="ctlpnl.exe" parameters="cplmain.cpl,18"/>
+				</event>
+			</panel>
+			<panel name="Memory">
+				<icon X="0" Y="0" height="25" width="#@Screen.Width#"/>
+				<text X="0" Y="0" text="MEMORY" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="free memory: #$SystemState,FreeMemorySize# MB" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<event type="Click">
+			  	   	<action execute="ctlpnl.exe" parameters="cplmain.cpl,4"/>
+				</event>
+			</panel>
+			<panel name="Power">
+				<icon X="0" Y="0" height="25" width="#@Screen.Width#"/>
+				<text X="0" Y="0" text="POWER" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="battery level: #$SystemState,PowerBatteryStrength#%" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<event type="Click">
+			  	   	<action execute="ctlpnl.exe" parameters="cplmain.cpl,3"/>
+				</event>
+			</panel>
+			<panel name="Screen">
+				<icon X="0" Y="0" height="25" width="#@Screen.Width#"/>
+				<text X="0" Y="0" text="SCREEN" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="align screen" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<event type="Click">
+			  	   	<action execute="ctlpnl.exe" parameters="cplmain.cpl,7"/>
+				</event>
+			</panel>
+			<panel name="RemovePrograms">
+				<icon X="0" Y="0" height="25" width="#@Screen.Width#"/>
+				<text X="0" Y="0" text="REMOVE PROGRAMS" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="remove Installed programs on your device" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<event type="Click">
+			  	   	<action execute="ctlpnl.exe" parameters="cplmain.cpl,10"/>
+				</event>
+			</panel>
+			<panel name="Today">
+				<icon X="0" Y="0" height="25" width="#@Screen.Width#"/>
+				<text X="0" Y="0" text="TODAY" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="modify the today settings" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<event type="Click">
+			  	   	<action execute="ctlpnl.exe" parameters="cplmain.cpl,13"/>
+				</event>
+			</panel>
+			<panel name="Sounds">
+				<icon X="0" Y="0" height="25" width="#@Screen.Width#"/>
+				<text X="0" Y="0" text="SOUNDS" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="change ringtone and other sounds" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<event type="Click">
+			  	   	<action execute="ctlpnl.exe" parameters="cplmain.cpl,9"/>
+				</event>
+			</panel>
+			<panel name="Input">
+				<icon X="0" Y="0" height="25" width="#@Screen.Width#"/>
+				<text X="0" Y="0" text="INPUT" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="keyboard settings" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<event type="Click">
+			  	   	<action execute="ctlpnl.exe" parameters="cplmain.cpl,8"/>
+				</event>
+			</panel>
+			<panel name="Buttons">
+				<icon X="0" Y="0" height="25" width="#@Screen.Width#"/>
+				<text X="0" Y="0" text="BUTTONS" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="set the hardware buttons" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<event type="Click">
+			  	   	<action execute="ctlpnl.exe" parameters="cplmain.cpl,12"/>
+				</event>
+			</panel>
+			<panel name="SpeedDials">
+				<icon X="0" Y="0" height="25" width="#@Screen.Width#"/>
+				<text X="0" Y="0" text="SPEED DIALS" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="modify the speed dials" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<event type="Click">
+			  	   	<action execute="\windows\SDDialer.exe"/>
+				</event>
+			</panel>
+
+			<panel name="TLOpen">
+				<icon X="0" Y="0" height="25" width="#@Screen.Width#"/>
+				<text X="0" Y="0" text="ADVANCED SETTINGS" height="25" width="#$Screen.Width#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				<text X="10" Y="22" text="modify ThrottleLauncher options" height="15" width="#$Expresion,#@Screen.Width# - 20#" topmargin="0" leftmargin="18" alignment="Near" fonttype="Segoe UI Light,8,true" fontcolor="120,120,120"/>
+				<event type="Click">
+			  	   	<action execute=":Config" parameters=""/>
+				</event>
+			</panel>
+		</row> 
+		<pagebreak/>
+
+	    <panel layout="Free"> 
+			<text X="0" Y="5" text="Modify the settings below to change the appearence of your device. You can change the background color and                     ." width="#@Screen.Width#" height="200" alignment="Near" leftmargin="10" fonttype="Segoe UI Light,9,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+			<text X="133" Y="37" text="accent color" width="107" height="30" alignment="Near" leftmargin="10" fonttype="Segoe UI Light,9,false" fontcolor="#$Variable,TColor,map,[Red-229\,20\,0|Green-51\,153\,51|Blue-27\,161\,226|Orange-240\,150\,9|Lime-140\,191\,38|Teal-0\,171\,169|Magenta-255\,0\,151|Pink-230\,113\,184|Brown-153\,102\,0|Purple-162\,0\,255]#"/>
+			<text X="0" Y="144" text="Accent color" width="#@Screen.Width#" height="30" alignment="Near" leftmargin="10" fonttype="Segoe UI Light,9,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+	    	<panel name="ColorSquare" X="10" Y="166">
+	        	<event type="Click">
+		  	       	<action execute=":Script" parameters="Accents:FadeIn()"/>
+	 	     	</event>
+		    	<text text="#$Variable,TColor#" width="#$Expresion,#@Screen.Width# - 20#" height="40" alignment="Near" leftmargin="10" topmargin="10" fonttype="Segoe UI Light,11,true" fontcolor="0,0,0" path="#$THEME_BASE#\Images\pixel.white.png"/>
+	        </panel> 
+			<text X="0" Y="60" text="Background" width="#@Screen.Width#" height="30" alignment="Near" leftmargin="10" fonttype="Segoe UI Light,9,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+	    	    <panel X="10" Y="80"> 
+	    	        <panel> 
+		            	<text text="#$Variable,BColor#" width="#$Expresion,#@Screen.Width# - 20#" height="40" alignment="Near" leftmargin="10" topmargin="10" fonttype="Segoe UI Light,11,true" fontcolor="0,0,0" path="#$THEME_BASE#\Images\pixel.white.png"/>
+	        			<event type="Click">
+		  	      		 	<action execute=":Script" parameters="list_c:FadeIn()"/>
+		  	       			<action execute=":Script" parameters="list_c:goto(0,0)"/>
+	 	     			</event>
+	 	     		</panel>
+                	<panel name="list_c" X="0" Y="0" visible="false">
+	    	        <panel> 
+	    	    	<text text="Dark" width="#$Expresion,#@Screen.Width# - 20#" height="40" alignment="Near" leftmargin="10" topmargin="10" fonttype="Segoe UI Light,11,true" fontcolor="0,0,0" path="#$THEME_BASE#\Images\pixel.white.png"/>
+	                	<event type="Click">
+  	      			 		<action execute=":SetConfigVar" parameters="BGColor=Dark"/>
+  	  	  	  	  	  	  	<action execute=":SetVariable" parameters="BColor=Dark"/>
+ 		  	  	  	       	<action execute=":Script" parameters="list_c:FadeOut()"/>
+ 	 	         	    </event>
+	                </panel> 
+	    	        <panel X="0" Y="40"> 
+	    	    	<text text="Light" width="#$Expresion,#@Screen.Width# - 20#" height="40" alignment="Near" leftmargin="10" topmargin="10" fonttype="Segoe UI Light,11,true" fontcolor="0,0,0" path="#$THEME_BASE#\Images\pixel.white.png"/>
+	                	<event type="Click">
+  	      			 		<action execute=":SetConfigVar" parameters="BGColor=Light"/>
+  	  	  	  	  	  	  	<action execute=":SetVariable" parameters="BColor=Light"/>
+		  	  	  	       	<action execute=":Script" parameters="list_c:FadeOut()"/>
+	 	         	    </event>
+	                </panel> 
+	    	    </panel> 
+	          </panel> 
+	    </panel> 
+		<pagebreak/>
+	    <panel> 
+			<text X="0" Y="5" text="Modify the settings below to change the appearence of the people page. You can change the kind of view." width="#@Screen.Width#" height="200" alignment="Near" leftmargin="10" fonttype="Segoe UI Light,9,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+	        <panel name="People_settings" X="0" Y="100" layout="Cols" cols="1" marginY="5" marginX="0"> 
+		    	<panel>
+			    	<icon width="#@Screen.Width#" height="40" path="#$THEME_BASE#\Images\#$Variable,BColor#\checkbox.png"/>
+  			<text text="Simple name" width="#@Screen.Width#" height="40" alignment="Near" topmargin="10" leftmargin="34" fonttype="Segoe UI Light,11,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" path="#$THEME_BASE#\Images\#$Variable,BColor#\S_#@ContactsMode#.png">
+				<event type="Click">
+   	      			<action execute=":SetConfigVar" parameters="ContactsMode=Simple_Name"/>
+	 	 	 	  	<action execute=":Script" parameters="People_settings:Reload()"/>
+	 	 	 	  	<action execute=":Script" parameters="Favs:Reload()"/>
+ 	 			</event>
+			</text>
+			</panel>
+			<panel>
+				<icon width="#@Screen.Width#" height="40" path="#$THEME_BASE#\Images\#$Variable,BColor#\checkbox.png"/>
+ 			<text text="Animated name" width="#@Screen.Width#" height="40" alignment="Near" topmargin="10" leftmargin="34" fonttype="Segoe UI Light,11,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" path="#$THEME_BASE#\Images\#$Variable,BColor#\A_#@ContactsMode#.png">
+				<event type="Click">
+   	      			<action execute=":SetConfigVar" parameters="ContactsMode=Animated_Name"/>
+	 	 	 	  	<action execute=":Script" parameters="People_settings:Reload()"/>
+	 	 	 	  	<action execute=":Script" parameters="Favs:Reload()"/>
+ 	 			</event>
+			</text>
+		        </panel>
+	        </panel> 
+	    </panel> 
+		<pagebreak/>
+	    <panel> 
+			<text X="0" Y="5" text="Select your favorite music player to use with the music tile." width="#@Screen.Width#" height="200" alignment="Near" leftmargin="10" fonttype="Segoe UI Light,9,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+	    	<panel name="Music_settings" X="10" Y="86" width="230" height="120">
+	        	<event type="Click">
+		  	       	<action execute=":Script" parameters="list_p:FadeIn()"/>
+		  	       	<action execute=":Script" parameters="list_p:goto(0,0)"/>
+	 	     	</event>
+        	    <panel name="ActualPlayer"> 
+		        	<text text="#@Player#" width="#$Expresion,#@Screen.Width# - 20#" height="40" alignment="Near" leftmargin="10" topmargin="10" fonttype="Segoe UI Light,11,true" fontcolor="0,0,0" path="#$THEME_BASE#\Images\pixel.white.png"/>
+        	    </panel> 
+	           	<panel name="list_p" X="0" Y="-120" visible="false">
+	    	    	<text text="Windows Media Player" width="#$Expresion,#@Screen.Width# - 20#" height="40" alignment="Near" leftmargin="10" topmargin="10" fonttype="Segoe UI Light,11,true" fontcolor="0,0,0" path="#$THEME_BASE#\Images\pixel.white.png">
+	                	<event type="Click">
+  	      			 		<action execute=":SetConfigVar" parameters="Player=Windows Media Player"/>
+ 		  	  	  	       	<action execute=":Script" parameters="list_p:FadeOut()"/>
+		  	      	  	   	<action execute=":Script" parameters="list_p:goto(0,-120)"/>
+                    	  	<action execute=":Script" parameters="ActualPlayer:Reload()"/>
+                      	  	<action execute=":Script" parameters="MusicContainer:Reload()"/>
+                    	   	<action execute=":Script" parameters="WP7music:Reload()"/>
+	 	         	    </event>
+	                </text> 
+	    	    	<text X="0" Y="40" text="Nitrogen" width="#$Expresion,#@Screen.Width# - 20#" height="40" alignment="Near" leftmargin="10" topmargin="10" fonttype="Segoe UI Light,11,true" fontcolor="0,0,0" path="#$THEME_BASE#\Images\pixel.white.png">
+	                	<event type="Click">
+  	      			 		<action execute=":SetConfigVar" parameters="Player=Nitrogen"/>
+ 		  	  	  	       	<action execute=":Script" parameters="list_p:FadeOut()"/>
+		  	      	  	   	<action execute=":Script" parameters="list_p:goto(0,-120)"/>
+                    	  	<action execute=":Script" parameters="ActualPlayer:Reload()"/>
+                    	  	<action execute=":Script" parameters="MusicContainer:Reload()"/>
+                  	      	<action execute=":Script" parameters="WP7music:Reload()"/>
+	 	         	    </event>
+	                </text> 
+	    	    	<text X="0" Y="80" text="slide2play" width="#$Expresion,#@Screen.Width# - 20#" height="40" alignment="Near" leftmargin="10" topmargin="10" fonttype="Segoe UI Light,11,true" fontcolor="0,0,0" path="#$THEME_BASE#\Images\pixel.white.png">
+	                	<event type="Click">
+  	      			 		<action execute=":SetConfigVar" parameters="Player=slide2play"/>
+ 		  	  	  	       	<action execute=":Script" parameters="list_p:FadeOut()"/>
+		  	      	  	   	<action execute=":Script" parameters="list_p:goto(0,-120)"/>
+                    	  	<action execute=":Script" parameters="ActualPlayer:Reload()"/>
+                       	  	<action execute=":Script" parameters="MusicContainer:Reload()"/>
+                  	      	<action execute=":Script" parameters="WP7music:Reload()"/>
+	 	         	    </event>
+	                </text> 
+	            </panel> 
+	        </panel> 
+	     </panel> 
+
+	</row> 
+  	<!--Accents Screen(Part of Settings page)-->
+	<row name="Accents" X="0" Y="0" layout="Free" width="#@Screen.Width#" height="#@Screen.Height#" visible="false" scrollingmode="None">
+       	<event type="LeftRightGesture">
+            <action execute=":Script" parameters="Accent:Refresh()" />
+	    </event>
+		<icon height="#@Screen.Height#" width="#@Screen.Width#" path="#$THEME_BASE#\Images\#$Variable,BColor#.png"/>
+		<text X="10" Y="25" text="ACCENTS" width="150" height="30" alignment="Near" fonttype="Segoe UI Light,13,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+		<row name="Colors" X="0" Y="80" layout="Cols" marginX="0" marginY="5" cols="1" width="#@Screen.Width#" height="#$Expresion,#@Screen.Height# - 80#" scrollingmode="Kinetic">
+			<panel width="#@Screen.Width#" height="40">
+				<event type="Click">
+   	      			 <action execute=":SetConfigVar" parameters="TilesColor=Magenta"/>
+   	  				 <action execute=":SetVariable" parameters="TColor=Magenta"/>
+ 	                 <action execute=":Script" parameters="Accents:FadeOut()"/>
+				</event>
+				<icon X="10" Y="0" path="#$THEME_BASE#\Images\Magenta.png" height="25" width="25"/>
+ 				<text X="40" Y="0" text="Magenta" width="#$Expresion,#@Screen.Width# - 40#" height="40" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+			</panel>
+ 			<panel width="#@Screen.Width#" height="40">
+				<event type="Click">
+   	      			<action execute=":SetConfigVar" parameters="TilesColor=Purple"/>
+    	  			<action execute=":SetVariable" parameters="TColor=Purple"/>
+ 	                <action execute=":Script" parameters="Accents:FadeOut()"/>
+				</event>
+				<icon X="10" Y="0" path="#$THEME_BASE#\Images\Purple.png" height="25" width="25"/>
+ 				<text X="40" Y="0" text="Purple" width="#$Expresion,#@Screen.Width# - 40#" height="40" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+			</panel>
+ 			<panel width="#@Screen.Width#" height="40">
+				<event type="Click">
+   	      			 <action execute=":SetConfigVar" parameters="TilesColor=Teal"/>
+    	  			 <action execute=":SetVariable" parameters="TColor=Teal"/>
+ 	                 <action execute=":Script" parameters="Accents:FadeOut()"/>
+				</event>
+				<icon X="10" Y="0" path="#$THEME_BASE#\Images\Teal.png" height="25" width="25"/>
+ 				<text X="40" Y="0" text="Teal" width="#$Expresion,#@Screen.Width# - 40#" height="40" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+			</panel>
+ 			<panel width="#@Screen.Width#" height="40">
+				<event type="Click">
+   	      			 <action execute=":SetConfigVar" parameters="TilesColor=Lime"/>
+    	  			 <action execute=":SetVariable" parameters="TColor=Lime"/>
+ 	                 <action execute=":Script" parameters="Accents:FadeOut()"/>
+				</event>
+				<icon X="10" Y="0" path="#$THEME_BASE#\Images\Lime.png" height="25" width="25"/>
+ 				<text X="40" Y="0" text="Lime" width="#$Expresion,#@Screen.Width# - 40#" height="40" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+			</panel>
+ 			<panel width="#@Screen.Width#" height="40">
+				<event type="Click">
+   	      			 <action execute=":SetConfigVar" parameters="TilesColor=Brown"/>
+    	  			 <action execute=":SetVariable" parameters="TColor=Brown"/>
+ 	                 <action execute=":Script" parameters="Accents:FadeOut()"/>
+				</event>
+				<icon X="10" Y="0" path="#$THEME_BASE#\Images\Brown.png" height="25" width="25"/>
+ 				<text X="40" Y="0" text="Brown" width="#$Expresion,#@Screen.Width# - 40#" height="40" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+			</panel>
+ 			<panel width="#@Screen.Width#" height="40">
+				<event type="Click">
+   	      			 <action execute=":SetConfigVar" parameters="TilesColor=Pink"/>
+    	  			 <action execute=":SetVariable" parameters="TColor=Pink"/>
+ 	                 <action execute=":Script" parameters="Accents:FadeOut()"/>
+				</event>
+				<icon X="10" Y="0" path="#$THEME_BASE#\Images\Pink.png" height="25" width="25"/>
+ 				<text X="40" Y="0" text="Pink" width="#$Expresion,#@Screen.Width# - 40#" height="40" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+			</panel>
+ 			<panel width="#@Screen.Width#" height="40">
+				<event type="Click">
+   	      			 <action execute=":SetConfigVar" parameters="TilesColor=Orange"/>
+     	  			 <action execute=":SetVariable" parameters="TColor=Orange"/>
+ 	                 <action execute=":Script" parameters="Accents:FadeOut()"/>
+				</event>
+				<icon X="10" Y="0" path="#$THEME_BASE#\Images\Orange.png" height="25" width="25"/>
+ 				<text X="40" Y="0" text="Orange" width="#$Expresion,#@Screen.Width# - 40#" height="40" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+			</panel>
+			<panel width="#@Screen.Width#" height="40">
+				<event type="Click">
+   	      			 <action execute=":SetConfigVar" parameters="TilesColor=Blue"/>
+   	  				 <action execute=":SetVariable" parameters="TColor=Blue"/>
+ 	                 <action execute=":Script" parameters="Accents:FadeOut()"/>
+				</event>
+				<icon X="10" Y="0" path="#$THEME_BASE#\Images\Blue.png" height="25" width="25"/>
+ 				<text X="40" Y="0" text="Blue" width="#$Expresion,#@Screen.Width# - 40#" height="40" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+			</panel>
+			<panel width="#@Screen.Width#" height="40">
+				<event type="Click">
+   	      			 <action execute=":SetConfigVar" parameters="TilesColor=Red"/>
+    	  			 <action execute=":SetVariable" parameters="TColor=Red"/>
+ 	                 <action execute=":Script" parameters="Accents:FadeOut()"/>
+				</event>
+				<icon X="10" Y="0" path="#$THEME_BASE#\Images\Red.png" height="25" width="25"/>
+ 				<text X="40" Y="0" text="Red" width="#$Expresion,#@Screen.Width# - 40#" height="40" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+			</panel>
+  			<panel width="#@Screen.Width#" height="40">
+				<event type="Click">
+   	      			 <action execute=":SetConfigVar" parameters="TilesColor=Green"/>
+    	  			 <action execute=":SetVariable" parameters="TColor=Green"/>
+ 	                 <action execute=":Script" parameters="Accents:FadeOut()"/>
+				</event>
+				<icon X="10" Y="0" path="#$THEME_BASE#\Images\Green.png" height="25" width="25"/>
+ 				<text X="40" Y="0" text="Green" width="#$Expresion,#@Screen.Width# - 40#" height="40" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+			</panel>
+  		</row>
+ 	</row>
+</root> 

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<configuration name="WP7FS"
+	recomendedHeight="*"
+	hideBottomBar="true"
+	description="Windows Phone 7 Series for TL 1.0"
+	minthrottleversion="1.0"
+	comments="WP7 Theme"
+	createdby="Fireslave">
+		<variables>
+			<!-- This settings are hiden as they are before any separator -->
+			<!-- hiden -->
+	    	<var name="App1Path" description="" default="" type="string"/>
+	    	<var name="clockformat" description="" default="12" type="string"/>
+	    	<var name="Player" description="" default="Windows Media Player" type="string"/>
+	    	<var name="TilesColor" description="" default="Blue" type="string"/>
+	    	<var name="BGColor" description="" default="Dark" type="string"/>
+	    	<var name="ContactsMode" description="" default="Simple_Name" type="string"/>
+	    	<var name="Widgets" description="#L:Widgets#" default="WP7phone[0|0],WP7people[95|0],WP7SMS[0|95],WP7mail[95|95],WP7games[0|285],WP7meTile[95|285],WP7pictures[0|190],WP7music[0|380],WP7calendar[0|475], WP7office[0|570]" type="string"/>
+	    	<var name="WidgetsLS" description="#L:Widgets#" default="" type="string"/>
+			<!-- /hiden -->
+		</variables>
+
+
+		<param name="skin" value="#$THEME_BASE#\skins\back"/>
+		<param name="IncludeGlobalWidgets" value="false" />
+		<param name="ContactShortcutTemplate">
+		<![CDATA[
+			<procedure name="ShowHide#@widget_name#" mode="Threaded" parameters="time">
+				<action execute=":Script" parameters="Img#@widget_name#:GoToTime(0,0,500)" take="#@time#"/>
+				<action execute=":Script" parameters="Img#@widget_name#:GoToTime(0,-90,500)" take="#@time#"/>
+				<action execute=":Script" parameters="Img#@widget_name#:GoToTime(0,-45,500)" take="#@time#"/>
+			</procedure>
+			<panel width="90" height="90">
+				<event type="GlobalChange" parameters="#$Expresion,int((#$date,mm#* 60 + #$date,ss#)/15)#">
+					<action execute=":RunProcedure" parameters="ShowHide#@widget_name#(#$Expresion,rnd(4000) + 1000#)"/>
+				</event>		
+				<panel name="Img#@widget_name#" X="0" Y="-90" height="180" width="90" visible="true" layout="Free">
+					<icon height="90" width="90" path="#$THEME_BASE#\Images\#$Variable,TColor#.png"/>
+					<text X="5" Y="43" height="50" width="85" alignment="Near" text="#@contact_name#" fontcolor="255,255,255" fonttype="Segoe UI Light,14,false"/>
+					<icon X="0" Y="90" width="90" height="90" path=":Contact:#@contact_id#:90:90"/>
+				</panel>
+				<event type="Click">
+					<action execute=":Call" parameters="#@contact_phone#" />
+				</event>
+			</panel>
+		]]>
+		</param>
+		<param name="ApplicationShortcutTemplate">
+		<![CDATA[	
+			<panel height="90" width="90" visible="true" layout="Free">
+				<icon height="90" width="90" path="#$THEME_BASE#\Images\#$Variable,TColor#.png"/>
+				<text X="5" Y="70" height="50" width="85" alignment="Near" text="#@app_name#" fontcolor="255,255,255" fonttype="Segoe UI Light,12,false"/>
+				<icon X="13" Y="4" width="64" height="64" path="#@app_icon#"/>
+				<event type="Click">
+					<action execute="#@app_exec#" parameters="#@app_params#" />
+				</event>
+			</panel>
+		]]>
+		</param>
+
+		<param name="VGACompatibility" value="true" />
+		<param name="showselectedpage" value="true" />
+		<param name="pagechangeanimation" value="SlideIn" />
+		<param name="FullScreen" value="true" />
+		
+		<param name="imagecontactnophoto" value="#$THEME_BASE#\Contacts\contact.png" />		
+	</configuration>
+	
+	<page name="home" import="home.xml" loadonstartup="true" landscapealternative="Home landscape"/>
+	<page name="apps" import="apps.xml" loadonstartup="true" landscapealternative="Home landscape"/>
+	<page name="Home landscape" loadonstartup="false" autounload="False" import="home_land.xml"/>
+
+</root>

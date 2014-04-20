@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<plugins>
+	<plugin>
+		<name>Light glow</name>
+		<dll>BackgroundCollection.dll</dll>
+		<class>ThrottleLauncher.Backgrounds.Lights</class>
+		<type>BACKGROUND</type>
+	</plugin>
+	<plugin>
+		<name>Color snakes</name>
+		<dll>BackgroundCollection.dll</dll>
+		<class>ThrottleLauncher.Backgrounds.Snakes</class>
+		<type>BACKGROUND</type>
+	</plugin>
+  <plugin>
+    <name>Bubbles</name>
+    <dll>BackgroundCollection.dll</dll>
+    <class>ThrottleLauncher.Backgrounds.Bubbles</class>
+    <type>BACKGROUND</type>
+  </plugin>
+</plugins>

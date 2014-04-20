@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<panel name="Facebook">
+	<procedure name="Facebook_widget.MakeVisible" parameters="panel">
+		<for each="item" in="Stream,Notifications,Pictures,Status,Friends">
+			<action execute=":Script" parameters="Facebook_#@item#_Panel:FadeOut()"/>
+		</for>
+		<action execute=":Script" parameters="Facebook_#@panel#_Panel:FadeIn()"/>
+	</procedure>
+	
+   	<procedure name="Facebook_widget.UpdateStatus">
+		<action execute=":SetVariable" parameters="Facebook_widget_ShowUpdate_dummy=False"/>
+		<action execute=":SetVariable" parameters="Facebook_widget_ShowUpdate_Error="/>
+		<for each="item" in="Friends,Photos,Albums,Status,Notifications,Stream">
+			<if name="#$Variable,Facebook_#@item#[0].Status#" value="Load">
+				<action execute=":SetVariable" parameters="Facebook_widget_ShowUpdate_dummy=True"/>
+			</if>
+			<if name="#$Variable,Facebook_#@item#[0].Error#" value="" not="true">
+				<action execute=":SetVariable" parameters="Facebook_widget_ShowUpdate_Error=#$Variable,Facebook_#@item#[0].Error#"/>
+			</if>
+		</for>
+		<action execute=":Script" parameters="Facebook_Loading_Message:Set(Visible,#$Variable,Facebook_widget_ShowUpdate_dummy#)"/>
+		<action execute=":Script" parameters="Facebook_Loading_WaitCursor:Run()"/>
+	</procedure>
+	
+	<procedure name="Facebook_widget.Update">
+		<for each="item" in="Friends,Photos,Albums,Status,Notifications,Stream,Info">
+			<action execute=":ToPlugin" parameters="Facebook_#@item#:Refresh()"/>
+		</for>
+	</procedure>
+	
+	<!-- Register status changed event for all the lists -->
+	<for each="item" in="Friends,Photos,Albums,Status,Notifications,Stream,Info">
+		<event type="GlobalChange" parameters="#$Variable,Facebook_#@item#[0].Error##$Variable,Facebook_#@item#[0].Status#">
+			<action execute=":RunProcedure" parameters="Facebook_widget.UpdateStatus()"/>
+		</event>
+	</for>	
+	
+	<icon path="#$THROTTLE#\Widgets\Facebook\back.png"  width="#@Screen.Width#" height="#$Expression,#@Screen.Height#-100#"/>
+	<panel name="Facebook_Header">
+		<icon path="#$THROTTLE#\Widgets\Facebook\header.png"  width="#@Screen.Width#" height="32"/>
+		<panel X="24" Y="0" layout="Rows" rows="1" marginX="24">
+			<icon name="Home" width="32" height="32" path="#$THROTTLE#\Widgets\Facebook\stream.png">
+				<event type="Click">
+					<action execute=":RunProcedure" parameters="Facebook_widget.MakeVisible(Stream)"/>
+				</event>
+			</icon>
+			<icon name="Me" width="32" height="32" path="#$THROTTLE#\Widgets\Facebook\me.png">
+				<event type="Click">
+					<action execute=":RunProcedure" parameters="Facebook_widget.MakeVisible(Status)"/>
+				</event>
+			</icon>			
+			<icon name="Friends" width="32" height="32" path="#$THROTTLE#\Widgets\Facebook\contacts.png">
+				<event type="Click">
+					<action execute=":RunProcedure" parameters="Facebook_widget.MakeVisible(Friends)"/>
+				</event>
+			</icon>				
+			<icon name="Albums" width="32" height="32" path="#$THROTTLE#\Widgets\Facebook\albums.png">
+				<event type="Click">
+					<action execute=":RunProcedure" parameters="Facebook_widget.MakeVisible(Pictures)"/>
+				</event>
+			</icon>
+		</panel>
+	</panel>
+	
+	<panel name="Facebook_Footer" X="0" Y="#$Expression,#@Screen.Height#-124#">
+		<icon path="#$THROTTLE#\Widgets\Facebook\footer.png" width="#@Screen.Width#" height="24"/>
+		<panel X="2" Y="0" layout="rows" rows="1" marginX="2">
+			<list name="Facebook_Info" class="TLPlugins.FaceBookPlugin" path="#$THROTTLE#\Plugins\Facebook\FaceBook.dll">
+				<param name="type" value="Info"/>
+				<items>
+					<panel name="notifications" display="Icon" width="26" height="24">
+						<event type="Click">
+							<action execute=":RunProcedure" parameters="Facebook_widget.MakeVisible(Notifications)"/>
+						</event>
+						<icon X="2" Y="4" path="#$THROTTLE#\Widgets\Facebook\notifications\notifications.png" width="16" height="16"/>
+						<text X="0" Y="11" text="#$Variable,Facebook_Info[#@Index#].NotificationsCount,map,[0-]#" textimages="#$THROTTLE#\Widgets\Facebook\Numbers\#$char#.png" textimagesscale="0.5"/>
+					</panel>				
+					<panel name="messages" display="Icon" width="26" height="24">
+						<icon X="2" Y="4" path="#$THROTTLE#\Widgets\Facebook\notifications\messages.png" width="16" height="16"/>
+						<text X="0" Y="11" text="#$Variable,Facebook_Info[#@Index#].UnreadMessageCount,map,[0-]#" textimages="#$THROTTLE#\Widgets\Facebook\Numbers\#$char#.png" textimagesscale="0.5"/>
+					</panel>
+					<panel name="friends" display="Icon" width="26" height="24">
+						<icon X="2" Y="4" path="#$THROTTLE#\Widgets\Facebook\notifications\friends.png" width="16" height="16"/>
+						<text X="0" Y="11" text="#$Variable,Facebook_Info[#@Index#].FriendRequests,map,[0-]#" textimages="#$THROTTLE#\Widgets\Facebook\Numbers\#$char#.png" textimagesscale="0.5"/>
+					</panel>
+					<panel name="pokes" display="Icon" width="26" height="24">
+						<icon X="2" Y="4" path="#$THROTTLE#\Widgets\Facebook\notifications\poke.png" width="16" height="16"/>
+						<text X="0" Y="11" text="#$Variable,Facebook_Info[#@Index#].UnreadPokeCount,map,[0-]#" textimages="#$THROTTLE#\Widgets\Facebook\Numbers\#$char#.png" textimagesscale="0.5"/>
+					</panel>
+					<panel name="groups" display="Icon" width="26" height="24">
+						<icon X="2" Y="4" path="#$THROTTLE#\Widgets\Facebook\notifications\invite.png" width="16" height="16"/>
+						<text X="0" Y="11" text="#$Variable,Facebook_Info[#@Index#].GroupInvites,map,[0-]#" textimages="#$THROTTLE#\Widgets\Facebook\Numbers\#$char#.png" textimagesscale="0.5"/>
+					</panel>
+					<panel name="events" display="Icon" width="26" height="24">
+						<icon X="2" Y="4" path="#$THROTTLE#\Widgets\Facebook\notifications\events.png" width="16" height="16"/>
+						<text X="0" Y="11" text="#$Variable,Facebook_Info[#@Index#].EventInvites,map,[0-]#" textimages="#$THROTTLE#\Widgets\Facebook\Numbers\#$char#.png" textimagesscale="0.5"/>
+					</panel>
+				</items>
+			</list>
+		</panel>
+		<panel display="Icon">
+			<panel X="#$Expression,#@Screen.Width#-26#" Y="0" width="26" height="26">
+				<event type="Click"><action execute=":RunProcedure" parameters="Facebook_widget.Update()"/></event>
+			</panel>
+			<icon X="#$Expression,#@Screen.Width#-16#" Y="0" path="#$THROTTLE#\Widgets\Facebook\refresh.png" width="16" height="16"/>
+			<text X="0" Y="12" text="#$Variable,Facebook_Info[0].LastUpdate#" fonttype="7,false" fontcolor="255,255,255" width="#@Screen.Width#" height="10" alignment="Far"/>
+		</panel>
+	</panel>
+	<panel name="Contents" X="0" Y="32">
+		<panel name="Facebook_Stream_Panel">
+			<row layout="Cols" cols="1" width="#@Screen.Width#" height="#$Expression,#@Screen.Height#-156#" skin="#$THROTTLE#\Widgets\Facebook\skin">
+				<list name="Facebook_Stream" class="TLPlugins.FaceBookPlugin" path="#$THROTTLE#\Plugins\Facebook\FaceBook.dll">
+					<param name="type" value="Stream"/>
+					<param name="downloadpics" value="True"/>
+					<items>
+						<if name="#@Index#" value="0" not="true">
+							<icon name="separator" path="#$THROTTLE#\Widgets\Facebook\separator.jpg" width="#@Screen.Width#" height="1"/>
+						</if>
+						<panel layout="Cols" cols="1">
+							<event type="Click"><action execute="#$Variable,Facebook_Stream[#@Index#].Url#"/></event>
+							<panel height="5" width="#@Screen.Width#"/>
+							<panel>
+								<icon path="#$Variable,Facebook_Stream[#@Index#].AuthorPicture#" width="25" height="25"/>
+								<text X="30" Y="0" alignment="Near" text="#$Variable,Facebook_Stream[#@Index#].AuthorName#" fontcolor="70,70,70" fonttype="10,false" width="#$Expression,#@Screen.Width#-40#"/>
+							</panel>
+							<text alignment="Near" text="#$Variable,Facebook_Stream[#@Index#].Message#" fontcolor="70,70,70" fonttype="10,false" width="#$Expression,#@Screen.Width#-10#"/>
+							<if name="#$Variable,Facebook_Stream[#@Index#].HasAttachments#" value="True">
+								<text alignment="Near" text="#$Variable,Facebook_Stream[#@Index#].AttachmentName#" fontcolor="70,70,70" fonttype="10,false" width="#$Expression,#@Screen.Width#-10#"/>
+								<icon path="#$Variable,Facebook_Stream[#@Index#].AttachmentPicture#" height="30"/>
+							</if>
+							<panel height="5"/>
+						</panel>
+					</items>
+				</list>
+			</row>
+			<text text="#$Variable,Facebook_Stream[0].Error#" X="0" Y="120" width="#@Screen.Width#" alignment="Center"/>			
+		</panel>
+		<panel name="Facebook_Notifications_Panel" transparency="0">
+			<row layout="Cols" cols="1" width="#@Screen.Width#" height="#$Expression,#@Screen.Height#-156#" skin="#$THROTTLE#\Widgets\Facebook\skin">
+				<list name="Facebook_Notifications" class="TLPlugins.FaceBookPlugin" path="#$THROTTLE#\Plugins\Facebook\FaceBook.dll">
+					<param name="type" value="Notifications"/>
+					<param name="downloadpics" value="True"/>
+					<items>
+						<if name="#@Index#" value="0" not="true">
+							<icon name="separator" path="#$THROTTLE#\Widgets\Facebook\separator.jpg" width="#@Screen.Width#" height="1"/>
+						</if>
+						<panel layout="Cols" cols="1">
+							<event type="Click"><action execute="#$Variable,Facebook_Notifications[#@Index#].Url#"/></event>
+							<panel height="5" width="#@Screen.Width#"/>
+							<panel>
+								<if name="#$Variable,Facebook_Notifications[#@Index#].Application_Icon#" value="">
+									<then>
+										<icon path="#$THROTTLE#\Widgets\Facebook\notifications\notifications.png" width="16" height="16"/>
+									</then>
+									<else>
+										<icon path="#$Variable,Facebook_Notifications[#@Index#].Application_Icon#" width="16" height="16"/>
+									</else>
+								</if>								
+								<text X="20" Y="0" alignment="Near" text="#$Variable,Facebook_Notifications[#@Index#].Text#" fontcolor="70,70,70" fonttype="10,false" width="#$Expression,#@Screen.Width#-40#"/>
+							</panel>
+							<text alignment="Near" text="#$Variable,Facebook_Notifications[#@Index#].Body#" fontcolor="120,120,120" fonttype="10,false" width="#$Expression,#@Screen.Width#-10#"/>
+							<panel height="5"/>
+						</panel>
+					</items>
+				</list>
+			</row>
+			<text text="#$Variable,Facebook_Notifications[0].Error#" X="0" Y="120" width="#@Screen.Width#" alignment="Center"/>			
+		</panel>
+		<panel name="Facebook_Status_Panel" transparency="0">
+			<icon X="7" Y="2" path="#$THROTTLE#\Widgets\Facebook\dialog.jpg"  width="230" height="78"/>
+		   	<textinput X="14" Y="6" width="210" height="50" multiline="true" fontcolor="0,0,0" fonttype="12,false" default="How are you?" output="Facebook_Status.Status">
+		   		<event type="GlobalChange" parameters="#$Variable,Facebook_Status.Status#">
+	   				<action execute=":Script" parameters="Facebook_Share_Button:Set(Visible,True)"/>
+		   		</event>
+		   	</textinput>
+			<text X="12" Y="65" name="Facebook_Share_Button" text="Share" alignment="Center" fonttype="9,true" fontcolor="255,255,255" path="#$THROTTLE#\Widgets\Facebook\share.jpg" width="39" height="13" visible="false">
+				<event type="Click">
+	   				<action execute=":ToPlugin" parameters="Facebook_Status:SetStatus(#$Variable,Facebook_Status.Status#)"/>
+	   				<action execute=":Script" parameters="Facebook_Share_Button:Set(Visible,False)"/>
+	   			</event>
+		   	</text>	
+			<row X="0" Y="78" layout="Cols" cols="1" width="#@Screen.Width#" height="#$Expression,#@Screen.Height#-234#">
+				<list name="Facebook_Status" class="TLPlugins.FaceBookPlugin" path="#$THROTTLE#\Plugins\Facebook\FaceBook.dll">
+					<param name="type" value="Status"/>
+					<items>
+						<if name="#@Index#" value="0" not="true">
+							<icon name="separator" path="#$THROTTLE#\Widgets\Facebook\separator.jpg" width="#@Screen.Width#" height="1"/>
+						</if>
+						<text X="15" Y="0" width="#$Expression,#@Screen.Width#-30#" alignment="Near" text="#$Variable,Facebook_Status[#@Index#].Text#" fontcolor="0,0,0" fonttype="10,false"/>
+					</items>
+				</list>
+			</row>
+			<text text="#$Variable,Facebook_Status[0].Error#" X="0" Y="120" width="#@Screen.Width#" alignment="Center"/>			
+		</panel>
+		<panel name="Facebook_Pictures_Panel" transparency="0">
+			<icon path="#$THROTTLE#\Widgets\Facebook\bar.png"  width="#@Screen.Width#" height="32"/>
+			<row X="0" Y="10" width="#@Screen.Width#" height="20" skin="#$THROTTLE#\Widgets\Facebook\skin" marginX="2">
+				<panel>
+					<event type="Click"><action execute=":ToPlugin" parameters="Facebook_Photos:SetId()"/></event>				
+					<text X="10" Y="0" text="All users" fontcolor="255,255,255" fonttype="10,true"/>
+				</panel>
+				<list name="Facebook_Albums" class="TLPlugins.FaceBookPlugin" path="#$THROTTLE#\Plugins\Facebook\FaceBook.dll">
+					<param name="type" value="Albums"/>
+					<items>
+						<icon name="separator" path="#$THROTTLE#\Widgets\Facebook\back.png" width="1" height="15"/>
+						<panel display="Icon">
+							<event type="Click"><action execute=":ToPlugin" parameters="Facebook_Photos:SetId(#$Variable,Facebook_Albums[#@Index#].Id#)"/></event>
+							<text X="10" Y="0" text="#$Variable,Facebook_Albums[#@Index#].Name#" fontcolor="255,255,255" fonttype="10,true"/>
+						</panel>
+					</items>
+				</list>
+			</row>	
+			<row X="0" Y="40" width="#@Screen.Width#" rows="#$Value,#@Screen.Height#,map,[400-4|800-4]#" marginX="5" marginY="5" scrollingmode="Paged" height="#$Expression,#@Screen.Height#-196#">
+				<list name="Facebook_Photos" class="TLPlugins.FaceBookPlugin" path="#$THROTTLE#\Plugins\Facebook\FaceBook.dll">
+					<param name="type" value="Pictures"/>
+					<param name="downloadpics" value="True"/>
+					<param name="picsmode" value="Small"/>
+					<items>
+						<panel layout="Rows" rows="1" marginX="2">
+							<event type="Click">
+								<action execute="#$Variable,FacebookPhotos[#@Index#].Url#"/>
+							</event>
+							<icon path="#$Variable,Facebook_Photos[#@Index#].Picture#" height="40"/>
+							<!--<if name="#$Variable,FacebookPhotos[#@Index#].Caption#" value="" not="true">
+								<text alignment="Near" text="#$Variable,FacebookPhotos[#@Index#].Caption#" fontcolor="0,0,0" fonttype="7,false"/>
+							</if>-->
+						</panel>
+					</items>
+				</list>
+			</row>
+			<text text="#$Variable,Facebook_Photos[0].Error#" X="0" Y="120" width="#@Screen.Width#" alignment="Center"/>
+		</panel>
+		<panel name="Facebook_Friends_Panel" transparency="0">
+			<row layout="Cols" cols="1" width="#@Screen.Width#" height="#$Expression,#@Screen.Height#-156#" skin="#$THROTTLE#\Widgets\Facebook\skin">
+				<list name="Facebook_Friends" class="TLPlugins.FaceBookPlugin" path="#$THROTTLE#\Plugins\Facebook\FaceBook.dll">
+					<param name="type" value="Friends"/>
+					<param name="downloadpics" value="True"/>
+					<param name="picsmode" value="Square"/>
+					<items>
+						<if name="#@Index#" value="0">
+							<else>
+								<icon name="separator" path="#$THROTTLE#\Widgets\Facebook\separator.jpg" width="#@Screen.Width#" height="1"/>
+							</else>
+						</if>					
+						<panel width="#@Screen.Width#" height="35">
+							<event type="Click"><action execute="http://m.facebook.com/profile.php?id=#$Variable,Facebook_Friends[#@Index#].UserId#"/></event>
+							<icon X="10" Y="5" path="#$Variable,Facebook_Friends[#@Index#].Picture#" width="25" height="25"/>
+							<text X="40" Y="5" alignment="Near" text="#$Variable,Facebook_Friends[#@Index#].Name#" fontcolor="0,0,0" fonttype="10,false"/>
+							<text X="40" Y="20" alignment="Near" text="#$Variable,Facebook_Friends[#@Index#].Message#" fontcolor="100,100,100" fonttype="8,false"/>
+						</panel>
+					</items>
+				</list>
+			</row>
+			<text text="#$Variable,Facebook_Friends[0].Error#" X="0" Y="120" width="#@Screen.Width#" alignment="Center"/>
+		</panel>
+		<icon name="separator" path="#$THROTTLE#\Widgets\Facebook\separator.jpg" width="1" height="#$Expression,#@Screen.Height#-156#"/>
+		<icon Y="0" X="#$Expression,#@Screen.Width#-1#" name="separator" path="#$THROTTLE#\Widgets\Facebook\separator.jpg" width="1" height="#$Expression,#@Screen.Height#-156#"/>		
+	</panel>
+	<panel name="Facebook_Loading_Message" visible="False" layout="Cols" cols="1" X="0" Y="120" width="#@Screen.Width#" height="50">
+		<animation name="Facebook_Loading_WaitCursor" width="28" height="28" path="#$THROTTLE#\Widgets\MonthCalendar\wait.png" times="2"/>
+		<text text="Loading..." fontcolor="150,150,150" fonttype="12,false"/>
+	</panel>
+</panel>

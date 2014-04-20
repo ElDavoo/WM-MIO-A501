@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <event type="LeftRightGesture">
+        <action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,sms.xml)" />
+    </event>
+
+    <throttleplugin name="SMSmsg" path="#$THROTTLE#\Util\PruebaMAPI\M2RWDll.dll" height="0" width="0" class="M2RWDll.M2RWListener"/>
+
+    <event type="GlobalChange" parameters="#$SystemState,MessagingSmsUnread#">
+        <action execute=":ToPlugin" parameters="SMSmsg:SMS Refresh"/>
+        <action execute=":Script" parameters="SMScontainer:Reload()"/>
+    </event>
+
+    <procedure name="UpdateSMS" mode="Inline" parameters="">
+        <action execute=":ToPlugin" parameters="SMSmsg:SMS Refresh"/>
+        <action execute=":Script" parameters="SMScontainer:Reload()"/>
+    </procedure>
+
+    <procedure name="sms.xml_OnLoad" mode="Threaded" parameters="">
+        <action execute=":SetVariable" parameters="SMSActive=true"/>
+        <action execute=":Runprocedure" parameters="UpdateSMS()"/>
+    </procedure>
+
+    <procedure name="sms.xml_OnUnload" mode="Threaded" parameters="">
+        <action execute=":SetVariable" parameters="SMSActive=false"/>
+    </procedure>
+
+    <icon width="#@Screen.Width#" height="#@Screen.Height#" path="#$THEME_BASE#\Images\#$Variable,BColor#.png"/>
+    <text X="10" Y="15" text="MESSAGING" width="#$Expresion,#@Screen.Width#-10#" height="30" alignment="Near" fonttype="Segoe UI Light,13,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+    <panel name="bg_sms" layout="Free">
+        <icon X="5" Y="35" height="50" width="250" path="#$THEME_BASE#\Widgets\WP7SMS\images\#$Variable,BColor,map,[Light-Light|default-Dark]#\conversation.png"/>
+    </panel>
+
+    <panel name="SMScontainer" X="10" Y="85">
+        <if name="#$Variable,SMSActive#" value="true">
+            <row name="SMS_messages" layout="Cols" cols="1" scrollingmode="Kinetic" width="#$Expresion,#@Screen.Width#-10#" height="#$Expresion,#@Screen.Height#-95#">
+                <list name="Messages_list" class="ThrottlePlugin.Messages" path="#$THROTTLE#\Util\PruebaMAPI\M2RWDll.dll">
+                    <param name="account" value="SMS"/>
+                    <param name="grabPrev" value="0"/>
+                    <param name="grabNext" value="#$Expresion,#@WP7SMS.SMSMaxItems#-1#"/>
+                    <items>
+                        <if name="#@Index#" value="0" not="true">
+                            <if name="#$Variable,Messages_list[#@Index#].Read#" value="false">
+                                <then>
+                                    <panel>
+                                        <text X="0" Y="0" width="#$Expresion,#@Screen.Width#-10#" alignment="Near" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="SegoeWP-Bold, 13,true" text="#$Variable,Messages_list[#@Index#].Sender#"/>
+                                        <text X="5" Y="20" width="#$Expresion,#@Screen.Width#-15#" alignment="Near" fontcolor="#$Variable,TColor,map,[Red-229\,20\,0|Green-51\,153\,51|Blue-27\,161\,226|Orange-240\,150\,9|Lime-140\,191\,38|Teal-0\,171\,169|Magenta-255\,0\,151|Pink-230\,113\,184|Brown-153\,102\,0|Purple-162\,0\,255]#" fonttype="SegoeWP-Bold, 9,true" text="#$Variable,Messages_list[#@Index#].Subject#"/>
+                                        <event type="Click">
+                                            <action execute=":ToPlugin" parameters="Messages_list:Details(#@Index#)"/>
+                                        </event>
+                                    </panel>
+                                </then>
+                                <else>
+                                    <panel>
+                                        <text X="0" Y="0" width="#$Expresion,#@Screen.Width#-10#" alignment="Near" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light, 13,true" text="#$Variable,Messages_list[#@Index#].Sender#"/>
+                                        <text X="5" Y="20" width="#$Expresion,#@Screen.Width#-15#" alignment="Near" fontcolor="#$Variable,TColor,map,[Red-229\,20\,0|Green-51\,153\,51|Blue-27\,161\,226|Orange-240\,150\,9|Lime-140\,191\,38|Teal-0\,171\,169|Magenta-255\,0\,151|Pink-230\,113\,184|Brown-153\,102\,0|Purple-162\,0\,255]#" fonttype="Segoe UI Light, 9,false" text="#$Variable,Messages_list[#@Index#].Subject#"/>
+                                        <event type="Click">
+                                            <action execute=":ToPlugin" parameters="Messages_list:Details(#@Index#)"/>
+                                        </event>
+                                    </panel>
+                                </else>
+                            </if>
+                        </if>
+                    </items>
+                </list>
+            </row>
+        </if>
+    </panel>
+    
+    <row name="Toolbar_sms" X="0" Y="#$Expresion,#@Screen.Height# - 30#" layout="Free" width="#@Screen.Width#" height="45" scrollingmode="None">
+        <icon X="0" Y="0" width="#@Screen.Width#" height="45" path="#$THEME_BASE#\Images\#$Variable,BColor#\Toolbar_bg.png" />
+        <icon X="214" Y="3" width="13" height="3" path="#$THEME_BASE#\Images\#$Variable,BColor#\threedots.png"/>
+        <icon name="TbUp_sms" X="200" Y="0" width="40" height="45" visible="true">
+            <event type="Click">
+                <action execute=":RunProcedure" parameters="ShowToolbar(sms)"/>
+            </event>
+        </icon>
+        <icon name="TbDown_sms" X="200" Y="0" width="40" height="45" visible="false">
+            <event type="Click">
+                <action execute=":RunProcedure" parameters="HideToolbar(sms)"/>
+            </event>
+        </icon>
+        <panel name="ToolbarIcons_sms" X="40" Y="10" layout="Rows" rows="1" marginX="20" marginY="0">
+            <panel>
+                <icon height="25" width="25" path="#$THEME_BASE#\Widgets\WP7SMS\images\#$Variable,BColor,map,[Light-Light|default-Dark]#\basecircle.png"/>
+                <icon name="RefreshMail" width="25" height="25" path="#$THEME_BASE#\Widgets\WP7SMS\images\#$Variable,BColor,map,[Light-Light|default-Dark]#\appbar.refresh.png">
+                    <event type="Click">
+                        <action execute=":Runprocedure" parameters="UpdateSMS()"/>
+                        <action execute=":RunProcedure" parameters="HideToolbar(sms)"/>
+                    </event>
+                </icon>
+            </panel>
+            <panel>
+                <icon height="25" width="25" path="#$THEME_BASE#\Widgets\WP7SMS\images\#$Variable,BColor,map,[Light-Light|default-Dark]#\basecircle.png"/>
+                <icon name="NewMail" width="25" height="25" path="#$THEME_BASE#\Widgets\WP7SMS\images\#$Variable,BColor,map,[Light-Light|default-Dark]#\new.png">
+                    <event type="Click">
+                        <action execute="tmail.exe" parameters="-service &quot;SMS&quot; -to &quot;&quot; -body &quot;&quot;"/>
+                        <action execute=":RunProcedure" parameters="HideToolbar(sms)"/>
+                    </event>
+                </icon>
+            </panel>
+            <panel>
+                <icon height="25" width="25" path="#$THEME_BASE#\Widgets\WP7SMS\images\#$Variable,BColor,map,[Light-Light|default-Dark]#\basecircle.png"/>
+                <icon name="Readmail" width="25" height="25" path="#$THEME_BASE#\Widgets\WP7SMS\images\#$Variable,BColor,map,[Light-Light|default-Dark]#\read.png">
+                    <event type="Click">
+                        <action execute="tmail.exe" parameters="-service &quot;SMS&quot;"/>
+                        <action execute=":RunProcedure" parameters="HideToolbar(sms)"/>
+                    </event>
+                </icon>
+            </panel>
+        </panel>
+    </row>
+</root>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <var name="width" value="185" />
+  <var name="Pics" value="" />
+  <var name="update" value="5" />
+  <var name="path" value="\Carte de stockage\DCIM\100MEDIA" />
+  <var name="filter" value="*.jpg" />
+</root>

@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <event type="LeftRightGesture">
+        <action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,email.xml)" />
+    </event>
+
+    <event type="GlobalChange" parameters="#$reg,HKEY_CURRENT_USER\System\State\Messages\TotalEmail\Unread\Count#">
+        <for each="this_account" in="#@WP7mail.WP7MailAccount#">
+            <action execute=":ToPlugin" parameters="WP7email:#@this_account# Refresh"/>
+        </for>
+        <action execute=":Script" parameters="EmailContainer:Reload()"/>
+        <action execute=":Script" parameters="bg_email:Reload()"/>
+        <action execute=":Script" parameters="Row_email:Set(PageX,0)"/>
+    </event>
+
+    <throttleplugin name="WP7email" path="#$THROTTLE#\Util\PruebaMAPI\M2RWDll.dll" height="0" class="M2RWDll.M2RWListener"/>
+
+    <procedure name="UpdateEmail" mode="Inline" parameters="">
+        <for each="this_account" in="#@WP7mail.WP7MailAccount#">
+            <action execute=":ToPlugin" parameters="WP7email:#@this_account# Refresh"/>
+        </for>
+        <action execute=":Script" parameters="EmailContainer:Reload()"/>
+        <action execute=":Script" parameters="bg_email:Reload()"/>
+        <action execute=":Script" parameters="Row_email:Set(PageX,0)"/>
+    </procedure>
+
+    <procedure name="email.xml_OnLoad" mode="Threaded" parameters="">
+        <action execute=":SetVariable" parameters="EmailActive=true"/>
+        <action execute=":RunProcedure" parameters="UpdateEmail()"/>
+    </procedure>
+
+    <procedure name="email.xml_OnUnload" mode="Threaded" parameters="">
+        <action execute=":SetVariable" parameters="EmailActive=false"/>
+        <action execute=":SetVariable" parameters="MailAccountCurrent=#$Variable,WP7MailAccount0#"/>
+    </procedure>
+
+    <icon width="#@Screen.Width#" height="#@Screen.Height#" path="#$THEME_BASE#\Images\#$Variable,BColor#.png"/>
+    <panel name="inbox_name" layout="Free">
+        <text X="10" Y="15" text="INBOX|#$Variable,MailAccountCurrent#" width="#$Expresion,#@Screen.Width#-10#" height="30" alignment="Near" fonttype="Segoe UI Light,13,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+    </panel>
+    <panel name="bg_email" layout="Free">
+        <if name="#$Expresion,#$reg,HKEY_CURRENT_USER\System\State\Messages\TotalEmail\Unread\Count#&gt;0#" value="1">  
+            <then>
+                <icon X="10" Y="45" height="50" width="130" path="#$THEME_BASE#\Widgets\WP7mail\Images\#$Variable,BColor#\unread_#$Variable,Row_email.PageX,map,[0-on|1-off|default-on]#.png">
+                    <event type="Click">
+                        <action execute=":Script" parameters="Row_email:Set(PageX,0)"/>
+                    </event>
+                </icon>
+                <icon X="140" Y="45" height="50" width="50" path="#$THEME_BASE#\Widgets\WP7mail\Images\#$Variable,BColor#\all_#$Variable,Row_email.PageX,map,[0-off|1-on|default-off]#.png">
+                    <event type="Click">
+                        <action execute=":Script" parameters="Row_email:Set(PageX,1)"/>
+                    </event>
+                </icon>
+            </then>
+            <else>
+                <icon X="10" Y="45" height="50" width="50" path="#$THEME_BASE#\Widgets\WP7mail\Images\#$Variable,BColor#\all_on.png" />
+            </else>
+        </if>
+    </panel>
+
+    <panel name="EmailContainer" X="10" Y="90">
+        <if name="#$Variable,EmailActive#" value="true">
+            <row name="Row_email" scrollingmode="Paged" width="#$Expresion,#@Screen.Width#-15#" height="#$Expresion,#@Screen.Height# - 100#" rows="2" initPos="0" >
+	    
+                <if name="#$Expresion,#$reg,HKEY_CURRENT_USER\System\State\Messages\TotalEmail\Unread\Count#&gt;0#" value="1">
+                    <then>
+                        <row name="unread_all" layout="Cols" cols="1" scrollingmode="Kinetic" width="#$Expresion,#@Screen.Width#-15#" height="#$Expresion,#@Screen.Height#-100#">
+                            <for each="Mail" in="#@WP7mail.WP7MailAccount#">
+                                <panel name="unread#@Mail#" layout="Cols" cols="1" marginY="0">
+                                    <list name="unread#@Mail#_list" class="ThrottlePlugin.Messages" path="#$THROTTLE#\Util\PruebaMAPI\M2RWDll.dll">
+                                        <param name="account" value="#@Mail#"/>
+                                        <param name="grabPrev" value="0"/>
+                                        <param name="grabNext" value="19"/>
+                                        <items>
+                                            <if name="#@Index#" value="0" not="true">
+                                                <if name="#$Variable,unread#@Mail#_list[#@Index#].Read#" value="false">
+                                                    <panel layout="Cols" cols="1" marginY="0">
+                                                        <event type="Click">
+                                                            <action execute=":ToPlugin" parameters="unread#@Mail#_list:Details(#@Index#)"/>
+                                                        </event>
+                                                        <panel>
+                                                            <text X="0" Y="0" width="#$Expresion,#@Screen.Width#-15#" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light, 13,true" text="#$Variable,unread#@Mail#_list[#@Index#].Sender#"/>
+                                                        </panel>
+                                                        <panel>
+                                                            <text X="5" Y="0" width="#$Expresion,#@Screen.Width#-20#" fontcolor="#$Variable,TColor,map,[Red-229\,20\,0|Green-51\,153\,51|Blue-27\,161\,226|Orange-240\,150\,9|Lime-140\,191\,38|Teal-0\,171\,169|Magenta-255\,0\,151|Pink-230\,113\,184|Brown-153\,102\,0|Purple-162\,0\,255]#" fonttype="Segoe UI Light, 9,false" text="#$Variable,unread#@Mail#_list[#@Index#].Subject#"/>
+                                                        </panel>
+                                                        <panel height="2"/>
+                                                    </panel>
+                                                </if>
+                                            </if>
+                                        </items>
+                                    </list>
+                                </panel>
+                            </for>
+                        </row>
+                        <pagebreak/>
+                        
+                        <for each="Mail" in="#$Variable,MailAccountCurrent#">
+                            <panel name="email#@Mail#">
+                                <row name="mail_all" layout="Cols" cols="1" scrollingmode="Kinetic" width="#$Expresion,#@Screen.Width#-15#" height="#$Expresion,#@Screen.Height#-100#">
+                                    <list name="email#@Mail#_list" class="ThrottlePlugin.Messages" path="#$THROTTLE#\Util\PruebaMAPI\M2RWDll.dll">
+                                        <param name="account" value="#@Mail#"/>
+                                        <param name="grabPrev" value="0"/>
+                                        <param name="grabNext" value="#$Expresion,#@WP7mail.EmailMaxItems#-1#"/>
+                                        <items>
+                                            <if name="#@Index#" value="0" not="true">
+                                                <if name="#$Variable,email#@Mail#_list[#@Index#].Read#" value="false">
+                                                    <then>
+                                                        <panel layout="Cols" cols="1" marginY="0">
+                                                            <event type="Click">
+                                                                <action execute=":ToPlugin" parameters="email#@Mail#_list:Details(#@Index#)"/>
+                                                            </event>
+                                                            <panel>
+                                                                <text X="0" Y="0" width="#$Expresion,#@Screen.Width#-15#" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="SegoeWP-Bold, 13,true" text="#$Variable,email#@Mail#_list[#@Index#].Sender#"/>
+                                                            </panel>
+                                                            <panel>
+                                                                <text X="5" Y="0" width="#$Expresion,#@Screen.Width#-20#" fontcolor="#$Variable,TColor,map,[Red-229\,20\,0|Green-51\,153\,51|Blue-27\,161\,226|Orange-240\,150\,9|Lime-140\,191\,38|Teal-0\,171\,169|Magenta-255\,0\,151|Pink-230\,113\,184|Brown-153\,102\,0|Purple-162\,0\,255]#" fonttype="SegoeWP-Bold, 9,true" text="#$Variable,email#@Mail#_list[#@Index#].Subject#"/>
+                                                            </panel>
+                                                        </panel>
+                                                    </then>
+                                                    <else>
+                                                        <panel layout="Cols" cols="1" marginY="0">
+                                                            <event type="Click">
+                                                                <action execute=":ToPlugin" parameters="email#@Mail#_list:Details(#@Index#)"/>
+                                                            </event>
+                                                            <panel>
+                                                                <text X="0" Y="0" width="#$Expresion,#@Screen.Width#-15#" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light, 13,true" text="#$Variable,email#@Mail#_list[#@Index#].Sender#"/>
+                                                            </panel>
+                                                            <panel>
+                                                                <text X="5" Y="0" width="#$Expresion,#@Screen.Width#-20#" fontcolor="#$Variable,TColor,map,[Red-229\,20\,0|Green-51\,153\,51|Blue-27\,161\,226|Orange-240\,150\,9|Lime-140\,191\,38|Teal-0\,171\,169|Magenta-255\,0\,151|Pink-230\,113\,184|Brown-153\,102\,0|Purple-162\,0\,255]#" fonttype="Segoe UI Light, 9,false" text="#$Variable,email#@Mail#_list[#@Index#].Subject#"/>
+                                                            </panel>
+                                                        </panel>
+                                                    </else>
+                                                </if>
+                                            </if>
+                                        </items>
+                                    </list>
+                                </row>
+                            </panel>
+                        </for>
+                        <pagebreak/>
+                    </then>
+                    <else>
+                        <for each="Mail" in="#$Variable,MailAccountCurrent#">
+                            <panel name="email#@Mail#">
+                                <row name="mail_all" layout="Cols" cols="1" scrollingmode="Kinetic" width="#$Expresion,#@Screen.Width#-15#" height="#$Expresion,#@Screen.Height#-100#">
+                                    <list name="email#@Mail#_list" class="ThrottlePlugin.Messages" path="#$THROTTLE#\Util\PruebaMAPI\M2RWDll.dll">
+                                        <param name="account" value="#@Mail#"/>
+                                        <param name="grabPrev" value="0"/>
+                                        <param name="grabNext" value="#$Expresion,#@WP7mail.EmailMaxItems#-1#"/>
+                                        <items>
+                                            <if name="#@Index#" value="0" not="true">
+                                                <panel layout="Cols" cols="1" marginY="0">
+                                                    <event type="Click">
+                                                        <action execute=":ToPlugin" parameters="email#@Mail#_list:Details(#@Index#)"/>
+                                                    </event>
+                                                    <panel>
+                                                        <text X="0" Y="0" width="#$Expresion,#@Screen.Width#-15#" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light, 13,true" text="#$Variable,email#@Mail#_list[#@Index#].Sender#"/>
+                                                    </panel>
+                                                    <panel>
+                                                        <text X="5" Y="0" width="#$Expresion,#@Screen.Width#-20#" fontcolor="#$Variable,TColor,map,[Red-229\,20\,0|Green-51\,153\,51|Blue-27\,161\,226|Orange-240\,150\,9|Lime-140\,191\,38|Teal-0\,171\,169|Magenta-255\,0\,151|Pink-230\,113\,184|Brown-153\,102\,0|Purple-162\,0\,255]#" fonttype="Segoe UI Light, 9,false" text="#$Variable,email#@Mail#_list[#@Index#].Subject#"/>
+                                                    </panel>
+                                                </panel>
+                                            </if>
+                                        </items>
+                                    </list>
+                                </row>
+                            </panel>
+                        </for>
+                    </else>
+                </if>
+            </row>
+        </if>
+    </panel>
+
+    <!-- Email accounts -->
+    <panel name="emailaccounts" layout="Free" visible="false">
+    <row name="Row_accounts" X="0" Y="0" layout="Free" width="#@Screen.Width#" height="#@Screen.Height#" scrollingmode="None">
+        <event type="LeftRightGesture">
+            <action execute=":Script" parameters="emailaccounts:FadeOut()"/>
+        </event>
+        <icon height="#@Screen.Height#" width="#@Screen.Width#" path="#$THEME_BASE#\Images\#$Variable,BColor#.png"/>
+        <text X="10" Y="15" text="EMAIL ACCOUNTS" width="150" height="30" alignment="Near" fonttype="Segoe UI Light,13,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+        <row name="Colors" X="0" Y="75" layout="Cols" marginX="0" marginY="5" cols="1" width="#@Screen.Width#" height="#$Expresion,#@Screen.Height# - 80#" scrollingmode="Kinetic">
+            <for each="this_account" in="#@WP7mail.WP7MailAccount#">
+                <panel>
+                    <text X="10" Y="0" text="#@this_account#" width="#$Expresion,#@Screen.Width# - 10#" alignment="Near" fonttype="Segoe UI Light,14,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#">
+                        <event type="Click">
+                            <action execute=":SetVariable" parameters="MailAccountCurrent=#@this_account#"/>
+                            <action execute=":Script" parameters="inbox_name:Reload()"/>
+                            <action execute=":RunProcedure" parameters="UpdateEmail()"/>
+                            <action execute=":Script" parameters="emailaccounts:FadeOut()"/>
+                        </event>
+                    </text>
+                </panel>
+            </for>
+        </row>
+    </row>
+    </panel>
+
+    <row name="Toolbar_email" X="0" Y="#$Expresion,#@Screen.Height# - 10#" layout="Free" width="#@Screen.Width#" height="45" scrollingmode="None">
+        <icon X="0" Y="0" width="#@Screen.Width#" height="45" path="#$THEME_BASE#\Images\#$Variable,BColor#\Toolbar_bg.png" />
+        <icon X="214" Y="3" width="13" height="3" path="#$THEME_BASE#\Images\#$Variable,BColor#\threedots.png"/>
+        <icon name="TbUp_email" X="200" Y="0" width="40" height="45" visible="true">
+            <event type="Click">
+                <action execute=":RunProcedure" parameters="ShowToolbar(email)"/>
+            </event>
+        </icon>
+        <icon name="TbDown_email" X="200" Y="0" width="40" height="45" visible="false">
+            <event type="Click">
+                <action execute=":RunProcedure" parameters="HideToolbar(email)"/>
+            </event>
+        </icon>
+        <panel name="ToolbarIcons_email" X="40" Y="10" layout="Rows" rows="1" marginX="20" marginY="0">
+            <panel>
+                <icon height="25" width="25" path="#$THEME_BASE#\Widgets\WP7mail\images\#$Variable,BColor,map,[Light-Light|default-Dark]#\basecircle.png"/>
+                <icon name="NewMail" width="25" height="25" path="#$THEME_BASE#\Widgets\WP7mail\images\#$Variable,BColor,map,[Light-Light|default-Dark]#\new.png">
+                    <event type="Click">
+                        <action execute="tmail.exe" parameters="-service &quot;#$Variable,MailAccountCurrent#&quot; -to &quot;&quot; -body &quot;&quot;"/>
+                        <action execute=":RunProcedure" parameters="HideToolbar(email)"/>
+                    </event>
+                </icon>
+            </panel>
+            <panel>
+                <icon height="25" width="25" path="#$THEME_BASE#\Widgets\WP7mail\images\#$Variable,BColor,map,[Light-Light|default-Dark]#\basecircle.png"/>
+                <icon name="Readmail" width="25" height="25" path="#$THEME_BASE#\Widgets\WP7mail\images\#$Variable,BColor,map,[Light-Light|default-Dark]#\mail.png">
+                    <event type="Click">
+                        <action execute="tmail.exe" parameters="-service &quot;#$Variable,MailAccountCurrent#&quot;"/>
+                        <action execute=":RunProcedure" parameters="HideToolbar(email)"/>
+                    </event>
+                </icon>
+            </panel>
+            <panel>
+                <icon height="25" width="25" path="#$THEME_BASE#\Widgets\WP7mail\images\#$Variable,BColor,map,[Light-Light|default-Dark]#\basecircle.png"/>
+                <icon name="accounts" width="25" height="25" path="#$THEME_BASE#\Widgets\WP7mail\images\#$Variable,BColor,map,[Light-Light|default-Dark]#\mailaccount.png">
+                    <event type="Click">
+                        <action execute=":Script" parameters="emailaccounts:Reload()"/>
+                        <action execute=":Script" parameters="emailaccounts:FadeIn()"/>
+                        <action execute=":RunProcedure" parameters="HideToolbar(email)"/>
+                    </event>
+                </icon>
+            </panel>
+            <panel>
+                <icon height="25" width="25" path="#$THEME_BASE#\Widgets\WP7mail\images\#$Variable,BColor,map,[Light-Light|default-Dark]#\basecircle.png"/>
+                <icon name="refresh" width="25" height="25" path="#$THEME_BASE#\Widgets\WP7mail\images\#$Variable,BColor,map,[Light-Light|default-Dark]#\appbar.refresh.png">
+                    <event type="Click">
+                        <action execute=":RunProcedure" parameters="UpdateEmail()"/>
+                        <action execute=":RunProcedure" parameters="HideToolbar(email)"/>
+                    </event>
+                </icon>
+            </panel>
+        </panel>
+    </row>
+</root>

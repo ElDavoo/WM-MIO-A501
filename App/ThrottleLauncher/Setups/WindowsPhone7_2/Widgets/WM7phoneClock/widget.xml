@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<panel name="MissedCalls">
+	<configuration name="WM7phoneClock"
+			description="Phone Tile"
+			minthrottleversion="1.2"
+			comments=""
+			createdby="Fireslave">
+			<variables>
+				<var name="phone" description="#L:General settings#" default="" type="separator" />
+				<var name="exephone" description="#L:Execute#" default="Call History" type="combo(Call History,Phone)" />
+				<var name="WM7phoneClock" description="#L:Clock settings#" default="" type="separator" />
+				<var name="Analog" description="#L:WM7phoneClock skin#" default="Digital" type="combo(Digital)"/>			
+			</variables>
+	</configuration>
+	<icon height="90" width="90" path="#$THEME_BASE#\Images\#$Variable,TColor#.png"/>
+	<icon height="90" width="90" path="#$THEME_BASE#\Widgets\WM7phoneClock\MCalls_#$SystemState,PhoneMissedCalls,map,[0-0|default-1]#.png"/> 
+	<text name="Missed Calls" X="47" Y="27" height="40" width="43" text="#$SystemState,PhoneMissedCalls,map,[-|0-]#" leftmargin="0" topmargin="0" alignment="Center" textimagesscale="0.5" textimages="#$THEME_BASE#\Images\Numbers\#$char#.png"/>
+	<icon height="90" width="90" path="#$THEME_BASE#\Widgets\WM7phoneClock\MCalls_#$SystemState,PhoneMissedCalls,map,[0-0|default-1]#.png"/> 
+	<text name="operatorname" X="10" Y="75" height="15" width="80" text="#$reg,HKEY_LOCAL_MACHINE\System\State\Phone\Current Operator Name##$reg,HKEY_LOCAL_MACHINE\System\State\Phone\Current Operator Name,map,[-No service|default-]#" alignment="Near" fonttype="Segoe UI Light,8,true" fontcolor="255,255,255"/>
+	<event type="Click">
+		<if name="#@WM7phoneClock.exephone#" value="Phone">
+		<then>
+	  	  <action execute="cprog.exe" parameters=""/>
+		</then>
+		<else>
+	  	  <action execute=":CallHistory" parameters=""/>
+		</else>
+		</if>
+	</event>
+
+<if name="#@WM7phoneClock.Analog#" value="Digital">
+				<panel name="ClockWidget"> X="0" Y="0" >
+                   <if name="#@clockformat#" value="24">
+			          <then>
+                           <text 
+					X="0" Y="0" 
+					height="90" width="90" 
+					alignment="Center" 
+				    leftmargin="0" 
+				    topmargin="3" 
+					 fontcolor="255,255,255" fonttype="Segoe UI Bold,14,false"
+					text="#$date,HH:mm:ss#"
+				/>
+                      </then>
+                         <else>
+                           <text 
+					X="0" Y="0" 
+					height="45" width="90" 
+					alignment="Center" 
+				    leftmargin="0" 
+				    topmargin="3" 
+					 fontcolor="255,255,255" fonttype="Segoe UI Light,11,false"
+					text="#$date,MMM dd, yyyy#"
+				/>
+                           <text 
+					X="0" Y="20" 
+					height="45" width="90" 
+					alignment="Near" 
+				    leftmargin="35" 
+				    topmargin="0" 
+					 fontcolor="255,255,255" fonttype="Segoe UI Light,12,false"
+					text=" #$date,h:mm:ss tt#"
+				/>
+                             </else>
+       		        </if>
+                   </panel>
+</if>	
+</panel>

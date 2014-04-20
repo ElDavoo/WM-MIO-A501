@@ -1,0 +1,14 @@
+Extract all the files from rm.rar
+
+Copy 
+
+RVDecoderFilter.dll
+RealParserFilter.dll
+RADecoderFilter.dll
+amc_video_renderer.ax
+
+Into PPC's c:\Windows
+
+Copy rmvb.reg into any folder of your PPC and apply it.
+
+There you go!! ur PPC can now open .rmvb files!

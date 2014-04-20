@@ -1,0 +1,45 @@
+<root>
+	<event type="LeftRightGesture">
+		 <action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,taskmanager.xml)" />
+	</event>
+
+	<panel name="backgroundtasks" layout="Free">
+
+		<icon name="TasksHeader" X="5" Y="20" height="50" width="240" path="#$THEME_BASE#\Images\#$Variable,BColor#\TaskManager_On.png"/>
+	</panel>
+	<panel X="0" Y="55" name="RunningApps_ls">
+			<row name="_RunningApps" scrollingmode="Kinetic" marginY="5" layout="Cols" cols="1" width="#$Expression,#@Screen.Width#-10#" X="0" Y="0" height="#$Expression,#@Screen.Height#-90#">
+				<panel height="10"/>	
+				<runningapps>
+					<items>
+						<panel>
+							<event type="Click"><action execute="#@Execute#" parameters="#@Parameters#"/></event>
+							<panel display="Icon">
+								<panel skin="#$THEME_BASE#\skins\programs">
+									<icon path="#@Icon#" name="#@Name#" width="40" height="40"/>
+								</panel>
+								<text X="45" Y="10" text="#@Name#" width="#$Expression,#@Screen.Width#-60#" height="25" alignment="Near" fonttype="Segoe UI Light,12,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+							</panel>
+							<panel X="#$Expression,#@Screen.Width#-60#" Y="0" skin="#$THEME_BASE#\skins\programs" display="Icon">
+								<icon path="#$THEME_BASE#\Widgets\WP7taskmanager\images\#$Variable,BColor#\quit.png" width="40" height="40">
+									<event type="Click"><action execute=":KillProcess" parameters="#@Pid#"/></event>
+								</icon>
+							</panel>						
+						</panel>				
+					</items>
+				</runningapps>
+				<panel height="10"/>
+			</row>
+		</panel>
+	<panel layout="Free">
+		<row name="Toolbar_TaskManager" X="0" Y="#$Expresion,#@Screen.Height# - 30#" layout="Free" width="#@Screen.Width#" height="35" scrollingmode="None">
+			<icon X="0" Y="0" width="#@Screen.Width#" height="45" path="#$THEME_BASE#\Images\#$Variable,BColor#\Toolbar_bg.png"/> 
+			
+					<event type="Click"><action execute=":FreeRam"/></event>
+					<panel skin="#$THEME_BASE#\skins\programs">
+						<icon path="#$THEME_BASE#\Images\memory.png" width="40" height="40"/>
+					</panel>
+					<text X="45" Y="10" text="#L:Tap here to clean up memory#" width="#$Expression,#@Screen.Width#-60#" height="20" alignment="Near" fonttype="Segoe UI Light,10,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+          	</row>
+	</panel>
+</root> 

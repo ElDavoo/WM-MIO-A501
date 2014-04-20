@@ -1,0 +1,397 @@
+<wap-provisioningdoc>
+<characteristic type="Install">
+<parm name="InstallPhase" value="install" />
+<parm name="OSVersionMin" value="5.2" />
+<parm name="OSVersionMax" value="9.9" />
+<parm name="AppName" value="Prova" />
+<parm name="InstallDir" value="\Windows" translation="install" />
+<parm name="NumDirs" value="2" />
+<parm name="NumFiles" value="60" />
+<parm name="NumRegKeys" value="0" />
+<parm name="NumRegVals" value="0" />
+<parm name="NumShortcuts" value="0" />
+</characteristic>
+<characteristic type="CertificateStore">
+<characteristic type="Privileged Execution Trust Authorities">
+<characteristic type="2dcb11f6c422938995c77b88514e622e68c2ae00">
+<parm name="EncodedCertificate" value="MIICATCCAWqgAwIBAgIQYbfZ9Wo28apDR09elF2yPjANBgkqhkiG9w0BAQQFADAX MRUwEwYDVQQDEwxEdW1teSBTaWduZXIwIBcNOTkxMjMxMjMwMDAwWhgPMjA5ODEy MzEyMzAwMDBaMBcxFTATBgNVBAMTDER1bW15IFNpZ25lcjCBnzANBgkqhkiG9w0B AQEFAAOBjQAwgYkCgYEA2T7Y5gR9M6tPsYyJAiOe/YEd4VbZf3wQVjwbRAfYEMVW 3EFmANE1bqQwgp7cNkiBDpGyVGsSmbnV2bKSt5z7EtOXOiIDe6feNc0hD2OZns8Y 0PBqvqrSg8F+iBD4KTdH9iS4+i/XgM0UmUilMjhPm0OHPvDaxU1kKSnzq+hh9VEC AwEAAaNMMEowSAYDVR0BBEEwP4AQZYbGe/Nm3lqYZUJ5g7G8daEZMBcxFTATBgNV BAMTDER1bW15IFNpZ25lcoIQYbfZ9Wo28apDR09elF2yPjANBgkqhkiG9w0BAQQF AAOBgQAg/36Loh2w+JeeRgql4zYKgyzEGmCYOa/iu6LeL6m8hScN89f3nQK0kYCG gMdWvfV8pCfNSLKOTVXLort9QRZTLNWkDu5pTx3AvHZO6oqbHZ7XZbdeP6VMuNvq +nSStxNPHc5vKffR5zFKz30Wzi45iWYx1zerC1ZTGA353+R5RQ==" />
+</characteristic>
+</characteristic>
+</characteristic>
+<characteristic type="CertificateStore">
+<characteristic type="SPC">
+<characteristic type="2dcb11f6c422938995c77b88514e622e68c2ae00">
+<parm name="EncodedCertificate" value="MIICATCCAWqgAwIBAgIQYbfZ9Wo28apDR09elF2yPjANBgkqhkiG9w0BAQQFADAX MRUwEwYDVQQDEwxEdW1teSBTaWduZXIwIBcNOTkxMjMxMjMwMDAwWhgPMjA5ODEy MzEyMzAwMDBaMBcxFTATBgNVBAMTDER1bW15IFNpZ25lcjCBnzANBgkqhkiG9w0B AQEFAAOBjQAwgYkCgYEA2T7Y5gR9M6tPsYyJAiOe/YEd4VbZf3wQVjwbRAfYEMVW 3EFmANE1bqQwgp7cNkiBDpGyVGsSmbnV2bKSt5z7EtOXOiIDe6feNc0hD2OZns8Y 0PBqvqrSg8F+iBD4KTdH9iS4+i/XgM0UmUilMjhPm0OHPvDaxU1kKSnzq+hh9VEC AwEAAaNMMEowSAYDVR0BBEEwP4AQZYbGe/Nm3lqYZUJ5g7G8daEZMBcxFTATBgNV BAMTDER1bW15IFNpZ25lcoIQYbfZ9Wo28apDR09elF2yPjANBgkqhkiG9w0BAQQF AAOBgQAg/36Loh2w+JeeRgql4zYKgyzEGmCYOa/iu6LeL6m8hScN89f3nQK0kYCG gMdWvfV8pCfNSLKOTVXLort9QRZTLNWkDu5pTx3AvHZO6oqbHZ7XZbdeP6VMuNvq +nSStxNPHc5vKffR5zFKz30Wzi45iWYx1zerC1ZTGA353+R5RQ==]" />
+<parm name="Role" value="222" />
+</characteristic>
+</characteristic>
+</characteristic>
+<characteristic type="FileOperation">
+<characteristic type="\Windows" translation="install">
+<characteristic type="MakeDir" />
+<characteristic type="CDMA_RSSI_PPC.dll" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="CDMA_R~1.004" />
+</characteristic>
+</characteristic>
+</characteristic>
+<characteristic type="%CE2%" translation="install">
+<characteristic type="MakeDir" />
+<characteristic type="SpbCalc_P.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB9752.005" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SpbCalc_P.gif" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB97B0.006" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="welcomehead.96.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CABC8B0.007" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_WMP.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB323E.008" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_About.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB328D.009" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Alarms.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB32CD.010" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Async.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB331C.011" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Calc.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB336B.012" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Calendar.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB33C9.013" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Camera.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB3428.014" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Clock.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB3486.015" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Contacts.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB34E5.016" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_FileExp.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB3553.017" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Games.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB35B2.018" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_IE.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB3610.019" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Msg.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB366F.020" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Notes.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB36BE.021" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Owner.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB371D.022" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Phone.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB3856.023" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_PhoneSet.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB38B4.024" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Photos.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB3913.025" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_RemoveProg.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB3962.026" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Settings.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB39B1.027" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_SettingsC.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB3A0F.028" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_SettingsP.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB3A5E.029" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_SettingsS.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB3AAD.030" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Sounds.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB3B0C.031" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Tasks.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB3B5B.032" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_Today.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB3BAA.033" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Start_Icon_TodaySet.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB3BF9.034" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="StartMenu_Selection.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB7BE6.035" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Senza nome.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB650D.036" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_bubble_flag.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB656C.037" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_bubble_flag_disabled.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6628.038" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_bubble_foo.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6687.039" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_bubble_foo1.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB66E5.040" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_bubble_lock.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6744.041" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_bubble_lock1.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB67A3.042" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_bubble_navback.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6801.043" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_listViewSelector.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6850.044" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_menuDownArrowBackground.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB68AF.045" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_menuSelector.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB690D.046" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_menuUpArrow.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB696C.047" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_menuUpArrowBackground.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB69CB.048" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_msgboxTitle.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6A29.049" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_scrollbarThumb.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6A88.050" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_scrollbarUpArrowButton.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6AE6.051" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_scrollbarUpArrowButton11.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6B35.052" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_scrollbarUpArrowButtonSelected.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6B94.053" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_softkeybar.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6BF3.054" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_taskbar.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6C51.055" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_toolbarIconBubbleButton.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6CB0.056" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_toolbarIconBubbleButtonDisabled.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6D0E.057" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_toolbarIconBubbleButtonSelected.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6D6D.058" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_toolbarTextBubbleButton.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6DCC.059" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_toolbarTextBubbleButtonDisabled.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6E1B.060" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="SL_toolbarTextBubbleButtonSelected.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6E79.061" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="black_scrollbarUpArrowButtonDisabled.png" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6ED8.062" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+<characteristic type="Se7en Look.tsk" translation="install">
+<characteristic type="Extract">
+<parm name="Source" value="0CAB6F36.063" />
+<parm name="WarnIfSkip" />
+</characteristic>
+</characteristic>
+</characteristic>
+</characteristic>
+<characteristic type="Registry" />
+</wap-provisioningdoc>

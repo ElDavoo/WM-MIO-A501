@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<panel name="WP7music" height="90" width="185" visible="true" layout="Free">
+	<icon height="90" width="185" path="#$THEME_BASE#\Images\#$Variable,TColor#.png" />
+	<text X="10" Y="75" height="30" width="85" alignment="Near" text="Music and Videos" fontcolor="255,255,255" fonttype="Segoe UI Light,8,true" />
+	<icon X="5" Y="5" width="40" height="40" path="#$THEME_BASE#\Images\tv.png" />
+	<icon X="47" Y="5" width="40" height="40" path="#$THEME_BASE#\Images\CorePlayer.png" />
+	<icon X="89" Y="5" width="40" height="40" path="#$THEME_BASE#\Images\music2.png" />
+	<configuration name="Music"
+			description="Music Tile"
+			minthrottleversion="1.1"
+			comments=""
+			createdby="Fireslave">
+			<variables>
+				<var name="MusicTile" description="#L:General#" default="" type="separator" />
+				<var name="bgpath" description="#L:Select background for Music Page#" default="" type="path(*.jpg,*.png)" />
+				<var name="WMPCoverPath" description="#L:WMP Covers (Artist\Title)#" default="\Storage Card\Music" type="path(*)" />
+			</variables>
+	</configuration>
+	
+	<if name="#@Player#" value="Windows Media Player">
+		<icon width="185" path="#@Music.WMPCoverPath#\#$Registry,HKEY_CURRENT_USER\System\State\MediaPlayer\WM/AlbumArtist#\#$Registry,HKEY_CURRENT_USER\System\State\MediaPlayer\WM/AlbumTitle#.jpg"/> 
+	</if>
+	<if name="#@Player#" value="Nitrogen">
+		<icon X="0" Y="0" width="185" path="#$Registry,HKEY_LOCAL_MACHINE\System\State\Nitrogen\AlbumArtFilename#"/>
+	</if>
+	<if name="#@Player#" value="slide2play">
+		<icon X="0" Y="0" width="185" path="#$Registry,HKEY_CURRENT_USER\Software\A_C\S2P\CurrentAlbum#"/>
+	</if>
+	<text X="10" Y="75" height="15" width="80" alignment="Near" text="Music and Videos" fontcolor="255,255,255" fonttype="Segoe UI Light,8,true"/>
+	<event type="Click">
+		<action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,music.xml)" />
+	</event> 
+</panel>

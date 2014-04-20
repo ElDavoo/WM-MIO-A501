@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<panel name="FacebookInfo">
+	<configuration name="FacebookInfo"
+			description="FacebookInfo widget for ThrottleLauncher 1.0"
+			minthrottleversion="1.0"
+			comments="Shows the info for your facebook account."
+			createdby="Alfonso Presa">
+			    <variables>
+					<var name="Seaprator" description="#L:Config#" default="" type="separator" />
+					<var name="Autoconnect" description="#L:Autoconnect#" default="true" type="boolean" />
+					<var name="UpdateTime" description="#L:Update (minutes)#" default="1" type="integer(1,60)" />
+			  		<var name="Execute" description="#L:Execute#" default="http://www.facebook.com" type="string"/>
+			  		<var name="Params" description="#L:Parameters#" default="" type="string"/>
+			  	</variables>
+	</configuration>
+	<event type="Click">
+		<action execute="#@FacebookInfo.Execute#" parameters="#@FacebookInfo.Params#"/>
+	</event>
+	<icon path="Widgets\FacebookInfo\back.png" width="145" height="153"/>
+	<panel layout="Cols" cols="1" marginY="6" X="35" Y="38" width="110" height="108">
+		<list name="FacebookInfo" class="TLPlugins.FaceBookPlugin" path="#$THROTTLE#\Plugins\Facebook\FaceBook.dll">
+			<param name="type" value="Info"/>
+			<param name="updatetime" value="#@FacebookInfo.UpdateTime#"/>
+			<param name="autoconnect" value="#@FacebookInfo.Autoconnect#"/>
+			<items>
+				<text width="110" height="22" text="#$Variable,FacebookInfo[#@Index#].UnreadMessageCount# messages" fontcolor="0,0,0" fonttype="9,false"/>
+				<text width="110" height="22" text="#$Variable,FacebookInfo[#@Index#].FriendRequests# friend requests" fontcolor="0,0,0" fonttype="9,false"/>
+				<text width="110" height="22" text="#$Variable,FacebookInfo[#@Index#].UnreadPokeCount# pokes" fontcolor="0,0,0" fonttype="9,false"/>
+				<text width="110" height="22" text="#$Variable,FacebookInfo[#@Index#].GroupInvites# group invites" fontcolor="0,0,0" fonttype="9,false"/>
+			</items>
+		</list>
+	</panel>
+</panel>

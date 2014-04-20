@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <var name="EmailActive" value="false" />
+  <var name="MailAccountCurrent" value="ActiveSync" />
+  <var name="mail_conf" value="" />
+  <var name="EmailMaxItems" value="10" />
+</root>

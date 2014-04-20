@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <var name="App1Path" value="" />
+  <var name="clockformat" value="24" />
+  <var name="Player" value="slide2play" />
+  <var name="TilesColor" value="Lime" />
+  <var name="BGColor" value="Dark" />
+  <var name="ContactsMode" value="Animated_Name" />
+  <var name="Widgets" value="ShortCut_Comm Manager,ShortCut_Shutdown,WM7phoneClock,WP7applications,WP7appointments,WP7games,WP7mail,WP7music,WP7office,WP7people,WP7SMS,WP7taskmanager,WP7translate,WP7weather" />
+  <var name="WidgetsLS" value="" />
+</root>

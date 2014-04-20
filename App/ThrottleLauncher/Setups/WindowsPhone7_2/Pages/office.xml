@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!--event type="PageShow">
+		<action execute=":Script" parameters="TASKBAR:Set(Height,0)"/>
+		<action execute=":Script" parameters="black:Set(Visible,false)"/>
+	</event>
+	<event type="PageHide">
+		<action execute=":Script" parameters="TASKBAR:Set(Height,25)"/>
+	</event-->
+	<event type="LeftRightGesture">
+        <action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,office.xml)" />
+	</event>
+	
+	<panel name="officebackground" X="0 " Y="0" height="#@Screen.Height#" width="#@Screen.Width#" layout="Free">
+		<icon X="0" Y="0" height="#@Screen.Height#" width="#@Screen.Width#" path="#$THEME_BASE#\Images\office\backgroundoffice.png"/>
+		<icon X="5" Y="5" height="69" width="181" path="#$THEME_BASE#\Images\office\office-header.png"/>
+	</panel>		
+	
+	<panel>
+	<row scrollingmode="Paged" layout="Cols" cols="3" width="#@Screen.Width#" height="#@Screen.Height#" X="0" Y="60" >
+	<panel >
+		<text X="10" Y="-20" 
+				    height="40" width="180" 
+				    alignment="Near" 
+				    text="Applications" 
+				    fontcolor=" 255,140,0" 
+				    fonttype="Segoe UI Light,24,false"
+		/>
+	
+		<icon X="10" Y="40" height="30" width="30" exec="Windows\pword.exe" path="#$THEME_BASE#\Images\office\word.png"/>
+		<text X="50" Y="42" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="Word" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="Windows\pword.exe"
+		/>
+		<icon X="10" Y="80" height="30" width="30" exec="Windows\pxl.exe" path="#$THEME_BASE#\Images\office\excel.png"/>
+		<text X="50" Y="82" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="Excel" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="Windows\pxl.exe"
+		/>
+		<icon X="10" Y="120" height="30" width="30" exec="Windows\ppt.exe" path="#$THEME_BASE#\Images\office\powerpoint.png"/>	
+		<text X="50" Y="122" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="PowerPoint"
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="Windows\ppt.exe"
+		/>
+		<icon X="10" Y="160" height="30" width="30" exec="Windows\OneNoteMobile.exe" path="#$THEME_BASE#\Images\office\onenote.png"/>
+		<text X="50" Y="162" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="OneNote" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="Windows\OneNoteMobile.exe"
+		/>
+		<icon X="10" Y="200" height="30" width="30" exec="Windows\spmc.exe" path="#$THEME_BASE#\Images\office\Sharepoint.png"/>
+		<text X="50" Y="202" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="Share Point" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="Windows\spmc.exe"
+		/>
+		<icon X="10" Y="240" height="30" width="30" exec="Windows\Notes.exe" path="#$THEME_BASE#\Images\office\notes.png"/>
+		<text X="50" Y="242" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="Notes" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="Windows\Notes.exe"
+		/>
+	</panel>
+
+	<panel>
+		<text X="10" Y="-20" 
+				    height="40" width="180" 
+				    alignment="Near" 
+				    text="Documents" 
+				    fontcolor=" 255,140,0" 
+				    fonttype="Segoe UI Light,24,false"
+		/>
+		<icon X="10" Y="40" height="30" width="30" exec="#@WP7office.Doc1#" path="#$THEME_BASE#\Images\office\*Choose icon for your program*.png"/>
+		<text X="50" Y="42" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="#@WP7office.Doc1n#"
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="#@WP7office.Doc1#"
+		/>
+		<icon X="10" Y="80" height="30" width="30" exec="#@WP7office.Doc2#" path="#$THEME_BASE#\Images\office\*Choose icon for your program*.png"/>
+		<text X="50" Y="82" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="#@WP7office.Doc2n#"
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="#@WP7office.Doc2#"
+		/>
+		<icon X="10" Y="120" height="30" width="30" exec="#@WP7office.Doc3#" path="#$THEME_BASE#\Images\office\*Choose icon for your program*.png"/>	
+		<text X="50" Y="122" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="#@WP7office.Doc3n#"
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="#@WP7office.Doc3#"
+		/>
+		<icon X="10" Y="160" height="30" width="30" exec="#@WP7office.Doc4#" path="#$THEME_BASE#\Images\office\*Choose icon for your program*.png"/>
+		<text X="50" Y="162" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="#@WP7office.Doc4n#" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="#@WP7office.Doc4#"
+		/>
+	</panel>
+	<panel>
+		<text X="10" Y="-20" 
+				    height="40" width="180" 
+				    alignment="Near" 
+				    text="Cloud Services" 
+				    fontcolor=" 255,140,0" 
+				    fonttype="Segoe UI Light,24,false"
+		/>
+	
+		
+		<text X="50" Y="42" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="#@WP7office.cloud1n#" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="#@WP7office.cloud1#"
+		/>
+		
+		<text X="50" Y="82" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="#@WP7office.cloud2n#" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="#@WP7office.cloud2#"
+		/>
+	
+		<text X="50" Y="122" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="#@WP7office.cloud3n#"
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="#@WP7office.cloud3#"
+		/>
+	</panel>
+	</row>
+</panel>
+</root> 

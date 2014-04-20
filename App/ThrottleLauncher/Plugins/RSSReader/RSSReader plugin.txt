@@ -1,0 +1,47 @@
+RSSReader Plugin
+==================
+- Description: Allows ThrottleLauncher widgets and pages to show RSS data. Note that Inet connection is needed.
+- Requirements: ThrottleLauncher RC2 or greatter
+
+For Theme/Widgets Developers
+============================
+- You can include the RSS plugin by using the list tag as follows:
+	<list name="RSSItems" class="TLPlugins.RSSReader" path="#$THROTTLE#\Plugins\RSSReader\RSSReader.dll">
+		...
+	</list>
+
+- Inside the list item you will have to place the apropiate parameters specifying, wich data to aquire using the following sintax:
+	<list name="RSSItems" class="TLPlugins.RSSReader" path="#$THROTTLE#\Plugins\RSSReader\RSSReader.dll">
+		<param name="url" value="http://www.throttlelauncher.com/portal/index.php?format=feed&amp;type=rss"/>
+		<param name="updatetime" value="10"/>
+		<param name="maxitems" value="10"/>
+	</list>
+
+- The valid parameters are:
+	- URL: pointing to the RSS 1.0 or RSS 2.0 Source.
+	- The time to update in minutes.
+	- Max items to load from the RSS source.
+
+- The rows of data provided by the list contain every field available in the RSS source. This usually includes:
+	-title
+	-link
+	-guid
+	-description
+	-author
+	-category
+	-pubDate
+
+- To render each row of data you will have to fill the list items tag as follows:
+	<list name="RSSItems" class="TLPlugins.RSSReader" path="#$THROTTLE#\Plugins\RSSReader\RSSReader.dll">
+		<param name="url" value="http://www.throttlelauncher.com/portal/index.php?format=feed&amp;type=rss"/>
+		<param name="updatetime" value="10"/>
+		<items>
+			<text text="#$Variable,RSSItems[#@Index#].title#" fontcolor="50,50,50" fonttype="10,false">
+				<event type="Click"><action execute="#$Variable,RSSItems[#@Index#].link#"/></event>
+			</text>
+			<icon width="20"/>
+		</items>
+	</list>
+
+Note that inside the items tag you can place any TL code and it will be repeated for each row in the list replacing all the text using hte syntax #$Variable,LISTNAME[#@Index#].COLUMNNAME# by the corresponding value.
+	

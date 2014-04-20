@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<panel name="transalte" height="90" width="90">
+	<configuration name="Translate"
+			description="Google Translate"
+			minthrottleversion="1.1"
+			comments="thanks eww245"
+			createdby="Pth6">
+			<variables>
+			<var name="General" description="#L:Translate#" default="" type="separator" />
+				<var name="defautLang" description="#L:Defaut languager#" default="en" type="String" />
+			</variables>
+	</configuration>
+	<panel name="TileColorWP7translate">
+		<icon height="90" width="90" path="#$THEME_BASE#\Images\#$Variable,TColor#.png"/>
+	</panel>
+        <icon 
+					X="0" Y="0"
+					width="90" height="90"
+					path="#$THEME_BASE#\Widgets\WP7translate\images\icone.png" 
+				/>
+		  	    <text 
+				    X="10" Y="75" 
+				    height="30" width="180" 
+				    alignment="Near" 
+				    text="Translate" 
+				    fontcolor="255,255,255" 
+				    fonttype="Segoe WP N Semibold,8,false" 
+			    />
+			<event type="Click">
+				<action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,translate.xml)" />
+			</event>
+</panel>

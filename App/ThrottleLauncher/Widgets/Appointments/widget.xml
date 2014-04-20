@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<panel height="240" width="180" name="Appointments">
+	<configuration name="Appointments"
+			description="Appointments widget for ThrottleLauncher 1.0"
+			minthrottleversion="1.0"
+			comments="Shows news from an RSS source."
+			createdby="Alfonso Presa">
+			    <variables>
+					<var name="Seaparator" description="#L:Config#" default="" type="separator" />
+					<var name="MaxItems" description="#L:Max items#" default="20" type="integer(1,20)" />
+			  	</variables>
+	</configuration>
+	<panel X="10" Y="5">
+		<icon X="0" Y="0" width="160" path="Widgets\Appointments\bg.png"/>
+		<panel X="112" Y="12" rotate="26" width="40" height="40">
+			<text text="#$Date,dd#" align="Center" fonttype="14,true" fontcolor="0,0,0" width="40" height="20" X="0" Y="9"/>
+		</panel>	
+		<event type="GlobalChange" parameters="#$Date,d/M/yyyy#">
+			<action execute=":ToPlugin" parameters="AppointmentsItems:SetRestriction([Start] >= &quot;#$Date,d/M/yyyy 0:0#&quot;)"/>
+		</event>
+	    <row name="Appts" X="0" Y="48" layout="Cols" cols="1" scrollingmode="Kinetic" width="160" height="180">
+			<list name="AppointmentsItems" class="TLPlugins.TasksAppointments" path="#$THROTTLE#\Plugins\TasksAppointments\TasksAppointments.dll">
+				<param name="type" value="Appointments"/>
+				<param name="maxitems" value="#@Appointments.MaxItems#"/>
+				<param name="restrict" value="[Start] >= &quot;#$Date,d/M/yyyy 0:0#&quot;"/>
+				<items>
+					<panel width="160" height="40" display="Block">
+						<event type="Click">
+							<action execute=":ToPlugin" parameters="AppointmentsItems:OpenDialog(#$Variable,AppointmentsItems[#@Index#].ItemId#)"/>
+						</event>
+						<icon X="2" Y="38" width="155" height="1" path="Widgets\Appointments\divider.png"/>					
+						<icon X="2" Y="4" path="#$THROTTLE#\Widgets\Appointments\calendar_#$Expresion,#@Index#+1#.png" width="5"/>
+	                	<text X="10" Y="0" width="145" height="14" alignment="Near" fontcolor="255,255,255" fonttype="Droid Sans,7,true" text="#$Variable,AppointmentsItems[#@Index#].Start#"/> 
+	                	<text X="10" Y="12" width="145" height="14" alignment="Near" fontcolor="255,255,255" fonttype="Droid Sans,8,true" text="#$Variable,AppointmentsItems[#@Index#].ToString#"/> 
+	                	<text X="10" Y="24" width="145" height="14" alignment="Near" fontcolor="255,255,255" fonttype="Droid Sans,8,true" text="#$Variable,AppointmentsItems[#@Index#].Location#"/>
+	            	</panel>
+				</items>
+			</list>
+		</row>
+	</panel>
+</panel>

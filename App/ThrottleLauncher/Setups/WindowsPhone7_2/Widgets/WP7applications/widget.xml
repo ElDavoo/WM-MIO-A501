@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<panel name="WP7applications" height="90" width="90">	
+   <icon height="90" width="90" path="#$THEME_BASE#\Images\#$Variable,TColor#.png" />
+    <panel name="Applications" height="90" width="90">
+		<icon name="applicationstext" X="40" Y="8" width="40" height="40" path="#$THEME_BASE#\Widgets\WP7applications\Appli.png"/>
+		<text X="20" Y="48" height="30" width="180" alignment="Near" text="Js. Priso's" fontcolor="255,255,255" fonttype="Segoe UI Light,8,true"/>
+		<text X="8" Y="47" height="40" width="180" alignment="Near" text="Applis" fontcolor="255,255,255" fonttype="Segoe UI Light,22,true"/>
+	</panel>
+ <event type="Click">
+	<action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,applications.xml)" />
+ </event>
+</panel>

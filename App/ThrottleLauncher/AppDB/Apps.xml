@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <app name="Comm Manager" category="Programmes" exec="\Windows\Menu Démarrer\Programmes\Comm Manager.lnk" icon="" params="" title="Comm Manager" used="True" imported="True" id="MC44MjI2MDAzMDQ1MzIxNDQ=" />
+  <app name="Reset" category="Programmes" exec="\Windows\Menu Démarrer\Programmes\Reset.lnk" icon="" params="" title="Reset" used="True" imported="True" id="MC45NTcxNTIxODk2NjY5NDI=" />
+  <app name="Backlight" category="Programmes" exec="\Windows\Menu Démarrer\Programmes\Backlight.lnk" icon="" params="" title="Backlight" used="True" imported="True" id="MC40Nzk1Nzc1MDM4NTYwNzU=" />
+  <app name="Contacts" category="Programmes" exec="\Windows\Menu Démarrer\Programmes\Contacts.lnk" icon="" params="" title="Contacts" used="True" imported="True" id="MC41MjQ0MjgxMzIyMzQzNDE=" />
+  <app name="Rotate Screen" category="Programmes" exec="\Windows\Menu Démarrer\Programmes\Rotate Screen.lnk" icon="" params="" title="Rotate Screen" used="True" imported="True" id="MC4wNDY4NTM0NDY0MjM0NzM1" />
+  <app name="MyMobiler" category="Programmes" exec="\Windows\Menu Démarrer\Programmes\MyMobiler.lnk" icon="" params="" title="MyMobiler" used="True" imported="True" id="MC41NjkyNzg3NjA2MTI2MDY=" />
+  <app name="ThrottleConfig" category="Programmes" exec="\Windows\Menu Démarrer\Programmes\ThrottleConfig.lnk" icon="" params="" title="ThrottleConfig" used="True" imported="True" id="MC4wOTE3MDQwNzQ4MDE3Mzkz" />
+  <app name="ThrottleLauncher" category="Programmes" exec="\Windows\Menu Démarrer\Programmes\ThrottleLauncher.lnk" icon="" params="" title="ThrottleLauncher" used="True" imported="True" id="MC42MTQxMjkzODg5OTA4NzI=" />
+  <app name="HTC Calendar" category="Programmes/HTC" exec="\Windows\Menu Démarrer\Programmes\HTC\HTC Calendar.lnk" icon="" params="" title="HTC Calendar" used="True" imported="True" id="MC4zNjA4MDc4NDUwNzEzMzQ=" />
+  <app name="HTC Call History" category="Programmes/HTC" exec="\Windows\Menu Démarrer\Programmes\HTC\HTC Call History.lnk" icon="" params="" title="HTC Call History" used="True" imported="True" id="MC44ODMyMzMxNTkyNjA0Njc=" />
+  <app name="HTC Music" category="Programmes/HTC" exec="\Windows\Menu Démarrer\Programmes\HTC\HTC Music.lnk" icon="" params="" title="HTC Music" used="True" imported="True" id="MC40MDU2NTg0NzM0NDk2" />
+  <app name="HTC People" category="Programmes/HTC" exec="\Windows\Menu Démarrer\Programmes\HTC\HTC People.lnk" icon="" params="" title="HTC People" used="True" imported="True" id="MC45MjgwODM3ODc2Mzg3MzM=" />
+  <app name="HTC Twitter" category="Programmes/HTC" exec="\Windows\Menu Démarrer\Programmes\HTC\HTC Twitter.lnk" icon="" params="" title="HTC Twitter" used="True" imported="True" id="MC40NTA1MDkxMDE4Mjc4NjY=" />
+  <app name="HTC Email" category="Programmes/HTC" exec="\Windows\Menu Démarrer\Programmes\HTC\HTC Email.lnk" icon="" params="" title="HTC Email" used="True" imported="True" id="MC45NzI5MzQ0MTYwMTY5OTk=" />
+  <app name="HTC SMS" category="Programmes/HTC" exec="\Windows\Menu Démarrer\Programmes\HTC\HTC SMS.lnk" icon="" params="" title="HTC SMS" used="True" imported="True" id="MC40OTUzNTk3MzAyMDYxMzI=" />
+  <app name="HTC Facebook" category="Programmes/HTC" exec="\Windows\Menu Démarrer\Programmes\HTC\HTC Facebook.lnk" icon="" params="" title="HTC Facebook" used="True" imported="True" id="MC4wMTc3ODUwNDQzOTUyNjQ3" />
+  <app name="Windows Live" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\Windows Live.lnk" icon="" params="" title="Windows Live" used="True" imported="True" id="MC44MDkzMTQxMjg4NTM5OTM=" />
+  <app name="Messenger" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\Messenger.lnk" icon="" params="" title="Messenger" used="True" imported="True" id="MC44NTQxNjQ3NTcyMzIyNTg=" />
+  <app name="Energy Links" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\Energy Links.lnk" icon="" params="" title="Energy Links" used="True" imported="True" id="MC4zNzY1OTAwNzE0MjEzOTE=" />
+  <app name="Internet Sharing" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\Internet Sharing.lnk" icon="" params="" title="Internet Sharing" used="True" imported="True" id="MC44OTkwMTUzODU2MTA1MjQ=" />
+  <app name="ActiveSync" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\ActiveSync.lnk" icon="" params="" title="ActiveSync" used="True" imported="True" id="MC40MjE0NDA2OTk3OTk2NTc=" />
+  <app name="Internet Explorer" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\Internet Explorer.lnk" icon="" params="" title="Internet Explorer" used="True" imported="True" id="MC45NDM4NjYwMTM5ODg3OQ==" />
+  <app name="Messaging" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\Messaging.lnk" icon="" params="" title="Messaging" used="True" imported="True" id="MC40NjYyOTEzMjgxNzc5MjM=" />
+  <app name="Remote Desktop" category="Programmes/Internet,Favorites" exec="\Windows\Menu Démarrer\Programmes\Internet\Remote Desktop.lnk" icon="" params="" title="Remote Desktop" used="True" imported="True" id="MC45ODg3MTY2NDIzNjcwNTY=" />
+  <app name="Opera" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\Opera.lnk" icon="" params="" title="Opera" used="True" imported="True" id="MC41MTExNDE5NTY1NTYxODk=" />
+  <app name="Bing" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\Bing.lnk" icon="" params="" title="Bing" used="True" imported="True" id="MC4wMzM1NjcyNzA3NDUzMjE4" />
+  <app name="Facebook" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\Facebook.lnk" icon="" params="" title="Facebook" used="True" imported="True" id="MC41NTU5OTI1ODQ5MzQ0NTU=" />
+  <app name="Palringo" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\Palringo.lnk" icon="" params="" title="Palringo" used="True" imported="True" id="MC4wNzg0MTc4OTkxMjM1ODc2" />
+  <app name="Data Controller" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\Data Controller.lnk" icon="" params="" title="Data Controller" used="True" imported="True" id="MC42MDA4NDMyMTMzMTI3MjE=" />
+  <app name="Send Receive All" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\Send Receive All.lnk" icon="" params="" title="Send Receive All" used="True" imported="True" id="MC4xMjMyNjg1Mjc1MDE4NTM=" />
+  <app name="Java" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\Java.lnk" icon="" params="" title="Java" used="True" imported="True" id="MC42NDU2OTM4NDE2OTA5ODY=" />
+  <app name="RSS Hub" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\RSS Hub.lnk" icon="" params="" title="RSS Hub" used="True" imported="True" id="MC4xNjgxMTkxNTU4ODAxMTk=" />
+  <app name="Email Wizard" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\Email Wizard.lnk" icon="" params="" title="Email Wizard" used="True" imported="True" id="MC42OTA1NDQ0NzAwNjkyNTI=" />
+  <app name="Marketplace" category="Programmes/Internet,Favorites" exec="\Windows\Menu Démarrer\Programmes\Internet\Marketplace.lnk" icon="" params="" title="Marketplace" used="True" imported="True" id="MC4yMTI5Njk3ODQyNTgzODU=" />
+  <app name="Skype" category="Programmes/Internet" exec="\Windows\Menu Démarrer\Programmes\Internet\Skype.lnk" icon="" params="" title="Skype" used="True" imported="True" id="MC43MzUzOTUwOTg0NDc1MTg=" />
+  <app name="Tasks" category="Programmes/Office Mobile" exec="\Windows\Menu Démarrer\Programmes\Office Mobile\Tasks.lnk" icon="" params="" title="Tasks" used="True" imported="True" id="MC4wMDQ0OTg4Njg3MTcxMTI5OA==" />
+  <app name="Notes" category="Programmes/Office Mobile" exec="\Windows\Menu Démarrer\Programmes\Office Mobile\Notes.lnk" icon="" params="" title="Notes" used="True" imported="True" id="MC41MjY5MjQxODI5MDYyNDY=" />
+  <app name="Calendar" category="Programmes/Office Mobile" exec="\Windows\Menu Démarrer\Programmes\Office Mobile\Calendar.lnk" icon="" params="" title="Calendar" used="True" imported="True" id="MC4wNDkzNDk0OTcwOTUzNzg4" />
+  <app name="Notepad" category="Programmes/Office Mobile" exec="\Windows\Menu Démarrer\Programmes\Office Mobile\Notepad.lnk" icon="" params="" title="Notepad" used="True" imported="True" id="MC41NzE3NzQ4MTEyODQ1MTI=" />
+  <app name="Adobe Reader" category="Programmes/Office Mobile" exec="\Windows\Menu Démarrer\Programmes\Office Mobile\Adobe Reader.lnk" icon="" params="" title="Adobe Reader" used="True" imported="True" id="MC4wOTQyMDAxMjU0NzM2NDQ2" />
+  <app name="PowerPoint" category="Programmes/Office Mobile" exec="\Windows\Menu Démarrer\Programmes\Office Mobile\PowerPoint.lnk" icon="" params="" title="PowerPoint" used="True" imported="True" id="MC42MTY2MjU0Mzk2NjI3Nzg=" />
+  <app name="Word" category="Programmes/Office Mobile" exec="\Windows\Menu Démarrer\Programmes\Office Mobile\Word.lnk" icon="" params="" title="Word" used="True" imported="True" id="MC4xMzkwNTA3NTM4NTE5MQ==" />
+  <app name="Excel" category="Programmes/Office Mobile" exec="\Windows\Menu Démarrer\Programmes\Office Mobile\Excel.lnk" icon="" params="" title="Excel" used="True" imported="True" id="MC42NjE0NzYwNjgwNDEwNDM=" />
+  <app name="SharePoint" category="Programmes/Office Mobile" exec="\Windows\Menu Démarrer\Programmes\Office Mobile\SharePoint.lnk" icon="" params="" title="SharePoint" used="True" imported="True" id="MC4xODM5MDEzODIyMzAxNzY=" />
+  <app name="OneNote" category="Programmes/Office Mobile" exec="\Windows\Menu Démarrer\Programmes\Office Mobile\OneNote.lnk" icon="" params="" title="OneNote" used="True" imported="True" id="MC43MDYzMjY2OTY0MTkzMDk=" />
+  <app name="Emu48" category="Programmes/Office Mobile,Games,FavGames" exec="\Windows\Menu Démarrer\Programmes\Office Mobile\Emu48.lnk" icon="" params="" title="Emu48" used="True" imported="True" id="MC4yMjg3NTIwMTA2MDg0NDI=" />
+  <app name="eWallet" category="Programmes/Office Mobile" exec="\Windows\Menu Démarrer\Programmes\Office Mobile\eWallet.lnk" icon="" params="" title="eWallet" used="True" imported="True" id="MC43NTExNzczMjQ3OTc1NzU=" />
+  <app name="Currency Converter" category="Programmes/Office Mobile" exec="\Windows\Menu Démarrer\Programmes\Office Mobile\Currency Converter.lnk" icon="" params="" title="Currency Converter" used="True" imported="True" id="MC4yNzM2MDI2Mzg5ODY3MDg=" />
+  <app name="Phone" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\Phone.lnk" icon="" params="" title="Phone" used="True" imported="True" id="MC43MjIxMDg5MjI3NjkzNjY=" />
+  <app name="File Explorer" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\File Explorer.lnk" icon="" params="" title="File Explorer" used="True" imported="True" id="MC4yNDQ1MzQyMzY5NTg0OTk=" />
+  <app name="Search" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\Search.lnk" icon="" params="" title="Search" used="True" imported="True" id="MC43NjY5NTk1NTExNDc2MzI=" />
+  <app name="Lock" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\Lock.lnk" icon="" params="" title="Lock" used="True" imported="True" id="MC4yODkzODQ4NjUzMzY3NjU=" />
+  <app name="Task Manager" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\Task Manager.lnk" icon="" params="" title="Task Manager" used="True" imported="True" id="MC44MTE4MTAxNzk1MjU4OTg=" />
+  <app name="Registry Editor" category="Programmes/Tools,Favorites" exec="\Windows\Menu Démarrer\Programmes\Tools\Registry Editor.lnk" icon="" params="" title="Registry Editor" used="True" imported="True" id="MC44NTY2NjA4MDc5MDQxNjQ=" />
+  <app name="Settings Export" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\Settings Export.lnk" icon="" params="" title="Settings Export" used="True" imported="True" id="MC4zNzkwODYxMjIwOTMyOTc=" />
+  <app name="PIM Backup" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\PIM Backup.lnk" icon="" params="" title="PIM Backup" used="True" imported="True" id="MC45MDE1MTE0MzYyODI0Mw==" />
+  <app name="Microsoft My Phone" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\Microsoft My Phone.lnk" icon="" params="" title="Microsoft My Phone" used="True" imported="True" id="MC40MjM5MzY3NTA0NzE1NjI=" />
+  <app name="tBattery" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\tBattery.lnk" icon="" params="" title="tBattery" used="True" imported="True" id="MC45NDYzNjIwNjQ2NjA2OTU=" />
+  <app name="Backup FavPeople" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\Backup FavPeople.lnk" icon="" params="" title="Backup FavPeople" used="True" imported="True" id="MC40Njg3ODczNzg4NDk4Mjg=" />
+  <app name="WiFi Monster" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\WiFi Monster.lnk" icon="" params="" title="WiFi Monster" used="True" imported="True" id="MC45OTEyMTI2OTMwMzg5NjE=" />
+  <app name="Advanced Config" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\Advanced Config.lnk" icon="" params="" title="Advanced Config" used="True" imported="True" id="MC41MTM2MzgwMDcyMjgwOTQ=" />
+  <app name="WiFi Router" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\WiFi Router.lnk" icon="" params="" title="WiFi Router" used="True" imported="True" id="MC4wMzYwNjMzMjE0MTcyMjcx" />
+  <app name="BsB Tweaks" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\BsB Tweaks.lnk" icon="" params="" title="BsB Tweaks" used="True" imported="True" id="MC41NTg0ODg2MzU2MDYzNg==" />
+  <app name="Calculator" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\Calculator.lnk" icon="" params="" title="Calculator" used="True" imported="True" id="MC4wODA5MTM5NDk3OTU0OTI5" />
+  <app name="WorldCard Mobile" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\WorldCard Mobile.lnk" icon="" params="" title="WorldCard Mobile" used="True" imported="True" id="MC42MDMzMzkyNjM5ODQ2MjY=" />
+  <app name="Flashlight" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\Flashlight.lnk" icon="" params="" title="Flashlight" used="True" imported="True" id="MC4xMjU3NjQ1NzgxNzM3NTk=" />
+  <app name="SIM Manager" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\SIM Manager.lnk" icon="" params="" title="SIM Manager" used="True" imported="True" id="MC42NDgxODk4OTIzNjI4OTI=" />
+  <app name="X Button Settings" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\X Button Settings.lnk" icon="" params="" title="X Button Settings" used="True" imported="True" id="MC4xNzA2MTUyMDY1NTIwMjU=" />
+  <app name="ArkSwitch" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\ArkSwitch.lnk" icon="" params="" title="ArkSwitch" used="True" imported="True" id="MC42OTMwNDA1MjA3NDExNTg=" />
+  <app name="Launch Android" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\Launch Android.lnk" icon="" params="" title="Launch Android" used="True" imported="True" id="MC4yMTU0NjU4MzQ5MzAyOQ==" />
+  <app name="XDA UC" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\XDA UC.lnk" icon="" params="" title="XDA UC" used="True" imported="True" id="MC43Mzc4OTExNDkxMTk0MjM=" />
+  <app name="CHT Editor" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\CHT Editor.lnk" icon="" params="" title="CHT Editor" used="True" imported="True" id="MC4yNjAzMTY0NjMzMDg1NTY=" />
+  <app name="JETCET PRINT 5" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\JETCET PRINT 5.lnk" icon="" params="" title="JETCET PRINT 5" used="True" imported="True" id="MC43ODI3NDE3Nzc0OTc2ODk=" />
+  <app name="Sprite Backup" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\Sprite Backup.lnk" icon="" params="" title="Sprite Backup" used="True" imported="True" id="MC4zMDUxNjcwOTE2ODY4MjI=" />
+  <app name="Total Commander" category="Programmes/Tools" exec="\Windows\Menu Démarrer\Programmes\Tools\Total Commander.lnk" icon="" params="" title="Total Commander" used="True" imported="True" id="MC44Mjc1OTI0MDU4NzU5NTU=" />
+  <app name="Solitaire" category="Programmes/Games,FavGames" exec="\Windows\Menu Démarrer\Programmes\Games\Solitaire.lnk" icon="" params="" title="Solitaire" used="True" imported="True" id="MC4wOTY2OTYxNzYxNDU1NDk5" />
+  <app name="Bubble Breaker" category="Programmes/Games,FavGames" exec="\Windows\Menu Démarrer\Programmes\Games\Bubble Breaker.lnk" icon="" params="" title="Bubble Breaker" used="True" imported="True" id="MC42MTkxMjE0OTAzMzQ2ODM=" />
+  <app name="Teeter" category="Programmes/Games,FavGames" exec="\Windows\Menu Démarrer\Programmes\Games\Teeter.lnk" icon="" params="" title="Teeter" used="True" imported="True" id="MC4xNDE1NDY4MDQ1MjM4MTY=" />
+  <app name="Cube" category="Programmes/Games,FavGames" exec="\Windows\Menu Démarrer\Programmes\Games\Cube.lnk" icon="" params="" title="Cube" used="True" imported="True" id="MC42NjM5NzIxMTg3MTI5NDk=" />
+  <app name="FireHawk" category="Programmes/Games,FavGames" exec="\Windows\Menu Démarrer\Programmes\Games\FireHawk.lnk" icon="" params="" title="FireHawk" used="True" imported="True" id="MC4xODYzOTc0MzI5MDIwODI=" />
+  <app name="Spb Brain Evolution" category="Programmes/Games,FavGames" exec="\Windows\Menu Démarrer\Programmes\Games\Spb Brain Evolution.lnk" icon="" params="" title="Spb Brain Evolution" used="True" imported="True" id="MC43MDg4MjI3NDcwOTEyMTU=" />
+  <app name="Spb Matches" category="Programmes/Games,FavGames" exec="\Windows\Menu Démarrer\Programmes\Games\Spb Matches.lnk" icon="" params="" title="Spb Matches" used="True" imported="True" id="MC4yMzEyNDgwNjEyODAzNDc=" />
+  <app name="Super Mario WM Adventures" category="Programmes/Games,FavGames" exec="\Windows\Menu Démarrer\Programmes\Games\Super Mario WM Adventures.lnk" icon="" params="" title="Super Mario WM Adventures" used="True" imported="True" id="MC43NTM2NzMzNzU0Njk0OA==" />
+  <app name="MarioKartMini" category="Programmes/Games,FavGames" exec="\Windows\Menu Démarrer\Programmes\Games\MarioKartMini.lnk" icon="" params="" title="MarioKartMini" used="True" imported="True" id="MC4yNzYwOTg2ODk2NTg2MTM=" />
+  <app name="In Call Recording" category="Programmes/Multimedia" exec="\Windows\Menu Démarrer\Programmes\Multimedia\In Call Recording.lnk" icon="" params="" title="In Call Recording" used="True" imported="True" id="MC4wNjc2Mjc3NzQxMTczNDEy" />
+  <app name="Pictures &amp; Videos" category="Programmes/Multimedia" exec="\Windows\Menu Démarrer\Programmes\Multimedia\Pictures &amp; Videos.lnk" icon="" params="" title="Pictures &amp; Videos" used="True" imported="True" id="MC41OTAwNTMwODgzMDY0NzQ=" />
+  <app name="Windows Media" category="Programmes/Multimedia" exec="\Windows\Menu Démarrer\Programmes\Multimedia\Windows Media.lnk" icon="" params="" title="Windows Media" used="True" imported="True" id="MC4xMTI0Nzg0MDI0OTU2MDc=" />
+  <app name="Camera" category="Programmes/Multimedia" exec="\Windows\Menu Démarrer\Programmes\Multimedia\Camera.lnk" icon="" params="" title="Camera" used="True" imported="True" id="MC42MzQ5MDM3MTY2ODQ3NA==" />
+  <app name="CamCorder" category="Programmes/Multimedia" exec="\Windows\Menu Démarrer\Programmes\Multimedia\CamCorder.lnk" icon="" params="" title="CamCorder" used="True" imported="True" id="MC4xNTczMjkwMzA4NzM4NzM=" />
+  <app name="TCPMP" category="Programmes/Multimedia,MusicCat" exec="\Windows\Menu Démarrer\Programmes\Multimedia\TCPMP.lnk" icon="" params="" title="TCPMP" used="True" imported="True" id="MC42Nzk3NTQzNDUwNjMwMDY=" />
+  <app name="Album" category="Programmes/Multimedia" exec="\Windows\Menu Démarrer\Programmes\Multimedia\Album.lnk" icon="" params="" title="Album" used="True" imported="True" id="MC4yMDIxNzk2NTkyNTIxMzk=" />
+  <app name="Audio Booster" category="Programmes/Multimedia" exec="\Windows\Menu Démarrer\Programmes\Multimedia\Audio Booster.lnk" icon="" params="" title="Audio Booster" used="True" imported="True" id="MC43MjQ2MDQ5NzM0NDEyNzI=" />
+  <app name="MP3 Trimmer" category="Programmes/Multimedia,Favorites" exec="\Windows\Menu Démarrer\Programmes\Multimedia\MP3 Trimmer.lnk" icon="" params="" title="MP3 Trimmer" used="True" imported="True" id="MC4yNDcwMzAyODc2MzA0MDQ=" />
+  <app name="Voice Recorder" category="Programmes/Multimedia" exec="\Windows\Menu Démarrer\Programmes\Multimedia\Voice Recorder.lnk" icon="" params="" title="Voice Recorder" used="True" imported="True" id="MC43Njk0NTU2MDE4MTk1Mzc=" />
+  <app name="YouTube" category="Programmes/Multimedia,MusicCat" exec="\Windows\Menu Démarrer\Programmes\Multimedia\YouTube.lnk" icon="" params="" title="YouTube" used="True" imported="True" id="MC4yOTE4ODA5MTYwMDg2Nw==" />
+  <app name="Streaming Media" category="Programmes/Multimedia" exec="\Windows\Menu Démarrer\Programmes\Multimedia\Streaming Media.lnk" icon="" params="" title="Streaming Media" used="True" imported="True" id="MC44MTQzMDYyMzAxOTc4MDM=" />
+  <app name="FM Radio" category="Programmes/Multimedia" exec="\Windows\Menu Démarrer\Programmes\Multimedia\FM Radio.lnk" icon="" params="" title="FM Radio" used="True" imported="True" id="MC42OTU1MzY1NzE0MTMwNjM=" />
+  <app name="S2P Settings" category="Programmes/Multimedia" exec="\Windows\Menu Démarrer\Programmes\Multimedia\S2P Settings.lnk" icon="" params="" title="S2P Settings" used="True" imported="True" id="MC43NDAzODcxOTk3OTEzMjk=" />
+  <app name="S2P" category="Programmes/Multimedia,MusicCat" exec="\Windows\Menu Démarrer\Programmes\Multimedia\S2P.lnk" icon="" params="" title="S2P" used="True" imported="True" id="MC4yNjI4MTI1MTM5ODA0NjI=" />
+  <app name="SPB TV" category="Programmes/Multimedia,MusicCat" exec="\Windows\Menu Démarrer\Programmes\Multimedia\SPB TV.lnk" icon="" params="" title="SPB TV" used="True" imported="True" id="MC43ODUyMzc4MjgxNjk1OTQ=" />
+  <app name="HTC GPSTool" category="Programmes/GPS" exec="\Windows\Menu Démarrer\Programmes\GPS\HTC GPSTool.lnk" icon="" params="" title="HTC GPSTool" used="True" imported="True" id="MC4wMDk0OTA5NzAwNjA5MjM1OQ==" />
+  <app name="Google Maps" category="Programmes/GPS" exec="\Windows\Menu Démarrer\Programmes\GPS\Google Maps.lnk" icon="" params="" title="Google Maps" used="True" imported="True" id="MC41MzE5MTYyODQyNTAwNTc=" />
+  <app name="GPS Viewer" category="Programmes/GPS,Favorites" exec="\Windows\Menu Démarrer\Programmes\GPS\GPS Viewer.lnk" icon="" params="" title="GPS Viewer" used="True" imported="True" id="MC4wNTQzNDE1OTg0MzkxODk0" />
+  <app name="QuickGPS" category="Programmes/GPS" exec="\Windows\Menu Démarrer\Programmes\GPS\QuickGPS.lnk" icon="" params="" title="QuickGPS" used="True" imported="True" id="MC4wOTkxOTIyMjY4MTc0NTUz" />
+  <app name="Digital Compass" category="Programmes/GPS" exec="\Windows\Menu Démarrer\Programmes\GPS\Digital Compass.lnk" icon="" params="" title="Digital Compass" used="True" imported="True" id="MC42MjE2MTc1NDEwMDY1ODg=" />
+  <app name="Metro" category="Programmes/GPS" exec="\Windows\Menu Démarrer\Programmes\GPS\Metro.lnk" icon="" params="" title="Metro" used="True" imported="True" id="MC4xNDQwNDI4NTUxOTU3MjE=" />
+  <app name="TomTom Navigator" category="Programmes/GPS" exec="\Windows\Menu Démarrer\Programmes\GPS\TomTom Navigator.lnk" icon="" params="" title="TomTom Navigator" used="True" imported="True" id="MC42NjY0NjgxNjkzODQ4NTQ=" />
+  <app name="Sunrise info" category="Programmes" exec="\Windows\Menu Démarrer\Programmes\Sunrise info.lnk" icon="" params="" title="Sunrise info" used="True" imported="True" id="MC45MDA1OTc0NTQ0NjgwNjc=" />
+  <cat name="Programmes/Office Mobile" order="" />
+  <cat name="Programmes/HTC" order="" />
+  <cat name="Programmes/Games" order="" />
+  <cat name="Programmes/GPS" order="" />
+  <cat name="Games" order="" />
+  <cat name="all" order="" />
+  <cat name="Favorites" order="" />
+  <cat name="Programmes/Internet" order="" />
+  <cat name="Programmes/Tools" order="" />
+  <cat name="Programmes" order="" />
+  <cat name="MusicCat" order="" />
+  <cat name="Programmes/Multimedia" order="" />
+  <cat name="FavGames" order="" />
+</root>

@@ -1,0 +1,190 @@
+<root>
+    <panel X="0" Y="17" name="GoogleTranslator">
+        <event type="Load">
+            <action execute=":SetVariable" parameters="source=in"/>
+            <action execute=":SetVariable" parameters="langin=en"/>
+            <action execute=":SetVariable" parameters="langout=#@Translate.defautLang#"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\lang=af,sq,ar,be,bg,ca,zh-CN,zh-TW,hr,cs,da,nl,en,et,tl,fi,fr,gl,de,el,ht,iw,hi,hu,is,id,ga,it,ja,ko,lv,it,mk,ms,mt,no,fa,pl,pt,ro,ru,sr,sk,sl,es,sw,sv,th,tr,uk,vi,cy,yi"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\af\fulllang=Afrikaans"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\sq\fulllang=Albanian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\ar\fulllang=Arabic"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\be\fulllang=Belarusian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\bg\fulllang=Bulgarian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\ca\fulllang=Catalan"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\zh-CN\fulllang=Chinesse Simplified"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\zh-TW\fulllang=Chinesse Traditional"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\hr\fulllang=Croatian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\cs\fulllang=Czech"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\da\fulllang=Danish"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\nl\fulllang=Dutch"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\en\fulllang=English"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\de\fulllang=German"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\et\fulllang=Estonian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\tl\fulllang=Filipino"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\fi\fulllang=Finnish"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\fr\fulllang=French"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\gl\fulllang=Galician"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\de\fulllang=German"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\el\fulllang=Greek"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\ht\fulllang=Haitian Creole"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\iw\fulllang=Hebrew"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\hi\fulllang=Hindi"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\hu\fulllang=Hungarian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\is\fulllang=Icelandic"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\id\fulllang=Indonesian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\ga\fulllang=Irish"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\it\fulllang=Italian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\ja\fulllang=Japanese"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\ko\fulllang=Korean"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\lv\fulllang=Latvian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\mk\fulllang=Macedonian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\ms\fulllang=Malay"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\mt\fulllang=Maltese"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\no\fulllang=Norwegian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\fa\fulllang=Persian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\pl\fulllang=Polish"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\pt\fulllang=Portuguese"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\ro\fulllang=Romanian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\ru\fulllang=Russian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\sr\fulllang=Serbian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\sk\fulllang=Slovak"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\sl\fulllang=Slovenian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\es\fulllang=Spanish"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\sw\fulllang=Swahili"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\sv\fulllang=Swedish"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\th\fulllang=Thai"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\tr\fulllang=Turkish"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\uk\fulllang=Ukrainian"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\vi\fulllang=Vietnamese"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\yi\fulllang=Yiddish"/>
+            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\cy\fulllang=Welsh"/>
+        </event>
+				<event type="LeftRightGesture">
+				<action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,translate.xml)" />
+			</event>
+        <panel name="bg_translate">
+			
+            <icon X="0" Y="0" height="55" width="240" path="#$THEME_BASE#\Widgets\WP7translate\images\#$Variable,BColor,map,[Light-Light|defalt-Dark]#\translate.png"/>
+        </panel>
+        <row name="Row_translate" X="0" Y="55" scrollingmode="Paged" width="#@Screen.Width#" layout="Rows" rows="2">
+        <panel>
+        <panel name="Textinput">
+            <textinput X="10" Y="30" width="210" height="60" multiline="true" fonttype="12,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|defalt-255\,255\,255]#" output="GoogleTranslator.Input" default="Translate text..."/>
+        </panel>
+        <panel name="GoogleTranslator.Text" X="0" Y="155">
+            <row name="GoogleTranslator.results" layout="cols" cols="1" width="200" height="180" marginY="5">
+
+                <list name="GoogleTranslator_List" class="GoogleTranslator.Program" path="#$THROTTLE#\Plugins\Google\GoogleTranslator.dll">
+                    <param name="romanize" value="true"/>
+                    <items>
+                        <text width="180" fontcolor="#$Variable,TColor,map,[Red-229\,20\,0|Green-51\,153\,51|Blue-27\,161\,226|Orange-240\,150\,9|Lime-140\,191\,38|Teal-0\,171\,169|Magenta-255\,0\,151|Pink-230\,113\,184|Brown-153\,102\,0|Purple-162\,0\,255]#" fonttype="#@GoogleTranslator.font#,12,false" text="#$Variable,GoogleTranslator_List[#@Index#].Translation#"/>
+                    </items>
+                </list>
+            </row>
+        </panel>
+        
+        <panel X="0" Y="100" name="Lang">
+            <text name="Langin" X="5" Y="4" width="60" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|defalt-255\,255\,255]#" fonttype="9,false" 
+            text="#$Registry,HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\#$Variable,langin#\fulllang" exec=":SetVariable" params="source=in">
+                <event type="Click">
+                    <action execute=":Script" parameters="ListLang:FadeIn()"/>
+                </event>
+            </text>
+            
+            <text name="Langout" X="60" Y="4" width="80" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|defalt-255\,255\,255]#" fonttype="9,false" 
+            text="->#$Registry,HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\#$Variable,langout#\fulllang" exec=":SetVariable" params="source=out">
+                <event type="Click">
+                    <action execute=":Script" parameters="ListLang:FadeIn()"/>
+                </event>
+            </text>
+            
+            <text name="bouton" X="150" Y="0" width="90" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|defalt-255\,255\,255]#" fonttype="12,true" text="Translate">
+                <event type="Click">
+                    <action execute=":RunProcedure" parameters="GoogleTranslator.Translate()"/>
+                </event>
+            </text>
+
+        </panel>
+        
+        <panel name="ListLang" X="0" Y="125" visible="false">
+            <icon path="#$THEME_BASE#\Images\#$Variable,BColor,map,[Light-Light.png|defalt-BLACK.png]#" X="0" Y="0" height="#@Screen.Height#" width="#@Screen.Width#"/>
+            <panel X="10" Y="0"> 
+                <row scrollingmode="Kinetic" layout="Cols" cols="1" marginY="1" initPos="0" width="210" height="#$Expresion,#@Screen.Height#-205#">
+                    <for each="lang" in="#$Registry,HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\lang#">
+                        <panel height="30" width="210">
+                            <icon path="#$THEME_BASE#\Images\#$Variable,BColor,map,[Light-BLACK.png|defalt-Light.png]#" X="0" Y="0" height="30" width="210">
+                            <event type="Click">                                    
+                                <action execute=":SetVariable" parameters="lang#$Variable,source#=#@lang#"/>                                    
+                                <action execute=":Script" parameters="ListLang:Set(Visible,false)"/>                                
+                            </event>  
+                            </icon> 
+                            <text name="Langout" X="15" Y="2" fontcolor="#$Variable,BColor,map,[Light-255\,255\,255|defalt-0\,0\,0]#" fonttype="Segoe UI Light,15,true" alignment="Near" text="#$Registry,HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Translate\#@lang#\fulllang"/>
+                        </panel>
+                    </for>
+                </row>
+            </panel>        
+        </panel>
+        </panel>
+        <pagebreak/>
+        <panel>
+        <panel name="Textinput">
+            <textinput X="10" Y="30" width="200" height="18" multiline="false" fonttype="12,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|defalt-255\,255\,255]#" output="GoogleDictionary.Input" default="Dictionary"/>
+            <text name="bouton" X="150" Y="60" width="90" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|defalt-255\,255\,255]#" fonttype="12,true" text="Dictionary">
+            <event type="Click">
+                <action execute=":RunProcedure" parameters="GoogleDictionary.Define()"/>
+            </event>
+            </text>
+        </panel>
+
+        <panel>
+            <row width="240" X="0" Y="85" height="#$Expression,#@Screen.Height#-190#" marginY="3" layout="Cols" cols="1">
+                <list name="GoogleDictionary" class="GoogleTranslator.Program" path="#$THROTTLE#\Plugins\Google\GoogleTranslator.dll">
+                <param name="romanize" value="true"/>
+                <items>
+                    <if name="#@Index#" value="0" not="true">
+                        <panel>
+                            <panel width="240"/>
+                                <panel X="20" Y="4" layout="Cols" marginY="2" cols="1">
+								
+                                <text text="#$Variable,GoogleDictionary[#@Index#].Definition#" width="200" fontcolor="#$Variable,TColor,map,[Red-229\,20\,0|Green-51\,153\,51|Blue-27\,161\,226|Orange-240\,150\,9|Lime-140\,191\,38|Teal-0\,171\,169|Magenta-255\,0\,151|Pink-230\,113\,184|Brown-153\,102\,0|Purple-162\,0\,255]#" fonttype="7,false" />
+                                
+								
+								<if name="#$Variable,langout#" value="fr" not="true">
+                                    <panel marginY="2">
+                                        <text text="#$Variable,GoogleDictionary[#@Index#].Translation#" width="200" fontcolor="192,192,192" fonttype="#@GoogleDictionary.font#,7,false" />
+                                    </panel>
+                                </if>
+                            </panel>
+                        </panel>
+                    </if>
+                </items>
+            </list>
+        </row>
+    </panel>
+	       
+        <procedure name="GoogleTranslator.Translate" mode="Threaded">
+            <if name="#@GoogleTranslator.append#" value="true">
+                <then>
+                    <action execute=":ToPlugin" parameters="GoogleTranslator_List:Translate(#$Variable,GoogleTranslator.Input#,ang=#$Variable,langin#:#$Variable,langout#)"/>
+                </then>
+                <else>
+                    <action execute=":ToPlugin" parameters="GoogleTranslator_List:Translate(#$Variable,GoogleTranslator.Input#,lang=#$Variable,langin#:#$Variable,langout#,clear)"/>
+                </else>
+            </if>
+        </procedure>
+    <procedure name="GoogleDictionary.Define" mode="Threaded">
+	<if name="#@Langdefaut#" value="en" not="true">
+	<then>
+	<action execute=":ToPlugin" parameters="GoogleDictionary:Define(#$Variable,GoogleDictionary.Input#,lang=en:#@Langdefaut#)"/>
+
+	</then><else>
+	<action execute=":ToPlugin" parameters="GoogleDictionary:Define(#$Variable,GoogleDictionary.Input#)"/>
+	</else></if>
+	</procedure>
+      
+      
+    </panel>
+    </row>
+ 
+    </panel>
+</root> 

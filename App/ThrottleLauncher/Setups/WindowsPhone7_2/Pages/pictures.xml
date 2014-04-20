@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<event type="LeftRightGesture">
+		<action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,pictures.xml)" />
+	</event>
+		<panel name="bg_MainPictures">
+			<list name="RandomPictureGeneratorBack" class="UtilPlugins.RandomFile" path="#$THROTTLE#\Plugins\Util\UtilPlugins.dll">
+				<param name="folder" value="#@RandomPicture.path#"/>
+				<param name="pattern" value="#@RandomPicture.filter#"/>
+				<param name="updatetime" value="0"/>
+				<param name="number" value="1"/>
+				<items>
+					<icon name="pictures_bg" path=":Thumb:#$Variable,RandomPictureGeneratorBack[#@Index#].FullName#:?:#@Screen.Height#"/>
+				</items>
+			</list>
+		</panel>
+	
+	<icon X="0" Y="58" path="#$THEME_BASE#\Images\degraded.png" width="#@Screen.Width#" height="32"/>
+	<icon X="0" Y="90" path="#$THEME_BASE#\Images\dark_pixel.png" width="#@Screen.Width#" height="#$Expresion,#@Screen.Height#-90#"/>
+	<panel name="PicsContainer" X="0" Y="#@Screen.Height#">
+		<row name="Row_MainPictures" marginX="5" marginY="2" rows="#$Value,#@Screen.Height#,map,[400-4|800-4|default-3]#" scrollingmode="Paged" backgrounditem="bg_MainPictures" width="#@Screen.Width#" height="-120">
+			<images path="#@RandomPicture.path#" height="54" pattern="#@RandomPicture.filter#"/>
+		</row>
+	</panel>
+  		<!--pictures Toolbar-->
+		<row name="Toolbar_pictures" X="0" Y="#$Expresion,#@Screen.Height# - 10#" layout="Free" width="#@Screen.Width#" height="45" scrollingmode="None">
+			<icon X="0" Y="0" width="#@Screen.Width#" height="45" path="#$THEME_BASE#\Images\Toolbar_bg.png"/> 
+			<icon X="214" Y="3" width="13" height="3" path="#$THEME_BASE#\Images\threedots.png"/>
+			<icon name="TbUp_pictures" X="200" Y="0" width="40" height="45" visible="true">
+				<event type="Click">
+					<action execute=":RunProcedure" parameters="ShowToolbar(pictures)"/>
+				</event>
+	   	 	</icon> 
+			<icon name="TbDown_pictures" X="200" Y="0" width="40" height="45" visible="false">
+				<event type="Click">
+					<action execute=":RunProcedure" parameters="HideToolbar(pictures)"/>
+				</event>
+	   	 	</icon> 
+	   	 	<panel name="ToolbarIcons_pictures" X="40" Y="10" layout="Rows" rows="1" marginX="20" marginY="0"> 
+				<icon name="Start" width="25" height="25" path="#$THEME_BASE#\Images\photo.png">
+					<event type="Click">
+						<action execute="camera.exe" parameters=""/>
+						<action execute=":RunProcedure" parameters="HideToolbar(pictures)"/>
+					</event>
+	   	 		</icon> 
+				<icon name="backhome" width="25" height="25" path="#$THEME_BASE#\Images\home.btn.png">
+					<event type="Click">
+       					<action execute=":RunProcedure" parameters="ShowHidePanel(Tiles,MainPictures)" />
+						<action execute=":RunProcedure" parameters="HideToolbar(pictures)"/>
+					</event>
+	   	 		</icon> 
+				<icon name="first" width="25" height="25" path="#$THEME_BASE#\Images\first.btn.png">
+					<event type="Click">
+		  	 			<action execute=":Script" parameters="Row_MainPictures:Set(PageX,0)"/>
+						<action execute=":RunProcedure" parameters="HideToolbar(pictures)"/>
+					</event>
+	   	 		</icon> 
+				<icon name="Update" width="25" height="25" path="#$THEME_BASE#\Images\update.btn.png">
+					<event type="Click">
+		  	 			<action execute=":Script" parameters="PicsContainer:Reload()"/>
+						<action execute=":RunProcedure" parameters="HideToolbar(pictures)"/>
+		  	 			<action execute=":Script" parameters="bg_MainPictures:Reload()"/>
+						<action execute=":Script" parameters="pictures_label:GoTo(0,20)"/>		
+					</event>
+	   	 		</icon> 
+	   	 	</panel> 
+          </row>
+ </root> 

@@ -1,0 +1,39 @@
+FaceBook Plugin
+==================
+- Description: Allows FaceBook information from ThrottleLauncher widgets and pages.
+- Requirements: ThrottleLauncher RC2 or greatter
+
+For Theme/Widgets Developers
+============================
+- You can include the facebook plugin by using the list tag as follows:
+	<list name="FacebookFriends" class="TLPlugins.FaceBookPlugin" path="#$THROTTLE#\Plugins\Facebook\FaceBook.dll">
+	....
+	</list>
+
+- Inside the list item you will have to place the apropiate parameters specifying, wich data to aquire using the following sintax:
+	<list name="FacebookFriends" class="TLPlugins.FaceBookPlugin" path="#$THROTTLE#\Plugins\Facebook\FaceBook.dll">
+		<param name="type" value="Friends"/>
+		<param name="updatetime" value="10"/>
+	</list>
+
+- updatetime means the time to update in minutes.
+- The available options for the type parameter are: 
+	- Events: will create a row with the info for each event on your facebook account: Creator,Description,EndDate,StartDate,Host, Location,Name
+	- Friends: will fill a row for each friend on your account will the following info: 
+AboutMe, Activities, Birthday, Books, CurrentLocation, FirstName, HometownLocation, Interests, LastName, Movies, Music, Name, Quotes, Religion, Sex, TVShows, UserId, ProfileUrl
+	- Info: will fill a single row with this data: EventInvites,FriendRequests,GroupInvites,UnreadMessageCount,UnreadPokeCount,UnreadPokeCount
+	- FriendRequests: will load a row with a 'Text' field representing each friend request.
+	- EventInvites: will load a row with a 'Text' field representing each event invitation.
+	- GroupInvites: will load a row with a 'Text' field representing each group join invites.
+
+- To render each row of data you will have to fill the list items tag as follows:
+	<list name="FacebookFriends" class="TLPlugins.FaceBookPlugin" path="#$THROTTLE#\Plugins\Facebook\FaceBook.dll">
+		<param name="url" value="http://www.throttlelauncher.com/portal/index.php?format=feed&amp;type=rss"/>
+		<param name="type" value="Friends"/>
+		<items>
+			<text width="200" height="19" alignment="Near" text="#$Variable,FacebookFriends[#@Index#].Name# #$Variable,FacebookFriends[#@Index#].FirstName# #$Variable,FacebookFriends[#@Index#].LastName#" fontcolor="255,255,255" fonttype="10,false"/>
+		</items>
+	</list>
+
+Note that inside the items tag you can place any TL code and it will be repeated for each row in the list replacing all the text using hte syntax #$Variable,LISTNAME[#@Index#].COLUMNNAME# by the corresponding value.
+	

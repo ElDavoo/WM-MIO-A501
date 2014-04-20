@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <param name="rowbackimage" value="result.png"/>
+  <!--<param name="rowtexture" value="result.png"/>-->
+</root>

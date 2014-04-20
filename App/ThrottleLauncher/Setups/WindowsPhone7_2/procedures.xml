@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+
+	<!--General procedures-->
+	<procedure name="ShowHidePanel" parameters="FirstPage,SecondPage">
+		<if name="#$ItemInfo,#@FirstPage#:X#" value="0"> 
+		<then>
+			<action execute=":Script" parameters="#@FirstPage#:GoTo(-#@Screen.Width#,0)"/>
+			<action execute=":Script" parameters="#@FirstPage#:FadeOut()"/>
+			<action execute=":Script" parameters="#@SecondPage#:FadeIn()"/>
+			<action execute=":Script" parameters="bg_#@SecondPage#:GoTo(0,0)"/>
+			<action execute=":Script" parameters="#@SecondPage#:GoTo(0,0)"/>
+			<action execute=":RunProcedure" parameters="#@FirstPage#_OnUnload()"/>
+			<action execute=":RunProcedure" parameters="#@SecondPage#_OnLoad()"/>
+		</then>
+		<else>
+			<action execute=":RunProcedure" parameters="#@FirstPage#_OnLoad()"/>
+			<action execute=":RunProcedure" parameters="#@SecondPage#_OnUnload()"/>
+			<action execute=":Script" parameters="Row_#@SecondPage#:Set(PageX,0)"/>
+			<action execute=":Script" parameters="#@SecondPage#:GoTo(#@Screen.Width#,0)"/>
+			<action execute=":Script" parameters="bg_#@SecondPage#:GoTo(#@Screen.Width#,0)"/>
+			<action execute=":Script" parameters="#@FirstPage#:GoTo(0,0)"/>		
+			<action execute=":Script" parameters="#@FirstPage#:FadeIn()"/>
+			<action execute=":Script" parameters="#@SecondPage#:FadeOut()"/>
+		</else>
+  		</if>
+ 	</procedure>
+
+	<!--Header transition-->
+	<procedure name="ShowHideHeader" mode="Threaded" parameters="">
+		<if name="#$ItemInfo,Header:Y#" value="0"> 
+		<then>
+		<action execute=":Script" parameters="Header:GoToTime(0,10,200)" take="200"/>
+		<action execute=":Script" parameters="Header:GoToTime(0,-17,200)"/>
+		</then>
+		<else>
+		<action execute=":Script" parameters="Header:GoToTime(0,10,200)" take="200"/>
+		<action execute=":Script" parameters="Header:GoToTime(0,0,200)"/>
+		</else>
+  		</if>
+ 	</procedure>
+	<!--Toolbar transition-->
+	<procedure name="ShowToolbar" mode="Threaded" parameters="Name">
+	 	<action execute=":Script" parameters="TbUp_#@Name#:Set(Visible,false)"/>
+	 	<action execute=":Script" parameters="TbDown_#@Name#:Set(Visible,true)"/>
+		<action execute=":Script" parameters="Toolbar_#@Name#:GoTo(0,#$Expresion,#@Screen.Height# - 45#)"/>
+		<action execute=":Script" parameters="ToolbarIcons_#@Name#:GoTo(40,0)" take="400"/>
+		<action execute=":Script" parameters="ToolbarIcons_#@Name#:GoToTime(40,10,300)"/>
+	</procedure>
+	<procedure name="HideToolbar" mode="Threaded" parameters="Name">
+		<action execute=":Script" parameters="TbUp_#@Name#:Set(Visible,true)"/>
+		<action execute=":Script" parameters="TbDown_#@Name#:Set(Visible,false)"/>
+		<action execute=":Script" parameters="Toolbar_#@Name#:GoTo(0,#$Expresion,#@Screen.Height# - 10#)"/>
+		<action execute=":Script" parameters="ToolbarIcons_#@Name#:GoToTime(40,45,100)"/>
+	</procedure>
+
+	<!--Onload and unload procedures-->
+	<procedure name="Tiles_OnLoad" mode="Threaded" parameters="">
+		<action execute=":RunProcedure" parameters="HideToolbar(home)"/>
+		<action execute=":Script" parameters="arrow:GoToTime(#$Expresion,#@Screen.Width# - 35#,50,300)"/>
+	</procedure>
+	<procedure name="Tiles_OnUnload" mode="Threaded" parameters="">
+		<action execute=":Script" parameters="Toolbar_home:GoTo(-#@Screen.Width#,#$Expresion,#@Screen.Height# - 10#)"/>
+		<action execute=":Script" parameters="arrow:GoToTime(-35,70,300)"/>
+	</procedure>
+
+	<procedure name="people.xml_OnLoad" mode="Threaded" parameters="">
+		<action execute=":Script" parameters="people_label:GoToTime(0,20,700)"/>		
+		<action execute=":Script" parameters="Row_MainPeople:GoToTime(0,#$Expresion,#@Screen.Height# - 190#,700)"/>		
+		<if name="#@ContactsMode#" value="Animated_Name"> 
+			<action execute=":RunProcedure" parameters="ShowHideContact(#@Index#,#$Expresion,rnd(500) + 2000#)"/>
+		</if>
+	</procedure>
+	<procedure name="people.xml_OnUnload" mode="Threaded" parameters="">
+		<action execute=":Script" parameters="people_label:GoToTime(0,-77,200)"/>		
+		<action execute=":Script" parameters="Row_MainPeople:GoToTime(0,#@Screen.Height#,200)"/>		
+	</procedure>
+
+	<procedure name="pictures.xml_OnLoad" mode="Threaded" parameters="">
+		<action execute=":Script" parameters="pictures_label:GoToTime(0,20,700)"/>		
+		<action execute=":Script" parameters="PicsContainer:GoToTime(0,100,700)"/>		
+	</procedure>
+	<procedure name="pictures.xml_OnUnload" mode="Threaded" parameters="">
+		<action execute=":Script" parameters="pictures_label:GoToTime(#@Screen.Width#,20,200)"/>		
+		<action execute=":Script" parameters="PicsContainer:GoToTime(0,#@Screen.Height#,200)"/>		
+	</procedure>
+
+	<procedure name="games.xml_OnLoad" mode="Threaded" parameters="">
+		<action execute=":Script" parameters="collection_label:GoToTime(20,#$Expresion,#@Screen.Height# - 260#,400)"/>		
+		<action execute=":Script" parameters="games_label:GoToTime(0,20,700)"/>		
+		<action execute=":Script" parameters="XBavatar:GoToTime(#$Expresion,#@Screen.Width# - 120#,75,700)"/>		
+		<action execute=":Script" parameters="GamesContainer:GoToTime(0,#$Expresion,#@Screen.Height# - 220#,700)"/>		
+	</procedure>
+	<procedure name="games.xml_OnUnload" mode="Threaded" parameters="">
+		<action execute=":Script" parameters="collection_label:GoToTime(#@Screen.Width#,#$Expresion,#@Screen.Height# - 260#,200)"/>		
+		<action execute=":Script" parameters="games_label:GoToTime(0,-77,200)"/>		
+		<action execute=":Script" parameters="XBavatar:GoToTime(#$Expresion,#@Screen.Width# - 120#,#@Screen.Height#,200)"/>		
+		<action execute=":Script" parameters="GamesContainer:GoToTime(#@Screen.Width#,#$Expresion,#@Screen.Height# - 220#,200)"/>		
+	</procedure>
+
+	<!--Clock format-->
+	<procedure name="ChangeClockFormat" parameters="">
+		<if name="#@clockformat#" value="12"> 
+		<then>
+  	      	<action execute=":SetConfigVar" parameters="clockformat=24"/>
+ 			<action execute=":Script" parameters="TaskbarClock:Reload()"/>		
+			<action execute=":Script" parameters="Clockconfig:Reload()"/>		
+		</then>
+		<else>
+ 	      	<action execute=":SetConfigVar" parameters="clockformat=12"/>
+ 			<action execute=":Script" parameters="TaskbarClock:Reload()"/>		
+			<action execute=":Script" parameters="Clockconfig:Reload()"/>		
+		</else>
+  		</if>
+	</procedure>
+
+</root> 

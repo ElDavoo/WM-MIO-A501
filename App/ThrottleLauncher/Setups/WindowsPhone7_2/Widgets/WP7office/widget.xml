@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<panel name="Office" height="90" width="90">
+	<configuration name="WP7office"
+			description="Office Tile"
+			minthrottleversion="1.0"
+			comments="v0.2"
+			createdby="Casey_boy">
+			<variables>
+				<var name="width" description="#L:Width#" default="185" type="integer(10,400)" />
+				<var name="Docs" description="#L:Documents#" default="" type="separator" />
+				<var name="Doc1" description="#L:Select File 1#" default="" type="path(*.doc,*.docx,*.txt,*.xls,*.xlsx,*.ppt,*.pptx,*.one,*.pdf)" />
+				<var name="Doc1n" description="#L:Filename 1#" default="" type="string" />
+				<var name="Doc2" description="#L:Select File 2#" default="" type="path(*.doc,*.docx,*.txt,*.xls,*.xlsx,*.ppt,*.pptx,*.one,*.pdf)" />
+				<var name="Doc2n" description="#L:Filename 2#" default="" type="string" />
+				<var name="Doc3" description="#L:Select File 3#" default="" type="path(*.doc,*.docx,*.txt,*.xls,*.xlsx,*.ppt,*.pptx,*.one,*.pdf)" />
+				<var name="Doc3n" description="#L:Filename 3#" default="" type="string" />
+				<var name="Doc4" description="#L:Select File 4#" default="" type="path(*.doc,*.docx,*.txt,*.xls,*.xlsx,*.ppt,*.pptx,*.one,*.pdf)" />
+				<var name="Doc4n" description="#L:Filename 4#" default="" type="string" />
+				<var name="Cloud" description="#L:Online Services#" default="" type="separator" />
+				<var name="cloud1" description="#L:Address 1#" default="skydrive.live.com" type="string" />
+				<var name="cloud1n" description="#L:Name 1#" default="SkyDrive" type="string" />
+				<var name="cloud2" description="#L:Address 2#" default="workspace.officelive.com" type="string" />
+				<var name="cloud2n" description="#L:Name 2#" default="Microsoft Office Live Workspace" type="string" />
+				<var name="cloud3" description="#L:Address 3#" default="docs.google.com" type="string" />
+				<var name="cloud3n" description="#L:Name 3#" default="Google Docs" type="string" />
+			</variables>
+	</configuration>
+	
+	<icon height="90" width="90" path="#$THEME_BASE#\Widgets\WP7office\of_bg.png"/>
+    <panel name="office" height="90" width="90">
+		<icon name="officetext" X="28" Y="8" width="40" height="40" path="#$THEME_BASE#\Widgets\WP7office\office_logo.png"/>
+		<text X="54" Y="53" height="30" width="180" alignment="Near" text="Microsoft" fontcolor="255,255,255" fonttype="Segoe UI Light,6,true"/>
+		<text X="8" Y="47" height="40" width="180" alignment="Near" text="Office" fontcolor="255,255,255" fonttype="Segoe UI Light,22,true"/>
+	</panel>
+	<event type="Click">
+		<action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,office.xml)" />
+	</event>
+</panel>

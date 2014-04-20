@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+ <param name="trasparency" value="true"/>
+  <!-- Page general back color -->
+  <param name="pagebackcolor" value="0,0,0"/>
+  <!-- Page general back color -->
+  <param name="rowbackcolor" value="0,0,0"/>
+  <param name="rowbackimage" value="back.png"/>
+  <!-- Texture (remove to use backcolors) -->
+  <!-- Buttons back image -->
+  <!-- Buttons back added margin -->
+  <param name="iconfontstyle" value="7,False"/>
+  <param name="icontextmaxlength" value="10"/>
+  <param name="icontextspacing" value="0"/>
+  <param name="showselectedpage" value="True" />
+  <param name="doubleclick" value="true" />
+  <param name="selectionimage" value="sel.png"/>  
+  <!-- Font style (format: "size,bold")-->
+  <param name="fontstyle" value="10,False"/>
+  <!-- Lines color -->
+  <param name="linecolor" value="0,0,0"/>
+  <!-- Text color -->
+  <param name="textcolor" value="225,225,225"/>
+  <!-- OSD Text color -->
+  <param name="osdtextcolor" value="200,200,200"/>
+  <!-- OSD BackColor -->
+  <!-- Font style (format: "size,bold")-->
+  <param name="osdfontstyle" value="12,True"/>
+  <param name="paintline" value="false"/>
+</root>

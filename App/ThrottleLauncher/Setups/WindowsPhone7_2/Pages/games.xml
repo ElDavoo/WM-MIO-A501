@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+
+	<event type="LeftRightGesture">
+        <action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,games.xml)" />
+	</event>
+
+	<panel name="bg_MainGames" height="#@Screen.Height#" width="400" layout="Free">
+		<icon X="0" Y="0" height="#@Screen.Height#" width="520" path="#$THEME_BASE#\Images\backgames.png"/>
+		<icon X="20" Y="40" height="263" width="212" path="#$THEME_BASE#\Images\ovals.png"/>
+		<icon X="240" Y="80" height="263" width="212" path="#$THEME_BASE#\Images\ovals.png"/>
+		<icon name="games_label" X="0" Y="-77" height="77" width="289" path="#$THEME_BASE#\Images\#$Variable,BColor#\games.png"/>
+		<icon name="collection_label" X="#@Screen.Width#" Y="#$Expresion,#@Screen.Height# - 300#" height="29" width="159" path="#$THEME_BASE#\Images\collection.png"/>
+		<icon name="XBavatar" X="#$Expresion,#@Screen.Width# - 120#" Y="#@Screen.Height#" height="289" width="148" path="#$Variable,avatar#"/>
+	</panel>
+
+		<icon X="#$Expresion,#@Screen.Width# - 27#" Y="22" width="22" height="22" path="#$THEME_BASE#\Images\Light\Add.png">
+			<event type="Click">
+				<action execute=":apps2cat" parameters="FavGames"/>
+			</event>
+		</icon> 
+	
+	<panel name="GamesContainer" Y="20">
+		<row name="Row_MainGames" X="2" Y="0" Height="#@Screen.Height#" scrollingmode="Paged" backgrounditem="bg_MainGames" marginX="5" marginY="5" rows="3" width="#@Screen.Width#">
+			<applications category="FavGames" showsubcategories="false" >
+			    <panel X="0" Y="0" width="75" height="64">
+				<icon exec="#@Execute#" params="#@Parameters#" path="#$THEME_BASE#\Images\box.png" height="64" width="75"/>
+		    		<icon X="5" Y="15" width="60" height="60" path="#@Icon#" exec="#@Execute#" params="#@Parameters#" name="#@Name#"/>
+		  	        <text X="0" Y="3" height="15" width="75" alignment="Center" text="#@Name#" fontcolor="0,0,0" fonttype="Segoe UI Light,7,false"/>
+			    </panel>
+			</applications>	
+
+		   	<applications category="Programs/Games" showsubcategories="true">
+			    <panel X="0" Y="0" width="75" height="64">
+				<icon exec="#@Execute#" params="#@Parameters#" path="#$THEME_BASE#\Images\box.png" height="64" width="75"/>
+		    		<icon X="5" Y="15" width="60" height="60" path="#@Icon#" exec="#@Execute#" params="#@Parameters#" name="#@Name#"/>
+		  	        <text X="0" Y="3" height="15" width="75" alignment="Center" text="#@Name#" fontcolor="0,0,0" fonttype="Segoe UI Light,7,false"/>
+			    </panel>
+		   	</applications>
+		</row>
+	</panel>
+</root> 

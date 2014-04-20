@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NewDataSet>
+  <Root>
+    <VER>1.0.0.2</VER>
+      <RPN id="1.1" name="Resco Contact Manager" description="version 2.05">
+      <attribute name="RPN" value="i 0 == 23775 * key + c 223 &amp; i 205 + * + c 223 &amp; 17 % 1 + * 256 |">
+      </attribute>
+      <attribute name="WHO" value="Tyra/RCAPDA 2010">
+      </attribute>
+      </RPN>  
+      <RPN id="0" name="Resco Explorer 2010" description="version 7.XX">
+      <attribute name="RPN" value="i 0 == 23753 * key + c 255 &amp; i 600 + * + c 255 &amp; 31 % 1 + * 256 |">
+      </attribute>
+      <attribute name="WHO" value="Tyra">
+      </attribute>
+      </RPN>
+      <RPN id="0" name="Resco Explorer and Resco Keyboard Pro" description="version X.XX">
+      <attribute name="RPN" value="i 0 == 23753 * key + c 255 &amp; i 600 + * + c 255 &amp; 31 % 1 + * 256 |">
+      </attribute>
+      <attribute name="WHO" value="Tyra">
+      </attribute>
+      </RPN>
+      <RPN id="0" name="Resco Photo Manager Professional" description="version 7.xx">
+      <attribute name="RPN" value="i 0 == 12767 * key + c 223 &amp; i 710 + * + c 223 &amp; 59 % 1 + * 256 |">
+      </attribute>
+      <attribute name="WHO" value="Tyra/RCAPDA 2010">
+      </attribute>
+      </RPN>
+      <RPN id="1" name="Resco Photo Manager Standard" description="version 7.xx">
+      <attribute name="RPN" value="i 0 == 23753 * key + c 255 &amp; i 600 + * + c 255 &amp; 31 % 1 + * 256 |">
+      </attribute>
+      <attribute name="WHO" value="Tyra/RCAPDA 2010">
+      </attribute>
+      </RPN>
+      <RPN id="0" name="Resco Keyboard Pro" description="version 6.XX">
+      <attribute name="RPN" value="i 0 == 33763 * key + c 223 &amp; i 600 + * + c 223 &amp; 27 % 1 + * 256 |">
+      </attribute>
+      <attribute name="WHO" value="Tyra">
+      </attribute>
+      </RPN>
+      <RPN id="0" name="Resco Pocket Radio" description="version 1.9X">
+      <attribute name="RPN" value="i 0 == 33783 * key + c 255 &amp; i 600 + * + c 255 &amp; 17 % 1 + * 256 |">
+      </attribute>
+      <attribute name="WHO" value="Tyra">
+      </attribute>
+      </RPN>
+      <RPN id="0" name="Resco Audio Recorder" description="version 4.XX">
+      <attribute name="RPN" value="i 0 == 7685 * key + c 223 &amp; i 450 + * + c 223 &amp; 73 % 1 + * 256 |">
+      </attribute>
+      <attribute name="WHO" value="Tyra">
+      </attribute>
+      </RPN>
+      <RPN id="1" name="Resco Backup" description="version 1.x">
+      <attribute name="RPN" value="i 0 == 28307 * key + c 255 &amp; i 100 + * + c 255 &amp; 23 % 1 + * 256 |">
+      </attribute>
+      <attribute name="WHO" value="Tyra">
+      </attribute>
+   </RPN>
+ </Root>
+</NewDataSet>

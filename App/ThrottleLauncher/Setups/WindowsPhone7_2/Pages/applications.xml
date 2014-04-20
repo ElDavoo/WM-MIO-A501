@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<!--event type="PageShow">
+		<action execute=":Script" parameters="TASKBAR:Set(Height,0)"/>
+		<action execute=":Script" parameters="black:Set(Visible,false)"/>
+	</event>
+	<event type="PageHide">
+		<action execute=":Script" parameters="TASKBAR:Set(Height,25)"/>
+	</event-->
+	<event type="LeftRightGesture">
+        <action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,applications.xml)" />
+	</event>
+	<panel name="applicationsbackground" X="0 " Y="0" height="#@Screen.Height#" width="#@Screen.Width#" layout="Free">
+		<icon X="0" Y="0" height="#@Screen.Height#" width="#@Screen.Width#" path="#$THEME_BASE#\Images\Applications\backgroundoffice.png"/>
+		 <icon X="5" Y="5" height="69" width="181" path="#$THEME_BASE#\Images\Applications\Appli-header.png"/> 
+	</panel>		
+	<panel>
+	<row scrollingmode="Paged" layout="Cols" cols="3" width="#@Screen.Width#" height="#@Screen.Height#" X="0" Y="60" >
+
+	<panel >
+		<text X="10" Y="-20" 
+				    height="40" width="180" 
+				    alignment="Near" 
+				    text="Applications" 
+				    fontcolor=" 255,140,0" 
+				    fonttype="Segoe UI Light,24,false"
+		/>
+		
+		<icon X="10" Y="40" height="30" width="30" exec="\Windows\Menu Démarrer\Programmes\Tools\File Explorer.lnk" path="#$THEME_BASE#\Images\Applications\explorer2.png"/>
+		<text X="50" Y="42" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="File Explorer" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="\Windows\Menu Démarrer\Programmes\Tools\File Explorer.lnk"
+		/>
+		
+		<icon X="10" Y="80" height="30" width="30" exec="\Windows\Menu Démarrer\Programmes\Tools\ArkSwitch.lnk" path="#$THEME_BASE#\Images\Applications\arkswitch.png"/>
+		<text X="50" Y="82" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="ArcSwitch" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="\Windows\Menu Démarrer\Programmes\Tools\ArcSwitch.lnk"
+		/>
+		
+		<icon X="10" Y="120" height="30" width="30" exec="\Windows\Menu Démarrer\Programmes\Office Mobile\eWallet.lnk" path="#$THEME_BASE#\Images\Applications\ewallet.png"/>
+		<text X="50" Y="122" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="eWallet" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="\Windows\Menu Démarrer\Programmes\Office Mobile\eWallet.lnk"
+		/>
+		
+		<icon X="10" Y="160" height="30" width="30" exec="\Windows\Menu Démarrer\Programmes\Tools\Sprite Backup.lnk" path="#$THEME_BASE#\Images\Applications\sprite.png"/>
+		<text X="50" Y="162" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="Sprite Backup" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="\Windows\Menu Démarrer\Programmes\Tools\Sprite Backup.lnk"
+		/>
+		
+		<icon X="10" Y="200" height="30" width="30" exec="\Windows\Menu Démarrer\Programmes\Tools\Flashlight.lnk" path="#$THEME_BASE#\Images\Applications\Torch.png"/>
+		<text X="50" Y="202" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="Lampe Torche" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="\Windows\Menu Démarrer\Programmes\Tools\Lampe Torche.lnk"
+		/>
+	</panel>
+	<panel >
+		<text X="10" Y="-20" 
+				    height="40" width="180" 
+				    alignment="Near" 
+				    text="Internet" 
+				    fontcolor=" 255,140,0" 
+				    fonttype="Segoe UI Light,24,false"
+		/>
+		
+		<icon X="10" Y="40" height="30" width="30" exec="\Windows\Menu Démarrer\Programmes\Internet\opera.lnk" path="#$THEME_BASE#\Images\Applications\opera.png"/>
+		<text X="50" Y="42" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="Opéra" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="\Windows\Menu Démarrer\Programmes\Internet\opera.lnk"
+		/>
+		
+		<icon X="10" Y="80" height="30" width="30" exec="\Windows\Menu Démarrer\Programmes\Internet\Skype.lnk" path="#$THEME_BASE#\Images\Applications\Skype.png"/>
+		<text X="50" Y="82" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="Skype Mobile" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="\Windows\Menu Démarrer\Programmes\Internet\Skype.lnk"
+		/>
+		
+		<icon X="10" Y="120" height="30" width="30" exec="\Windows\Menu Démarrer\Programmes\Internet\Faceboot.lnk" path="#$THEME_BASE#\Images\Applications\Facebook.png"/>
+		<text X="50" Y="122" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="Facebook" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="\Windows\Menu Démarrer\Programmes\Internet\Facebook.lnk"
+		/>
+		
+		<icon X="10" Y="160" height="30" width="30" exec="\Windows\Menu Démarrer\Programmes\Internet\Messenger.lnk" path="#$THEME_BASE#\Images\Applications\Messenger.png"/>
+		<text X="50" Y="162" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="Messenger" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="\Windows\Menu Démarrer\Programmes\Internet\Messenger.lnk"
+		/>
+	</panel>
+	<panel >
+		<text X="10" Y="-20" 
+				    height="40" width="180" 
+				    alignment="Near" 
+				    text="GPS Applics" 
+				    fontcolor=" 255,140,0" 
+				    fonttype="Segoe UI Light,24,false"
+		/>
+		
+		<icon X="10" Y="40" height="30" width="30" exec="\Windows\Menu Démarrer\Programmes\GPS\TomTom Navigator.lnk" path="#$THEME_BASE#\Images\Applications\TomTomNavigator.png"/>
+		<text X="50" Y="42" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="TomTom Navigator" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="\Windows\Menu Démarrer\Programmes\GPS\TomTom Navigator.lnk"
+		/>
+		
+		<icon X="10" Y="80" height="30" width="30" exec="\Windows\Menu Démarrer\Programmes\GPS\Metro.lnk" path="#$THEME_BASE#\Images\Applications\Metro.png"/>
+		<text X="50" Y="82" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="Metro" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="\Windows\Menu Démarrer\Programmes\GPS\Metro.lnk"
+		/>
+		
+		<icon X="10" Y="120" height="30" width="30" exec="\Windows\Menu Démarrer\Programmes\GPS\Google Maps.lnk" path="#$THEME_BASE#\Images\Applications\GoogleMaps.png"/>
+		<text X="50" Y="122" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="Google Maps" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="\Windows\Menu Démarrer\Programmes\GPS\Google Maps.lnk"
+		/>
+		
+		<icon X="10" Y="160" height="30" width="30" exec="\Windows\Menu Démarrer\Programmes\GPS\Digital Compass.lnk" path="#$THEME_BASE#\Images\Applications\compass.png"/>
+		<text X="50" Y="162" 
+			height="30" width="#$Expression,#@Screen.Width#-80"
+			alignment="Near" 
+			text="Boussole" 
+			fontcolor="102,102,102" 
+			fonttype="Segoe UI Light,16,false"
+			exec="\Windows\Menu Démarrer\Programmes\GPS\Digital Compass.lnk"
+		/>
+	</panel>
+	</row>
+</panel>
+</root> 

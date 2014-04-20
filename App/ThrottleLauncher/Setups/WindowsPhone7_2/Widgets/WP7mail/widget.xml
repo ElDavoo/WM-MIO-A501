@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<panel name="mail" height="90" width="90">
+	<configuration name="WP7mail"
+			description="mail Tile"
+			minthrottleversion="1.0"
+			comments="Thanks to Fireslave for all his hard work on this theme"
+			createdby="defante">
+			<variables>
+				<var name="EmailActive" description="" default="false" type="string" />
+				<var name="MailAccountCurrent" description="" default="ActiveSync" type="string" />
+				<var name="mail_conf" description="#L:Mail#" default="" type="separator" />
+				<var name="WP7MailAccount" description="#L:Mail account#" default="ActiveSync" type="multiplemailchooser" />
+				<var name="EmailMaxItems" description="#L:Email Max items#" default="10" type="integer(1,20)" />
+			</variables>
+	</configuration>
+	<event type="Load">
+		<for each="MailAcountVar" in="#@WP7mail.WP7MailAccount#">
+			<action execute=":SetVariable" parameters="WP7MailAccount#@index#=#@MailAcountVar#"/>
+		</for>
+		<action execute=":SetVariable" parameters="MailAccountCurrent=#$Variable,WP7MailAccount0#"/>
+		<action execute=":ToPlugin" parameters="WP7email:#$Variable,MailAccountCurrent# Refresh"/>
+	</event>
+	<icon height="90" width="90" path="#$THEME_BASE#\Images\#$Variable,TColor#.png"/>
+	<icon height="90" width="90" path="#$THEME_BASE#\Widgets\WP7mail\images\UEmails_#$reg,HKEY_CURRENT_USER\System\State\Messages\TotalEmail\Unread\Count,map,[0-0|default-1]#.png"/> 
+	<text X="0" Y="0" name="Unread email" height="90" width="90" alignment="Near" leftmargin="47" topmargin="27" textimagesscale="0.5" textimages="#$THEME_BASE#\Images\Numbers\#$char#.png" text="#$reg,HKEY_CURRENT_USER\System\State\Messages\TotalEmail\Unread\Count,map,[0-]#"/>
+	<text X="10" Y="73" height="15" width="78" alignment="Near" text="#$Variable,MailAccountCurrent#" fontcolor="255,255,255" fonttype="Segoe UI Light,8,true"/>
+	<event type="Click">
+		<action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,email.xml)"/>
+	</event>
+</panel>

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <param name="trasparency" value="true"/>
+  <param name="rowbackimage" value="back.png"/>
+  <param name="paintline" value="false"/>
+  <param name="textcolor" value="128,128,128"/>
+
+</root>

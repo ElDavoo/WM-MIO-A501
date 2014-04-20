@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<root>
+	<event type="LeftRightGesture">
+
+		<action execute=":RunProcedure" parameters="ShowHidePanel(Tiles,info.xml)" />
+
+	</event>
+
+
+	<event type="GlobalChange" parameters="#$SystemState,PowerBatteryStrength#">
+		<action execute=":Script" parameters="Info_Battery:Reload()"/>
+	</event>
+	<event type="GlobalChange" parameters="#$SystemState,FreeMemoryPercent#">
+		<action execute=":Script" parameters="Info_Memory:Reload()"/>
+	</event>
+	<event type="GlobalChange" parameters="#$SystemState,FreeDeviceStoragePercent#">
+		<action execute=":Script" parameters="Info_InternalStorage:Reload()"/>
+	</event>
+	<event type="GlobalChange" parameters="#$SystemState,FreeStorageCardPercent#">
+		<action execute=":Script" parameters="Info_StorageCard:Reload()"/>
+	</event>
+
+	<panel name="infobackground" X="0 " Y="20" layout="Free">
+		<icon X="5" Y="0" height="48" width="198" path="#$THEME_BASE#\Images\T-system.png"/>
+
+
+	</panel>
+
+
+		<row name="SysInfo" X="10" Y="80" layout="Cols" cols="1" scrollingmode="Kinetic" width="#$Expresion,#@Screen.Width#-15#" height="#$Expresion,#@Screen.Height#-100#">
+			<panel name="Info_Battery" display="Icon">
+				<event type="Click">
+					<action execute="ctlpnl.exe" parameters="cplmain.cpl,3"/>
+				</event>
+
+				<panel X="15" Y="55">
+				<icon X="0" Y="0" height="6" width="170" path="#$THEME_BASE#\Images\white.png"/>
+				<if name="#$Expression,#$SystemState,PowerBatteryStrength# &gt; 15#" value="1">
+				<then>
+					<icon X="1" Y="1" height="4" width="#$Expression, int(198 * #$SystemState,PowerBatteryStrength# / 100) - 30#" path="#$THEME_BASE#\Images\Blue.png"/>
+				</then>
+				<else>
+					<icon X="1" Y="1" height="4" width="#$Expression, int(198 * #$SystemState,PowerBatteryStrength# / 100) - 30#" path="#$THEME_BASE#\Images\Red.png"/>
+				</else>
+				</if>
+				</panel>
+
+				<text X="0" Y="0" alignment="Near" width="200" height="45" text="battery" fontcolor="150,150,150" fonttype="Segoe UI Light,16,false"/>			
+				<text X="15" Y="25" alignment="Near" width="200" height="45" text="#$SystemState,PowerBatteryStrength#%" fontcolor="255,255,255" fonttype="Segoe UI Light,13,false"/>
+			</panel>
+			<panel name="Info_Memory">
+				<event type="Click">
+					<action execute="ctlpnl.exe" parameters="cplmain.cpl,4"/>
+				</event>		
+				<text X="0" Y="0" alignment="Near" width="200" height="45" text="memory" fontcolor="150,150,150" fonttype="Segoe UI Light,16,false"/>			
+				<text X="15" Y="25" alignment="Near" width="200" height="45" text="#$SystemState,FreeMemoryPercent#% free" fontcolor="255,255,255" fonttype="Segoe UI Light,13,false"/>			
+			</panel>
+			<panel name="Info_InternalStorage">
+				<event type="Click">
+					<action execute="ctlpnl.exe" parameters="cplmain.cpl,4"/>
+				</event>		
+				<text X="0" Y="0" alignment="Near" width="200" height="45" text="internal storage" fontcolor="150,150,150" fonttype="Segoe UI Light,16,false"/>			
+				<text X="15" Y="25" alignment="Near" width="200" height="45" text="#$SystemState,FreeDeviceStoragePercent#% free" fontcolor="255,255,255" fonttype="Segoe UI Light,13,false"/>			
+			</panel>
+			<panel name="Info_StorageCard">
+				<event type="Click">
+					<action execute="ctlpnl.exe" parameters="cplmain.cpl,4"/>
+				</event>		
+				<text X="0" Y="0" alignment="Near" width="200" height="45" text="storage card" fontcolor="150,150,150" fonttype="Segoe UI Light,16,false"/>			
+				<text X="15" Y="25" alignment="Near" width="200" height="45" text="#$SystemState,FreeStorageCardPercent#% free" fontcolor="255,255,255" fonttype="Segoe UI Light,13,false"/>
+			</panel>
+                </row>
+</root>

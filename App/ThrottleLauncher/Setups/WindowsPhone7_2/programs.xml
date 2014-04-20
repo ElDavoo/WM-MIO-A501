@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+
+	<row layout="Free" width="#@Screen.Width#" height="#@Screen.Height#" scrollingmode="none" Y="20">
+		<icon X="5" Y="20" width="22" height="22" path="#$THEME_BASE#\Images\#$Variable,BColor#\RetArrow.png">
+			<event type="Click">
+				<action execute=":Script" parameters="RowHome:Set(PageX,0)"/>
+			</event>
+	    	</icon> 
+
+		<icon X="#$Expresion,#@Screen.Width# - 30#" Y="20" width="22" height="22" path="#$THEME_BASE#\Images\#$Variable,BColor#\Add.png">
+			<event type="Click">
+				<action execute=":apps2cat" parameters="Favorites"/>
+			</event>
+		</icon> 
+
+		<!-- icon X="5" Y="#$Expresion,#@Screen.Height# - 40#" width="22" height="22" path="#$THEME_BASE#\Images\#$Variable,BColor#\TLsettings.btn.png">
+			<event type="Click">
+				<action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,settings.xml)"/>
+			</event>
+		</icon -->
+
+
+		<row name="Programs" X="0" Y="20" layout="Cols" marginX="0" marginY="5" cols="1" width="#@Screen.Width#" height="#$Expresion,#@Screen.Height# - 20#" scrollingmode="Kinetic">
+			<icon width="#@Screen.Width#" height="30"/>
+			<!-- panel width="#@Screen.Width#" height="40">
+				<panel name="IconSettings" X="60" Y="0">
+  					<event type="Click">
+     					 <action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,settings.xml)"/>
+					</event>
+ 					<panel>
+						<icon path="#$THEME_BASE#\Images\#$Variable,TColor#.png" height="40" width="40"/>
+                 	    <icon X="5" Y="5" path="#$THEME_BASE#\Images\settings.png" name="Settingsicon" width="30" height="30"/>
+					</panel>
+					<text X="50" Y="15" text="Settings" width="#$Expresion,#@Screen.Width# - 110#" height="20" alignment="Near" fonttype="Segoe UI Light,7,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				</panel>
+			</panel>
+
+
+			<panel width="#@Screen.Width#" height="40">
+				<panel name="IconAlarms" X="60" Y="0">
+  					<event type="Click">
+     					 <action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,calendar.xml)"/>
+					</event>
+ 					<icon path="#$THEME_BASE#\Images\#$Variable,BColor#\alarms.icon.png" height="40" width="40"/>
+					<text X="50" Y="15" text="Calendar" width="#$Expresion,#@Screen.Width# - 110#" height="20" alignment="Near" fonttype="Segoe UI Light,7,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				</panel>
+			</panel>
+
+
+			<panel width="#@Screen.Width#" height="40">
+				<panel name="IconGames" X="60" Y="0">
+  					<event type="Click">
+     					 <action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,games.xml)"/>
+					</event>
+ 					<icon path="#$THEME_BASE#\Images\xblive.btn.png" height="40" width="40"/>
+					<text X="50" Y="15" text="Games" width="#$Expresion,#@Screen.Width# - 110#" height="20" alignment="Near" fonttype="Segoe UI Light,7,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				</panel>
+			</panel>
+
+			<panel width="#@Screen.Width#" height="40">
+				<panel name="IconPeople" X="60" Y="0">
+  					<event type="Click">
+     					 <action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,people.xml)"/>
+					</event>
+ 					<panel>
+						<icon path="#$THEME_BASE#\Images\#$Variable,TColor#.png" height="40" width="40"/>
+                 	   <icon X="0" Y="0" path="#$THEME_BASE#\Images\minipeople.png" width="40" height="40"/>
+					</panel>
+					<text X="50" Y="15" text="People" width="#$Expresion,#@Screen.Width# - 110#" height="20" alignment="Near" fonttype="Segoe UI Light,7,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				</panel>
+			</panel>
+
+			<panel width="#@Screen.Width#" height="40">
+				<panel name="IconPictures" X="60" Y="0">
+  					<event type="Click">
+     					 <action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,pictures.xml)"/>
+					</event>
+ 					<panel>
+						<icon path="#$THEME_BASE#\Images\#$Variable,TColor#.png" height="40" width="40"/>
+                 	   <icon X="0" Y="0" path="#$THEME_BASE#\Images\minipics.png" width="40" height="40"/>
+					</panel>
+					<text X="50" Y="15" text="Pictures" width="#$Expresion,#@Screen.Width# - 110#" height="20" alignment="Near" fonttype="Segoe UI Light,7,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				</panel>
+			</panel -->
+
+			<applications category="Favorites" showsubcategories="false" >
+			<panel width="#@Screen.Width#" height="40">
+				<panel X="60" Y="0">
+					<event type="Click"><action execute="#@Execute#" parameters="#@Parameters#"/></event>
+					<panel skin="#$THEME_BASE#\skins\programs">
+						<icon path="#$THEME_BASE#\Images\#$Variable,TColor##$Value,#@Index#,mod,2#.png" height="40" width="40"/>
+                        <icon X="5" Y="5" path="#@Icon#" exec="#@Execute#" params="#@Parameters#" name="#@Name#" width="30" height="30"/>
+					</panel>
+					<text X="50" Y="15" text="#@Name#" width="#$Expresion,#@Screen.Width# - 110#" height="20" alignment="Near" fonttype="Segoe UI Light,7,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				</panel>
+			</panel>
+			</applications>	
+
+			<applications category="all" showsubcategories="true" >
+			<panel width="#@Screen.Width#" height="40">
+				<panel X="60" Y="0">
+					<event type="Click"><action execute="#@Execute#" parameters="#@Parameters#"/></event>
+					<panel skin="#$THEME_BASE#\skins\programs">
+						<icon path="#$THEME_BASE#\Images\#$Variable,TColor##$Value,#@Index#,mod,2#.png" height="40" width="40"/>
+                        			<icon X="5" Y="5" path="#@Icon#" exec="#@Execute#" params="#@Parameters#" name="#@Name#" width="30" height="30"/>
+					</panel>
+					<text X="50" Y="15" text="#@Name#" width="#$Expresion,#@Screen.Width# - 110#" height="20" alignment="Near" fonttype="Segoe UI Light,7,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+				</panel>
+			</panel>
+			</applications>	
+
+		</row> 
+		<panel X="#$Expresion, #@Screen.Width# - 5#" Y="20" width="5" height="#$Expresion,(#@Screen.Height# - 17)#">
+			<event type="GlobalChange" parameters="#$Variable,Programs.ScrollPercentY#">
+				<action execute=":Script" parameters="RowInfoIcon:Set(Y,#$Expresion, int((#$Variable,Programs.ScrollPercentY# * (#@Screen.Height# - 17)) / 100)#)"/>
+			</event>
+			<panel name="RowInfo" height="#$Expresion,(#@Screen.Height# - 17#)" width="5">
+				<icon name="RowInfoIcon" width="20" height="#$Expresion, int((#@Screen.Height# - 17) / (#$Variable,Programs.ScrollPercentY# / (100 * #$Variable,Programs.ScrollY#)))#" X="0" Y="#$Expresion, int((#$Variable,Programs.ScrollPercentY# * (#@Screen.Height# - 17)) / 100)#" path="#$THEME_BASE#\Images\pixel.white.png"/>
+			</panel>
+   		</panel>
+	</row> 
+</root> 

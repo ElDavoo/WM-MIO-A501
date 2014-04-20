@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+	<event type="LeftRightGesture">
+        <action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,people.xml)" />
+	</event>
+
+			<event type="GlobalChange" parameters="#$SystemState,MessagingSmsUnread#">
+
+				<action execute=":Script" parameters="bg_PeopleViewer:Reload()"/>
+				<action execute=":Script" parameters="SMS:Reload()"/>
+		    	</event>
+
+
+
+	<panel name="bg_PeopleViewer" layout="Free" Y="20">
+		<icon height="0" width="520"/>
+		<icon X="10" Y="25" height="50" width="155" path="#$THEME_BASE#\Images\#$Variable,BColor#\favorites_#$Variable,Row_MainSettings.PageX,map,[0-on|default-off]#.png">
+			<event type="Click">
+				<action execute=":Script" parameters="Row_MainSettings:Set(PageX,0)"/>
+			</event>
+		</icon>
+		<icon height="0" width="45"/>
+		<icon X="215" Y="25" height="50" width="130" path="#$THEME_BASE#\Images\#$Variable,BColor#\people_#$Variable,Row_MainSettings.PageX,map,[1-on|default-off]#.png">
+			<event type="Click">
+				<action execute=":Script" parameters="Row_MainSettings:Set(PageX,1)"/>
+			</event>
+		</icon>
+
+		<text X="350" Y="30" alignment="Near" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light, 8,false" text="#$SystemState,MessagingSmsUnread,map,[-|0-]#" />
+
+		<icon X="360" Y="25" height="50" width="190" path="#$THEME_BASE#\Images\#$Variable,BColor#\message_#$Variable,Row_MainSettings.PageX,map,[2-on|default-off]#.png">
+			<event type="Click">
+				<action execute=":Script" parameters="Row_MainSettings:Set(PageX,2)"/>
+			</event>
+		</icon>
+	</panel>
+
+	<row name="Row_MainSettings" X="0" Y="75" width="#@Screen.Width#" height="#$Expresion,#@Screen.Height# - 75#" backgrounditem="bg_PeopleViewer" scrollingmode="Paged">
+		<row name="Favs" X="0" Y="0" scrollingmode="Paged" marginX="5" marginY="5" width="#@Screen.Width#" height="#$Expresion,#@Screen.Height# - 85#" layout="Rows" rows="4">
+					<procedure name="ShowHideContact" mode="Threaded" parameters="Index,time">
+				     		<action execute=":Script" parameters="Contacts_#@Index#:GoToTime(0,0,500)" take="#@time#"/>
+				     		<action execute=":Script" parameters="Contacts_#@Index#:GoToTime(0,-75,500)" take="#@time#"/>
+				     		<action execute=":Script" parameters="Contacts_#@Index#:GoToTime(0,-32,500)" take="#@time#"/>
+					</procedure>
+
+					<if name="#@ContactsMode#" value="Simple_Name"> 
+		 	      		<action execute=":SetVariable" parameters="ContMode=Simple_Name"/>
+						<list name="GroupContacts_List_2" class="ThrottleContact.ContactsList" path="#$THROTTLE#\Plugins\ThrottleContact\ThrottleContact.dll">
+							<param name="type" value="List"/>
+							<param name="checkpicture" value="true"/>
+							<param name="category" value="ThrottlePhotoDial"/>
+							<items>
+								<panel height="75" width="75">
+									<event type="Click">
+										<action execute=":LaunchContact" parameters="#$Variable,GroupContacts_List_2[#@Index#].ItemId#"/>
+									</event>
+							      	<panel name="Contacts_#@Index#" X="0" Y="0" visible="true" layout="Free">
+										<icon 
+											X="0" Y="0"
+											width="75" height="75"
+											path="#$THEME_BASE#\Images\#$Variable,TColor#.png" 
+										/>
+								  	    <text 
+										    X="10" Y="35" 
+										    height="50" width="60" 
+										    alignment="Near" 
+										    text="#$Variable,GroupContacts_List_2[#@Index#].FullName#"
+										    fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"
+									    	fonttype="Segoe UI Light,12,false" 
+									    />
+										<if name="#$Variable,GroupContacts_List_2[#@Index#].HasPicture#" value="True">							
+											<icon 
+												X="0" Y="0"
+												width="75" height="75"
+												path=":Contact:#$Variable,GroupContacts_List_2[#@Index#].ItemId#:150:150" 
+											/>
+										</if>
+								    </panel>
+								</panel>
+							</items>
+						</list>	
+					</if>				
+					 <if name="#@ContactsMode#" value="Animated_Name"> 
+						<list name="GroupContacts_List_2" class="ThrottleContact.ContactsList" path="#$THROTTLE#\Plugins\ThrottleContact\ThrottleContact.dll">
+							<param name="type" value="List"/>
+							<param name="checkpicture" value="true"/>
+							<param name="category" value="ThrottlePhotoDial"/>
+							<items>
+								<!--if name="#$Expression,(#@Index#+1)%3#" value="0">
+									<panel height="29" width="2"/>
+								</if-->
+								<panel height="75" width="75">
+									<if name="#$Variable,GroupContacts_List_2[#@Index#].HasPicture#" value="True">
+										<event type="GlobalChange" parameters="#$Expresion,int((#$date,mm#* 60 + #$date,ss#)/15)#">
+										     <action execute=":RunProcedure" parameters="ShowHideContact(#@Index#,#$Expresion,rnd(4000) + 1000#)"/>
+										</event>		
+									</if>
+									<event type="Click">
+										<action execute=":LaunchContact" parameters="#$Variable,GroupContacts_List_2[#@Index#].ItemId#"/>
+									</event>
+							      	<panel name="Contacts_#@Index#" X="0" Y="0" height="150" width="75" visible="true" layout="Free">
+										<icon X="0" Y="0" width="75" height="75" path="#$THEME_BASE#\Images\#$Variable,TColor#.png"/>
+								  	    <text X="5" Y="35" height="50" width="70" alignment="Near" text="#$Variable,GroupContacts_List_2[#@Index#].FullName#" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light,12,false"/>
+										<if name="#$Variable,GroupContacts_List_2[#@Index#].HasPicture#" value="True">							
+											<icon X="0" Y="75" width="75" height="75" path=":Contact:#$Variable,GroupContacts_List_2[#@Index#].ItemId#:150:150"/>
+										</if>
+								    </panel>
+								</panel>
+							</items>
+						</list>		
+					</if>
+		</row>
+
+		<pagebreak/>
+
+	    <panel layout="Free"> 
+				<row scrollingmode="Kinetic" marginY="5" layout="Cols" cols="1" width="#$Expression,#@Screen.Width#-10#" X="0" Y="0" height="#$Expression,#@Screen.Height#-80#">
+					<list name="AllContact_List" class="ThrottleContact.ContactsList" path="#$THROTTLE#\Plugins\ThrottleContact\ThrottleContact.dll">
+						<param name="type" value="List"/>
+						<items>
+							<panel width="#$Expression,#@Screen.Width#-10#" height="40">
+								<event type="Click">
+									<action execute=":LaunchContact" parameters="#$Variable,AllContact_List[#@Index#].ItemId#"/>
+								</event>
+								<icon 
+									X="0" Y="0" 
+									width="40" height="40" 
+									path=":Contact:#$Variable,AllContact_List[#@Index#].ItemId#:88:88"
+								/>
+								<text 
+									X="45" Y="8" 
+									text="#$Variable,AllContact_List[#@Index#].FullName#" 
+									width="200" height="28" 
+									alignment="Near" 
+									fonttype="Segoe UI Light,14,false" 
+									fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"
+								/>
+							</panel>
+						</items>				
+					</list>
+				</row>
+	    </panel> 
+		<pagebreak/>
+
+	
+        <panel name="SMS">
+
+                	<row name="Messages" layout="Cols" cols="1" scrollingmode="Kinetic" width="#$Expresion,#@Screen.Width#-10#" height="#$Expresion,#@Screen.Height#-100#">
+
+                    		<list name="Messages_list" class="ThrottlePlugin.Messages" path="#$THROTTLE#\Util\PruebaMAPI\M2RWDll.dll">
+
+	                        	<param name="account" value="SMS"/>
+
+		                        <param name="grabPrev" value="0"/>
+
+		                        <param name="grabNext" value="6"/>
+
+		                        <items>
+
+                            			<if name="#@Index#" value="0" not="true">
+
+			                                <panel>
+
+				                                <text X="5" Y="5" width="220" alignment="Near" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" fonttype="Segoe UI Light, 13,true" text="#$Variable,Messages_list[#@Index#].Sender#"/>
+
+                                				<text X="10" Y="23" width="220" alignment="Near" fontcolor="#$Variable,TColor,map,[Red-229\,20\,0|Green-51\,153\,51|Blue-27\,161\,226|Orange-240\,150\,9|Lime-140\,191\,38|Teal-0\,171\,169|Magenta-255\,0\,151|Pink-230\,113\,184|Brown-153\,102\,0|Purple-162\,0\,255]#" fonttype="Segoe UI Light, 9,false" text="#$Variable,Messages_list[#@Index#].Subject#"/>
+
+				                                <event type="Click">
+
+                                					<action execute=":ToPlugin" parameters="Messages_list:Details(#@Index#)"/>
+
+				                                </event>
+
+			                                </panel>
+
+			                         </if>
+
+                        		</items>
+
+				</list>
+
+                	</row>
+	        </panel>
+
+
+	<!-- pagebreak/>
+	    <panel> 
+			<text X="0" Y="5" text="Modify the settings below to change the appearence of the people page. You may need to restart your phone for this to take effect." width="#@Screen.Width#" height="200" alignment="Near" leftmargin="10" fonttype="Segoe UI Light,9,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#"/>
+	        <panel name="People_settings" X="0" Y="100" layout="Cols" cols="1" marginY="5" marginX="0"> 
+		    	<panel>
+			    	<icon width="#@Screen.Width#" height="40" path="#$THEME_BASE#\Images\#$Variable,BColor#\checkbox.png"/>
+  			<text text="Simple name" width="#@Screen.Width#" height="40" alignment="Near" topmargin="10" leftmargin="34" fonttype="Segoe UI Light,11,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" path="#$THEME_BASE#\Images\#$Variable,BColor#\S_#@ContactsMode#.png">
+				<event type="Click">
+   	      			<action execute=":SetConfigVar" parameters="ContactsMode=Simple_Name"/>
+	 	 	 	  	<action execute=":Script" parameters="People_settings:Reload()"/>
+	 	 	 	  	<action execute=":Script" parameters="Favs:Reload()"/>
+ 	 			</event>
+			</text>
+			</panel>
+			<panel>
+				<icon width="#@Screen.Width#" height="40" path="#$THEME_BASE#\Images\#$Variable,BColor#\checkbox.png"/>
+ 			<text text="Animated name" width="#@Screen.Width#" height="40" alignment="Near" topmargin="10" leftmargin="34" fonttype="Segoe UI Light,11,true" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|default-255\,255\,255]#" path="#$THEME_BASE#\Images\#$Variable,BColor#\A_#@ContactsMode#.png">
+				<event type="Click">
+   	      			<action execute=":SetConfigVar" parameters="ContactsMode=Animated_Name"/>
+	 	 	 	  	<action execute=":Script" parameters="People_settings:Reload()"/>
+	 	 	 	  	<action execute=":Script" parameters="Favs:Reload()"/>
+ 	 			</event>
+			</text>
+		        </panel>
+	        </panel> 
+	    </panel --> 
+	</row> 
+
+	<panel layout="Free">
+  		<!--Home Toolbar-->
+		<row name="Toolbar_FavPeople" X="0" Y="#$Expresion,#@Screen.Height# - 10#" layout="Free" width="#@Screen.Width#" height="45" scrollingmode="None">
+			<icon X="0" Y="0" width="#@Screen.Width#" height="45" path="#$THEME_BASE#\Images\#$Variable,BColor#\Toolbar_bg.png"/> 
+			<icon X="214" Y="3" width="13" height="3" path="#$THEME_BASE#\Images\#$Variable,BColor#\threedots.png"/>
+			<icon name="TbUp_FavPeople" X="200" Y="0" width="40" height="45" visible="true">
+				<event type="Click">
+					<action execute=":RunProcedure" parameters="ShowToolbar(FavPeople)"/>
+				</event>
+	   	 	</icon> 
+			<icon name="TbDown_FavPeople" X="200" Y="0" width="40" height="45" visible="false">
+				<event type="Click">
+					<action execute=":RunProcedure" parameters="HideToolbar(FavPeople)"/>
+				</event>
+	   	 	</icon>
+
+	   	 	<panel name="ToolbarIcons_FavPeople" X="40" Y="14" layout="Rows" rows="1" marginX="20" marginY="0"> 
+				<icon name="SearchPeople" width="25" height="25" path="#$THEME_BASE#\Images\#$Variable,BColor#\search.btn.png">
+					<event type="Click">
+						<action execute=":RunProcedure" parameters="HideToolbar(FavPeople)"/>
+						<action execute=":MSCONTACTS" parameters=""/>
+					</event>
+	   	 		</icon> 
+				<icon height="0" width="10"/>
+
+				<icon name="AddFavPeople" width="25" height="25" path="#$THEME_BASE#\Images\#$Variable,BColor#\addpeople.png" exec=":addcontact" />
+				<icon name="RemoveFavPeople" width="25" height="25" path="#$THEME_BASE#\Images\#$Variable,BColor#\minus.png" exec=":removecontact" />				
+	   	 	</panel> 
+          	</row>
+		<!--END Home Toolbar-->
+	</panel>
+</root> 

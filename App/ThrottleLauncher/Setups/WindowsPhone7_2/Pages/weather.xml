@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+    <panel name="Weather.com" X="0" Y="25" height="#@Screen.Height#" width="#@Screen.Width#">
+        <text name="_load" X="#$Expresion,(#@Screen.Width#/2)-45#" Y="#$Expresion,(#@Screen.Height#/2)-5#" width="100" height="15" alignment="Center" text="Loading..." fonttype="9,true" fontcolor="135,135,135"/>
+        <list name="Weather.com_List" class="Weather.com.Program" path="#$THROTTLE#\Plugins\Weather.com\Weather.com.dll">
+        <param name="hourly" value="true"/>
+        <param name="maxhours" value="#@Weather.Heures#"/> 
+            <items>
+            <if name="#@Index#" value="1">
+                <panel name="weather_base" X="0" Y="0" layout="Free">
+						<event type="LeftRightGesture">
+
+							<action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,weather.xml)" />
+						</event>
+                        <panel name="backweather1">
+                            <icon height="86" width="#$Expresion,(#@Screen.Width#)#" path="#$THEME_BASE#\Images\#@TilesColor#.png"/>
+                        </panel>
+                        
+                        <icon name="weather_weather" X="5" Y="0" height="48" width="240" path="#$THEME_BASE#\Widgets\WP7weather\images\T-weather.png"/>
+                        
+                        <icon X="5" Y="62" height="25" width="25" path="#$THEME_BASE#\Widgets\WP7weather\images\appbar.refresh.png" 
+                        exec=":ToPlugin" params="Weather.com_List:Update()"/>
+                        
+                        <icon X="210" Y="62" height="20" width="20" path="#$THEME_BASE#\Widgets\WP7weather\images\TLsettings.btn.png" 
+                        exec=":ToPlugin" params="Weather.com_List:Config()"/>
+                        
+                        <text X="32" Y="66" name="currentUpdate" height="19" width="180" alignment="Near" 
+                        text="#$Variable,Weather.com_List[0].datetime#" 
+                        fonttype="Segoe UI Light,9,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|defalt-255\,255\,255]#"/>
+                        	
+                        <text X="35" Y="35" height="30" width="240" alignment="Near" 
+                        text="#$Variable,Weather.com_List[0].city#" 
+                        fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|defalt-255\,255\,255]#" fonttype="Segoe UI Light,12,false">
+                        	<event type="click">
+                                <action execute=":ToPlugin" parameters="Weather.com_List:NextCity()"/>
+                                <action execute=":RunProcedure" parameters="GetMap()"/>
+                                <action execute=":RunProcedure" parameters="Weather.com_Global()"/>
+                                <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curCity=#$Variable,Weather.com_List[1].city#"/>
+                                <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curTemp=#$Variable,Weather.com_List[1].temp#"/>
+                                <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\High=#$Variable,Weather.com_List[1].forecast0.high#"/>
+                                <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\Low=#$Variable,Weather.com_List[1].forecast0.low#"/>
+                                <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curIcon=#$Variable,Weather.com_List[1].icon,map,[-00]#"/>
+                                <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curCondition=#$Variable,Weather.com_List[1].condition#"/>
+                                <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curWind=#$Variable,Weather.com_List[1].wind#"/>
+                                <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curHumidity=#$Variable,Weather.com_List[1].humidity#"/>
+                            </event>
+                        </text>
+
+                    </panel>
+
+                        <panel name="weather_all" X="0" Y="88">
+                        <event type="Load">
+                            <action execute=":SetVariable" parameters="Extended=4"/>
+                        <if name="#$Variable,Weather.com_List[0].Extended#" value="true">
+                            <action execute=":SetVariable" parameters="Extended=8"/>
+                        </if>
+                        </event>
+                            <event type="GlobalChange" parameters="">
+                                    <action execute=":Script" parameters="weather_all:Reload()"/>
+                            </event>
+                            <row scrollingmode="Paged" marginX="0" marginY="0" layout="rows" width="#@Screen.Width#">
+                                <panel>
+                                <!-- Current Forecast -->
+                                    <row scrollingmode="Kinetic" layout="Cols" cols="1" marginY="1" initPos="0" width="240" height="#$Expresion,#@Screen.Height#-110#" >
+                                        <panel>
+                                            <if name="#$Expresion,#@Weather.Heures#&gt;0#" value="1">
+                                            <event type="click">
+                                                <action execute=":Script" parameters="hourtoday:FadeIn()"/>
+                                            </event>
+                                            </if>
+                                            <icon width="240" height="85" path="#$THEME_BASE#\images\$Variable,BColor,map,[Light-Light.png|defalt-BLACK.png]#"/>    
+                                            <text X="5" Y="5" width="100" height="45" alignment="Near" 
+                                            text="#$Variable,Weather.com_List[0].temp#" 
+                                            fonttype="Segoe UI Light,23,false" fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|defalt-255\,255\,255]#"/>
+                                            
+                                            <text X="60" Y="9" alignment="Near" 
+                                            text="#$Variable,Weather.com_List[0].forecast0.high#" 
+                                            fonttype="Segoe UI Light,10,false" fontcolor="255,0,0"/>
+                                            
+                                            <text X="60" Y="23" alignment="Near" 
+                                            text="#$Variable,Weather.com_List[0].forecast0.low#" 
+                                            fonttype="Segoe UI Light,10,false" fontcolor="0,255,0"/>
+                                        
+                                            <text X="110" Y="15" width="130" alignment="Near" 
+                                            text="#$Variable,Weather.com_List[0].condition#" 
+                                            fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|defalt-255\,255\,255]#" fonttype="Segoe UI Light,10,false"/>
+                                            
+                                            <text X="5" Y="42" name="currentWindCondition" alignment="Near" width="230" 
+                                            text="#$Variable,Weather.com_List[0].wind#" 
+                                            fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|defalt-255\,255\,255]#" fonttype="Segoe UI Light,8,false"/>
+                                            
+                                            <text X="5" Y="55" name="currentWindCondition" alignment="Near" 
+                                            width="230" text="#$Variable,Weather.com_List[0].humidity#" 
+                                            fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|defalt-255\,255\,255]#" fonttype="Segoe UI Light,8,false"/>
+                                            
+                                            <text X="172" Y="23" name="Update weather" rowspan="5" leftmargin="5" height="55" width="55" 
+                                            text="" fonttype="Segoe WP N SemiLight,30,false" 
+                                            fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|defalt-255\,255\,255]#" alignment="Far" path="#$THEME_BASE#\Widgets\WP7weather\images\#$Variable,BColor,map,[Light-Light|defalt-Dark]#\#$Variable,Weather.com_List[0].icon,map,[-00]#.png" />
+                                            
+                                        </panel>
+                                        <for each="value" from="1" to="#$Variable,Extended#">
+                                            <panel X="0" Y="95">
+                                                <panel name="backweather2">
+                                                    <icon width="240" height="54" path="#$THEME_BASE#\images\#@TilesColor#.png">
+                                                    <if name="#$Expresion,(24-#$date,H#)&lt;#@Weather.Heures##" value="1">
+                                                    <if name="#@value#" value="1">
+                                                    <event type="click">
+                                                        <action execute=":Script" parameters="hourtomorrow:FadeIn()"/>
+                                                    </event>
+                                                    </if>
+                                                    </if>
+                                                    </icon>
+                                                    
+                                                </panel>
+                                                <text X="5" Y="5" width="180" 
+                                                text="#$Variable,Weather.com_List[0].forecast#@value#.day#" 
+                                                fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|defalt-255\,255\,255]#" fonttype="Segoe UI Light,14,false" alignment="Near" />
+                                                
+                                                <text X="5" Y="30" width="120" height="20" text="#$Variable,Weather.com_List[0].forecast#@value#.text#" fontcolor="255,255,255" fonttype="Segoe UI Light,8,false" alignment="Near" />
+                                                
+                                                <text X="130" Y="5" width="45" height="45" textwidth="80" alignment="Near" 
+                                                text="" 
+                                                fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|defalt-255\,255\,255]#" fonttype="Segoe UI Light,12,false" 
+                                                path="#$THEME_BASE#\Widgets\WP7weather\images\#$Variable,BColor,map,[Light-Light|defalt-Dark]#\#$Variable,Weather.com_List[0].forecast#@value#.code,map,[-00]#.png"/>
+                                                
+                                                <text X="180" Y="5" 
+                                                text="#$Variable,Weather.com_List[0].forecast#@value#.high#" 
+                                                fontcolor="#$Variable,BColor,map,[Light-0\,0\,0|defalt-255\,255\,255]#" fonttype="Segoe UI Light,12,false" alignment="Near" />
+                                                
+                                                <text X="180" Y="25" 
+                                                text="#$Variable,Weather.com_List[0].forecast#@value#.low#" 
+                                                fontcolor="200,200,200" fonttype="Segoe UI Light,12,false" alignment="Near" />
+                                            </panel>
+                                        </for>
+                                    </row>
+                                    <panel X="0" Y="0" name="hourtoday" visible="false">
+                                    <icon width="240" height="#$Expresion,#@Screen.Height#-110#" path="#$THEME_BASE#\images\black.png"/>
+                                    <event type="click">
+                                        <action execute=":Script" parameters="hourtoday:FadeOut()"/>
+                                    </event>
+                                    <panel>
+                                        <panel name="backweather3">
+                                            <icon width="240" height="18" path="#$THEME_BASE#\images\#@TilesColor#.png" />
+                                        </panel>
+                                        <text width="240" height="18" text="#$date,D#" fonttype="Segoe UI Light,10,false" alignment="center" />
+                                    </panel>
+                                    <row X="0" Y="19" scrollingmode="Kinetic" layout="Cols" cols="1" marginY="1" initPos="0" width="240" height="#$Expresion,#@Screen.Height#-129#" >
+                                    <for each="value" from="0" to="#$Variable,Weather.com_List[0].hour.count#">
+                                        <if name="#$Variable,Weather.com_List[0].hour#@value#.IsTomorrow#" value="false">
+                                        <panel>
+                                            <panel name="backweather4">
+                                                <icon width="240" height="54" path="#$THEME_BASE#\images\#@TilesColor#.png" />
+                                            </panel>
+                                            
+                                            <text X="5" Y="3" width="180" height="45" text="#$Variable,Weather.com_List[0].hour#@value#.time#" fonttype="Segoe UI Light,12,false" alignment="Near" />
+                                            <text X="6" Y="23" width="180" height="20" alignment="Near" text="#$Variable,Weather.com_List[0].hour#@value#.text#" fonttype="Segoe UI Light,8,false"/>
+                                            <text X="6" Y="38" width="150" height="12" text="#$Variable,Weather.com_List[0].hour#@value#.wind#" fonttype="Segoe UI Light,8,false" alignment="Near"/>
+                                            <icon X="120" Y="5" width="45" height="45" path="#$THEME_BASE#\Widgets\WP7weather\images\#$Variable,Weather.com_List[0].hour#@value#.code,map,[-00]#.png"/>
+                                            <text X="170" Y="5" width="70" height="45" text="#$Variable,Weather.com_List[0].hour#@value#.temp#" fonttype="Segoe UI Light,14,false" alignment="Near"/>
+                                            <text X="170" Y="30" width="70" height="12" text="#$Variable,Weather.com_List[0].hour#@value#.precip#" fonttype="Segoe UI Light,8,false" alignment="Near"/>
+                                        </panel>
+                                        </if>
+                                    </for>
+                                    </row>
+                                </panel>
+                                <panel X="0" Y="0" name="hourtomorrow" visible="false">
+                                    <icon width="240" height="#$Expresion,#@Screen.Height#-110#" path="#$THEME_BASE#\images\BLACK.png"/>
+                                    <event type="click">
+                                        <action execute=":Script" parameters="hourtomorrow:FadeOut()"/>
+                                    </event>
+                                    <panel>
+                                        <panel name="backweather5">
+                                            <icon width="240" height="18" path="#$THEME_BASE#\images\#@TilesColor#.png" />
+                                        </panel>
+                                        <text width="240" height="19" text="#$Variable,Weather.com_List[0].forecast1.day# #$Expresion,#$date,dd#+1# #$date,y#" fonttype="Segoe UI Light,10,false" alignment="center" />
+                                    </panel>
+                                    <row X="0" Y="19" scrollingmode="Kinetic" layout="Cols" cols="1" marginY="1" initPos="0" width="240" height="#$Expresion,#@Screen.Height#-129#" >
+                                    <for each="value" from="0" to="#$Variable,Weather.com_List[0].hour.count#">
+                                        <if name="#$Variable,Weather.com_List[0].hour#@value#.IsTomorrow#" value="true">
+                                        <panel>
+                                            <panel name="backweather6">
+                                                <icon width="240" height="54" path="#$THEME_BASE#\images\#@TilesColor#.png" />
+                                            </panel>
+                                            
+                                            <text X="5" Y="3" width="180" height="45" text="#$Variable,Weather.com_List[0].hour#@value#.time#" fonttype="Segoe UI Light,12,false" alignment="Near" />
+                                            <text X="6" Y="23" width="180" height="20" alignment="Near" text="#$Variable,Weather.com_List[0].hour#@value#.text#" fonttype="Segoe UI Light,8,false"/>
+                                            <text X="6" Y="38" width="150" height="12" text="#$Variable,Weather.com_List[0].hour#@value#.wind#" fonttype="Segoe UI Light,8,false" alignment="Near"/>
+                                            <icon X="120" Y="5" width="45" height="45" path="#$THEME_BASE#\Widgets\WP7weather\images\#$Variable,Weather.com_List[0].hour#@value#.code,map,[-00]#.png"/>
+                                            <text X="170" Y="5" width="70" height="45" text="#$Variable,Weather.com_List[0].hour#@value#.temp#" fonttype="Segoe UI Light,14,false" alignment="Near"/>
+                                            <text X="170" Y="30" width="70" height="12" text="#$Variable,Weather.com_List[0].hour#@value#.precip#" fonttype="Segoe UI Light,8,false" alignment="Near"/>
+                                        </panel>
+                                        </if>
+                                    </for>
+                                    </row>
+                                </panel>
+                                </panel>
+                                <pagebreak/>
+                                <panel name="m" X="0" Y="0">
+                                    <event type="Load">
+                                        <action execute=":SetVariable" parameters="zoom=5"/>
+                                        <action execute=":RunProcedure" parameters="GetMap()"/>
+                                        <action execute=":SetVariable" parameters="type=#@Weather.MapType#"/>
+                                    </event>
+
+                                    <event type="GlobalChange" parameters="#$Variable,zoom##@MapType##$Variable,type#"><!-- #$Variable,Weather.com_List[0].GPS_Location#" -->
+                                        <action execute=":RunProcedure" parameters="CheckZoom()"/>
+                                        <action execute=":RunProcedure" parameters="GetMap()"/>
+                                    </event>
+                                    
+                                    <procedure name="CheckZoom">
+                                        <if name="#$Expresion,#$Variable,zoom#&gt;19#" value="1"><action execute=":SetVariable" parameters="zoom=1"/>
+                                        </if>
+                                        <if name="#$Expresion,#$Variable,zoom#&lt;1#" value="1"><action execute=":SetVariable" parameters="zoom=19"/>
+                                        </if>
+                                    </procedure>
+                                    
+                                    <procedure name="GetMap" mode="Threaded">
+                                        <action execute=":ToPlugin" parameters="Weather.com_List:GetImage(#$Variable,type,map,[Satellite-sat|Radar-rad]#,#@Screen.Width#,#$Expresion,#@Screen.Height#-106#,#$Variable,zoom#)"/>
+                                    </procedure>
+                                    
+                                    <panel name="map">
+                                        <icon width="#@Screen.Width#" height="#$Expresion,#@Screen.Height#-106#" path="#$THROTTLE#\Plugins\Weather.com\map#$Variable,Weather.com_List[0].map#.png"/>
+                                        <text X="170" Y="250" width="70" text="#$Variable,type#" fonttype="Segoe UI Light,12,true" alignment="Near" fontcolor="255,0,0" exec=":SetVariable" params="type=#$Variable,type,map,[Satellite-Radar|Radar-Satellite]#"/>
+                                    </panel>
+                                            
+                                    <text X="2" Y="250" width="100" 
+                                    text="Zoom: #$Variable,zoom#" 
+                                    fonttype="Segoe UI Light,12,true" alignment="Near" fontcolor="255,0,0"/>
+                                    
+                                    
+                                    <icon X="#$Expresion,(#@Screen.Width#)/2+10#" Y="250" width="25" height="25" 
+                                    path="#$THEME_BASE#\Widgets\WP7weather\images\MINUS.png" exec=":SetVariable" params="zoom=#$Expresion,#$Variable,zoom#-1#"/>
+                                    
+                                    <icon X="#$Expresion,(#@Screen.Width#)/2-30#" Y="250#" width="25" height="25" 
+                                    path="#$THEME_BASE#\Widgets\WP7weather\images\ADD.png" exec=":SetVariable" params="zoom=#$Expresion,#$Variable,zoom#+1#"/>
+                                </panel>
+                                
+                        <event type="GlobalChange" parameters="#$date,h##@Weather.Heures#">
+                            <!-- #$Variable,Weather.com_List[0].Locations#" -->
+                            <action execute=":RunProcedure" parameters="Weather.com_Global()"/>
+                            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curCity=#$Variable,Weather.com_List[1].city#"/>
+                            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curTemp=#$Variable,Weather.com_List[1].temp#"/>
+                            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\High=#$Variable,Weather.com_List[1].forecast0.high#"/>
+                            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\Low=#$Variable,Weather.com_List[1].forecast0.low#"/>
+                            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curIcon=#$Variable,Weather.com_List[1].icon,map,[-00]#"/>
+                            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curCondition=#$Variable,Weather.com_List[1].condition#"/>
+                            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curWind=#$Variable,Weather.com_List[1].wind#"/>
+                            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curHumidity=#$Variable,Weather.com_List[1].humidity#"/>
+                        </event>
+                        
+                        <procedure name="Weather.com_Global" mode="Threaded">
+                            <if name="#$Variable,Weather.com_List[0].AutoUpdate#" value="true">
+                                <action execute=":ToPlugin" parameters="Weather.com_List:Update()"/>
+                            </if>
+                        </procedure>
+
+                        <event type="Load" parameters="#$Variable,Weather.com_List[0].datetime#">
+                            <action execute=":Script" parameters="_load:Set(Visible,false)"/>
+                            <action execute=":RunProcedure" parameters="WriteS2U2()"/>
+                            <action execute=":RunProcedure" parameters="Disconnect()"/>
+                            <action execute=":ToPlugin" parameters="Weather.com_List:NextCity()"/>
+                            <action execute=":RunProcedure" parameters="GetMap()"/>
+                            <action execute=":RunProcedure" parameters="Weather.com_Global()"/>
+                            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curCity=#$Variable,Weather.com_List[1].city#"/>
+                            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curTemp=#$Variable,Weather.com_List[1].temp#"/>
+                            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\High=#$Variable,Weather.com_List[1].forecast0.high#"/>
+                            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\Low=#$Variable,Weather.com_List[1].forecast0.low#"/>
+                            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curIcon=#$Variable,Weather.com_List[1].icon,map,[-00]#"/>
+                            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curCondition=#$Variable,Weather.com_List[1].condition#"/>
+                            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curWind=#$Variable,Weather.com_List[1].wind#"/>
+                            <action execute=":WriteRegistry" parameters="HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curHumidity=#$Variable,Weather.com_List[1].humidity#"/>
+                        </event>
+
+                        <event type="GlobalChange" parameters="#$Variable,Weather.com_List[0].datetime#">
+                            <action execute=":RunProcedure" parameters="Disconnect()"/>
+                            <action execute=":RunProcedure" parameters="WriteS2U2()"/>
+
+                        </event>
+
+                        <procedure name="Disconnect" mode="Threaded">
+                            <if name="#$Variable,Weather.com_List[0].Disconnect#" value="true">
+                                <action execute=":SendKey" parameters="126"/>
+                                <!-- action execute="#$THROTTLE#\Widgets\Weather.com\disconnect.mscr"/ -->
+                            </if>
+                        </procedure>
+
+                        <procedure name="WriteS2U2" mode="Threaded">
+                        <if name="#$Variable,Weather.com_List[0].S2U2#" value="true">
+                            <action execute=":WriteRegistry" parameters="HKEY_CURRENT_USER\Software\A_C\S2U2\UserWeather=C|#$Variable,Weather.com_List[1].icon#| #$Variable,Weather.com_List[1].condition# #$Variable,Weather.com_List[1].temp# / #$Variable,Weather.com_List[1].forecast0.high# #$Variable,Weather.com_List[1].forecast0.low# #$Variable,Weather.com_List[1].alert#"/>
+                        </if>
+                        </procedure>
+                    </row>
+                </panel>
+            </if>
+            </items>
+        </list>
+    </panel>
+</root>

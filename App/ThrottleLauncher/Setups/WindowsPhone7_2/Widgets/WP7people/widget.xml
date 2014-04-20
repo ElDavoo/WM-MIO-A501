@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<panel name="People" layout="Free" width="90"  height="90">
+	<configuration name="WP7people"
+			description="People Tile"
+			minthrottleversion="1.1"
+			comments=""
+			createdby="Fireslave">
+			<variables>
+				<var name="people" description="#L:General settings#" default="" type="separator" />
+				<var name="Animations" description="#L:Animated Tile#" tip="If you don't want to use animated tile uncheck it, this will save battery and the theme will be faster" default="false" type="boolean"/>
+			</variables>
+	</configuration>
+	<event type="Load" parameters="#$Expresion,int((#$date,mm#* 60 + #$date,ss#)/22)#">
+		<action execute=":RunProcedure" parameters="PeopleIni(#$Variable,available_contacts#)"/>
+	</event>
+	<procedure name="PeopleIni" mode="Threaded" parameters="dummy,i1,i2,i3,i4,i5,i6,i7,i8,i9">
+	     	<action execute=":Script" parameters="people_#@i2#:FadeOut()"/>
+	     	<action execute=":Script" parameters="people_#@i6#:FadeOut()"/>
+	     	<action execute=":Script" parameters="people_#@i7#:FadeOut()"/>
+	</procedure>
+	<procedure name="People" mode="Threaded" parameters="dummy,i1,i2,i3,i4,i5,i6,i7,i8,i9">
+	     	<action execute=":Script" parameters="people_#@i1#:FadeOut()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i9#:FadeOut()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i6#:FadeOut()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i2#:FadeOut()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i4#:FadeIn()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i6#:FadeIn()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i7#:FadeOut()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i9#:FadeIn()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i2#:FadeIn()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i3#:FadeOut()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i5#:FadeIn()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i1#:FadeIn()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i8#:FadeOut()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i7#:FadeIn()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i4#:FadeOut()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i8#:FadeIn()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i5#:FadeOut()" take="2200"/>
+	     	<action execute=":Script" parameters="people_#@i3#:FadeIn()" take="2200"/>
+	</procedure>
+	<if name="#@WP7people.Animations#" value="true">
+	<event type="Timed" parameters="22">
+		<action execute=":RunProcedure" parameters="People(#$Variable,available_contacts#)"/>
+	</event>
+	</if>
+	<icon height="90" width="90" path="#$THEME_BASE#\Images\#$Variable,TColor#.png"/>
+	<panel layout="Cols" marginX="1" marginY="1" cols="3">
+		<event type="Click">
+			<action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,people.xml)" />
+		</event>
+		<list name="GroupContacts_List" class="ThrottleContact.ContactsList" path="#$THROTTLE#\Plugins\ThrottleContact\ThrottleContact.dll">
+			<param name="type" value="List"/>
+			<param name="checkpicture" value="true"/>
+			<items>
+			<if name="#$Variable,GroupContacts_List[#@Index#].HasPicture#" value="True">
+				<icon name="people_#@Index#" width="30" height="30" path=":Contact:#$Variable,GroupContacts_List[#@Index#].ItemId#:60:60">
+					<event type="Load">
+						<action execute=":SetVariable" parameters="available_contacts=#$Variable,available_contacts#,#@Index#"/>
+					</event>
+				</icon>
+			</if>
+			</items>
+		</list>
+	</panel>
+	<panel>
+	<event type="Load">
+		<action execute=":RunProcedure" parameters="PeopleIni(#$Variable,available_contacts#)"/>
+	</event>
+	</panel>
+	<icon X="10" Y="70" height="30" width="180"/>
+	<text X="10" Y="75" height="15" width="80" alignment="Near" text="People" fontcolor="255,255,255" fonttype="Segoe UI Light,8,true"/>
+</panel>

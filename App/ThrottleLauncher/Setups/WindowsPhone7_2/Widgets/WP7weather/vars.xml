@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <var name="General" value="" />
+  <var name="Heures" value="6" />
+  <var name="MapType" value="Satellite" />
+</root>

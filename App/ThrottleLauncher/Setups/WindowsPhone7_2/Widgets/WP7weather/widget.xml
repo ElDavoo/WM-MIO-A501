@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<panel name="weather" height="90" width="90">
+    <configuration name="Weather"
+			description="Weather"
+			minthrottleversion="1.1"
+			comments="thanks eww245"
+			createdby="Pth6">
+			<variables>
+			<var name="General" description="#L:Weather#" default="" type="separator" />
+				<var name="Heures" description="#L:Select the maximium hour#" default="6" type="integer(0,36)" />
+                <var name="MapType" description="#L:Select the map type#" default="Satellite" type="combo(Satellite,Radar)" />
+			</variables>
+	</configuration>
+
+	<panel name="TileColorWP7weather">
+		<icon height="90" width="90" path="#$THEME_BASE#\Images\#$Variable,TColor#.png" />
+		<icon height="90" width="90" path="#$THEME_BASE#\Images\glass.png" />
+	</panel>
+	<text X="5" Y="0" name="currentCity" width="80" leftmargin="5" 
+		text="#$Registry,HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curCity#"			
+		alignment="Near" fonttype="Segoe UI Light,9,false" fontcolor="255,255,255"/>
+
+	<text X="5" Y="73" name="Condition"  width="80" leftmargin="5"  alignment="Near"
+		text="#$Registry,HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curCondition#"
+		fontcolor="0,0,0" fonttype="Segoe UI Light,7,false" />
+
+	<text X="20" Y="25" text="" width="65" fontcolor="255,255,255" fonttype="Segoe UI Light,8,false" alignment="Near"
+		path="#$THEME_BASE#\Widgets\WP7weather\images\#$Variable,BColor,map,[Light-Light|defalt-Dark]#\#$Registry,HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curIcon#.png" />
+	<event type="Click">
+		<action execute=":RunProcedure" parameters="ShowHidePanel(RowHome,weather.xml)"/>
+	</event>
+	
+	<text X="5" Y="25" name="Temp weather" leftmargin="5" 
+		text="#$Registry,HKEY_LOCAL_MACHINE\Software\ThrottleLauncher\Weather\curTemp#" 
+		fontcolor="0,0,0" fonttype="Segoe UI Light,15,false" alignment="Near" />
+        
+</panel>

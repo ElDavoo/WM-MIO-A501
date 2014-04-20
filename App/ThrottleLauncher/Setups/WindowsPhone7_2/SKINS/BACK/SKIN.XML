@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <param name="trasparency" value="true"/>
+  <!-- Page general back color -->
+  <param name="pagebackcolor" value="0,0,0"/>
+  <!-- Page general back color -->
+  <param name="rowbackcolor" value="0,0,0"/>
+  <!-- Texture (remove to use backcolors) -->
+  <!-- Buttons back image -->
+  <!--<param name="buttonback" value="botback.png"/>-->
+  <!-- Buttons selected over image -->
+  <!-- Font style (format: "size,bold")-->
+  <param name="fontstyle" value="10,true"/>
+  <!-- Lines color -->
+  <param name="linecolor" value="200,200,200"/>
+  <!-- Text color -->
+  <param name="textcolor" value="255,255,255"/>
+  <!-- OSD Text color -->
+  <param name="osdtextcolor" value="255,255,255"/>
+  <!-- OSD BackColor -->
+  <param name="osdbackcolor" value="0,0,0"/>
+  <!-- Font style (format: "size,bold")-->
+  <param name="osdfontstyle" value="10,true"/>
+<param name="paintline" value="false"/>
+<param name="fps" value="90" />
+
+  <param name="icontextcolor" value="255,255,255"/>
+  <param name="icontextmaxlength" value="10"/>
+  <param name="icontextspacing" value="-1"/>
+  <param name="clickedsizereduction" value="1"/>
+</root>
