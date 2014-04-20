@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<config>
+  <!-- vibrate level 0(off),1,2,3 -->
+  <list>
+    <item id="vibrate">1</item>
+  </list>
+  
+  <!-- led status on(1), off(0) -->
+  <list>
+    <item id="led">1</item>
+  </list>
+  
+  <!-- skin folder name -->
+  <list>
+    <item id="skin">basic</item>
+  </list>
+  
+  <!-- sound source folder name -->
+  <list>
+    <item id="source">piano_1</item>
+  </list>
+  
+  <!-- motion sensor using y(1)/n(0) -->
+  <list>
+    <item id="motion">1</item>
+  </list>
+  
+  <!-- threading sound play y(1)/n(0):do not edit this -->
+  <list>
+    <item id="soundthread">1</item>
+  </list>
+  
+  <!-- key mode for Drag&Play(1) , Multic Play(2) -->
+  <list>
+    <item id="keymode">1</item>
+  </list>
+  
+</config>

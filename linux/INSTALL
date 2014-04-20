@@ -1,0 +1,100 @@
+Installation Instructions
+-------------------------
+
+1) Using a Linux computer, repartition your SD card.  You need something like Partition
+   Magic or some other suitable partitioner (in Linux, you can use gparted to resize your
+   Windows partition.)  Use the following layout:
+
+	Partition 1 (/dev/mmcblk0p1): Primary, FAT32 (vfat) containing your original
+                                      Windows files (any size of your choosing)
+	Partition 2 (/dev/mmcblk0p2): Primary, Linux Swap, 128mb
+	Partition 3 (/dev/mmcblk0p3): Primary, EXT3 (Linux), at least 256mb
+
+   I've tested this with a partition scheme of 650mb for partition 3, 1.2gb for partition 1
+   and 128mb for partition 2 (on a 2gb card).
+
+2) Format the swap and Linux partitions.
+
+   For this you'll need a Linux computer.  Run the following (I assume your SD card is
+   at /dev/sdb -- adjust if different):
+
+       # sudo mkswap /dev/sdb2
+       # sudo mkfs.ext3 /dev/sdb3
+
+   I'm assuming the layout in step 1 as well.
+
+3) Mount the new Linux partition and your Windows partition.
+
+   Still from Linux, run the following:
+
+       # sudo mkdir -p /card/windows /card/linux
+       # sudo mount /dev/sdb1 /card/windows
+       # sudo mount /dev/sdb3 /card/linux
+
+4) Unzip the entire contents of the rootfs.tar.bz2 archive to your Linux partition on your
+   SD card.  I'm assuming you unzipped the install archive in $HOME:
+
+       # cd /card/linux
+       # sudo tar -xjvf $HOME/wing-linux/rootfs.tar.bz2
+       # cd ..
+
+5) Copy the Windows portion of the installer to the Windows partition.  Again, I assume
+   you unzipped the install archive in $HOME.
+
+       # cd /card/windows
+       # sudo mkdir wing-linux
+       # sudo cp $HOME/wing-linux/{haret.exe,default.txt,zImage6} wing-linux
+       # cd ..
+
+6) Unmount the two partitions:
+
+       # sudo umount /card/windows
+       # sudo umount /card/linux
+
+7) (Optional) Remove the /card mountpoints
+
+       # cd /
+       # sudo rm -rf card
+
+8) Reinstall the SD card into your phone (or reboot your phone if you used WM5Storage)
+
+9) Start HaRet.exe from the wing-linux folder on your storage card.
+
+   At this point, Linux should boot.  If all went well, it will ask for a username
+   and password:
+
+       Username: root
+       Password: wing
+
+10) (Optional) Plug in a USB cord to SSH into the phone.
+
+    If you'd like to control the phone from another computer, plug in a USB cord to it
+    and configure your usb0 device (from Linux) as follows:
+
+       # sudo ifconfig usb0 10.100.0.2 up
+
+    Now you can ssh into the phone as follows:
+
+       # ssh root@10.100.0.1
+
+    Use the same username and password as above.
+
+
+Running Programs
+----------------
+
+At this point, you can start Android or X Windows:
+
+  * To start Android, run:
+
+       # start_android
+
+  * To start X-Windows, run:
+
+       # startx
+
+  * To reboot, run:
+
+       # reboot
+
+

@@ -1,0 +1,156 @@
+<HTML>
+<HEAD>
+<TITLE>S2P FAQ</TITLE>
+</HEAD>
+<BODY>
+
+<P>
+    <strong><span style="text-decoration: underline">S2P Known limitations & FAQs</span></strong></P>
+<P>
+    <strong>Q. Do I have to install the old version before using this version?</strong><BR>
+A. No. It will be asked to uninstall the old one when installing the new version.</P>
+    <p>
+    <strong>Q. How to use the .CAB file?</strong><BR>
+A. <A HREF="http://www.google.com/search?q=install+cab" TARGET="_blank">http://www.google.com/search?q=install+cab</A></p>
+    <p>
+        <strong>Q. How to completely uninstall S2P?<br />
+        </strong>A. If you have installed S2U2, stop S2U2 first. Uninstall S2P through Start &gt; Settings &gt; System &gt; Remove Programs;
+        Manually delete all files from the S2P installed folder (e.g. \Program Files\S2P);
+        Use any registry editor to delete the registry tree HKEY_CURRENT_USER\Software\A_C\S2P. Delete the folder/files under \Application Data\S2P.</p>
+<P>
+    <strong>Q. Do I have to install S2U2 before installing S2P?<BR>
+    </strong>
+A. No. But if you have installed S2U2, make sure you have updated your S2U2 to 0.99p or later.
+ Otherwise S2P will be stopped by S2U2.</P>
+<P>
+    <strong>Q. When start S2P, got a "Win32 error"?</strong><BR>
+    A. You may have flashed a ROM that has some WMP related files removed. Try to download
+    &amp; install the WMP-OCX-WM5-square-fix.cab (for square devices) or the WMP-OCX-fix.cab
+    (for other devices).</P>
+    <p>
+        <strong>Q. What music files can S2P play?</strong><BR>
+A. MP3, MP4, M4A, AAC, WMA & WAV.</p>
+<P>
+    <strong>Q. But MP4 &amp; M4A files cannot be played?<BR>
+    </strong>A. S2P uses Windows Media Player (WMP) to playback the music files. If
+    WMP on your device cannot playback these files, so as S2P.</P>
+    <p>
+        <strong>Q. When viewing an album of WMA/WAV files, there is no duration show?!</strong><BR>
+A. Yes, it's not implemented yet.</p>
+<P>
+    <strong>Q. Does S2P support playlist?<BR>
+    </strong>A. Yes. M3U, PLS & ASX are supported.</P>
+    <p>
+        <strong>Q. The Albums list only shows a few covers even there a lot different music files stored?!</strong><BR>
+        <strong>Q. The Songs/Artists/Album list shows incorrect Artist &amp; Album names?!<BR>
+        </strong>
+A. You have to organize the files into folder structure like \Storage Card\Music\Artist Name\Album Name\Music title.mp3,
+ otherwise it won't be well recognized by S2P. And set the library to \Storage Card\Music.</p>
+    <p>
+        <strong>Q. How to turn off the screen when playing music?</strong><BR>
+A. Press the Power button or the record button.</p>
+<P>
+    <strong>Q. S2P shows weird characters for the music info?!</strong><BR>
+A. Try to re-tag those info in ID3V2.4 UTF-8 format.</P>
+<P>
+    <strong>Q. How to have album cover shown on S2P?</strong><BR>
+A. Either the music file already has cover pic embedded or you have to copy the cover file
+ (either cover.jpg or folder.jpg or album*.jpg made by WMP) to the corresponding album folder.<BR>
+A. Sudermatt has a script to update the album art directly from your device,
+ goto <A HREF="http://forum.xda-developers.com/showpost.php?p=2164454&postcount=920" TARGET="_blank">http://forum.xda-developers.com/showpost.php?p=2164454&postcount=920</A> for details.<BR>
+A. Littld has write an application to copy album arts from your PC to your device,
+ goto <A HREF="http://forum.xda-developers.com/showthread.php?t=560497" TARGET="_blank">http://forum.xda-developers.com/showthread.php?t=560497</A></P>
+<P>
+    <strong>Q. How to have lyrics shown on S2P?<BR>
+    </strong>A. Either embed the lyrics as ID3 tag USLT or save the lyrics as a separate
+    .LRC or .TXT file with the file name same as the music file. On the music playing
+    screen, tap the title/artist/album area to toggle the display of the lyrics.<BR>
+    A. <strong>Zepiii</strong> has posted a guide on how to add lyrics to your favourite songs at <A HREF="http://forum.xda-developers.com/showpost.php?p=700808" TARGET="_blank">http://forum.xda-developers.com/showpost.php?p=700808</a>.</P>
+    <p>
+        <strong>Q. Does S2P support A2DP?</strong><BR>
+A. Yes, as long as your device has a proper OS.</p>
+<P>
+    <strong>Q. Does S2P support AVRCP?</strong><BR>
+A. Yes, starting from v0.40.</P>
+<P>
+    <strong>Q. But on my device AVRCP does not control S2P?</strong><BR>
+A. Please have the Bluetooth turned on &amp; paired the BT headset before starting
+    S2P.<BR>
+    A. It's found that some devices have the AVRCP specifically bonded with the built-in WMP.<BR>
+A. For Touch Diamond/Pro/HD, if it starts WMP automatically when a BT headset is connected,
+ please try the &quot;T-Back 6.5 BT Driver.cab&quot; at <A HREF="http://forum.xda-developers.com/showpost.php?p=4292847&postcount=3" TARGET="_blank">http://forum.xda-developers.com/showpost.php?p=4292847&postcount=3</A>.<BR>
+A. If that still not works &amp; if you can send A_C a spare device for testing, please contact A_C at <A HREF="http://contact.ac-s2.com" TARGET="_blank">http://contact.ac-s2.com</a>.</p>
+<P>
+    <strong>Q. Does S2P support the HTC Wired Remote Control?</strong><BR>
+A. From v0.80, S2P supports this remote on HTC devices with TouchFLO 3D built-in.<BR>
+A. If WMP is always started when the remote PLAY button is pressed, turn on "Override WMP for remote control". Then when S2P starts, WMP will also be activated. It's
+    normal as S2P will use the WMP to get the remote key press.<BR>
+    A. TFDetacher is known to make the wired remote control not work.</P>
+    <p>
+        <strong>Q. Why the Volume up/down keys cannot control the volume bar on S2P?<br />
+        </strong>A. It's because on some devices the volume up/down keys are hosted by the
+        OS or other applicaton.</p>
+<P>
+    <strong>Q. After some new music files are added or deleted from the library, S2P does not recognise the changes?!</strong><BR>
+A. Go to the list view, tap &quot;More&quot; &gt; &quot;Refresh Library&quot;. It works for both situations (added or deleted files).
+ But if only new folders of files are added, use &quot;Set Library&quot; will update the library faster.</P>
+    <p>
+        <strong>Q. Why the "Shake Action" does not work on my device?<br />
+        </strong>A. The "Shake Action" currently only works on some HTC device with built-in G-Sensor. If this option is selectable, then it should work on your device. Besides,
+        it only functions when the screen is turned on &amp; music is playing.</p>
+    <p>
+        <strong>Q. The system icons on the top bar do not update?!</strong><BR>
+A. Yes, they only show the start status. But the battery level icon is up-to-date.
+ However, they will all be alive if S2U2 v1.00 or later is running in the background.</p>
+<P>
+    <strong>Q. How to make S2P runs faster?</strong><BR>
+A. Some tips:<BR>
+- well organize the mp3 files in folders;<BR>
+- keep the mp3 files small (&lt;= 256kbps);<BR>
+- don't use embedded album art, use folder.jpg instead;<BR>
+- keep album art small (&lt;= 200 square pixels);<BR>
+- let S2P goes through every album for creating some cached files for later better performance;<BR>
+- turn off "Always load embedded Album Pic";<BR>
+    - don't use embedded lyrics, turn off show lyrics;<BR>
+- reformat the Storage Card.</P>
+<P>
+    <strong>Q. Is there any Today plug-in for S2P?</strong><BR>
+A. <strong>Chriscsh</strong> has made a plug-in for WM6.5, details at <A HREF="http://forum.xda-developers.com/showthread.php?t=518257" TARGET="_blank">http://forum.xda-developers.com/showthread.php?t=518257</A><br>
+A. <strong>Zanix</strong> also made another one for WM6.5, details at <A HREF="http://forum.xda-developers.com/showthread.php?t=580911" TARGET="_blank">http://forum.xda-developers.com/showthread.php?t=580911</a></P>
+    <p>
+        <strong>Q. How to control S2P from other program?</strong><BR>
+A. Here is how to control S2P through Windows Message:<BR>
+    &nbsp;
+ Play/Pause: WM_COMMAND, 301<BR>
+    &nbsp;
+ Next: WM_COMMAND, 302<BR>
+    &nbsp;
+ Previous: WM_COMMAND, 303<BR>
+    &nbsp;
+ Volume Up: WM_COMMAND, 403<BR>
+    &nbsp;
+ Volume Down: WM_COMMAND, 404<BR>
+    &nbsp;
+ Fast Forward: WM_COMMAND, 408<BR>
+    &nbsp;
+ Fast Backward: WM_COMMAND, 409<BR>
+Please note these are for advanced users only. If you want to know more, please try to google &quot;Windows Messaging".
+Besides, the following registry keys (under \HKEY_CURRENT_USER\Software\A_C\S2P\) will tell you the current status of S2P:<BR>
+    <em>&nbsp; Status</em> - 0 is playing; 1 is paused<BR>
+    <em>&nbsp;
+CurrentTitle </em>
+- nothing means S2P is not running; &quot; &quot; (a space) means S2P is running but no song is playing; others show the current title that S2P is playing.<BR>
+    <em>&nbsp;
+CurrentAlbum</em> - the album pic currently displaying<BR>
+    <em>&nbsp;
+CurrentArtist</em> - the artist name currently playing, if any<BR>
+    <em>&nbsp;
+CurrentAlbumName</em> - the album name currently playing, if any</p>
+<P>
+    <span style="text-decoration: underline">Others</span></P>
+    <p>
+        <strong>Q. What is the official website of S2P?</strong><BR>
+A. <A HREF="http://www.ac-s2.com" TARGET="_blank">http://s2p.ac-s2.com</A></p>
+
+</BODY>
+</HTML>

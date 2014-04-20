@@ -1,0 +1,36 @@
+[ListControl]
+Background	= #FFFFFF
+BkgndFocused	= #2b9ef7,gradiendHV:#126acc
+BkgndRow	= #FFFFFF,border:#ebebeb
+StrippedRow	= #f5f5f5,border:#ebebeb
+Text		= #000000
+SelectedText	= #FFFFFF
+DetailsText 	= #808080
+DetailsTitle	= #000000
+Line		= #cce3fd
+StrippedLine	= #cbe3fd
+
+
+[ListControl.Header]
+Background	= #126acc,border:#126acc
+Text		= #FFFFFF
+
+[ListControl.Bar]
+Background	= #c1d1e1,gradiendHV:#666666
+Text		= #FFFFFF
+BkgndFocused	= #2b9ef7
+SelectedText	= #FFFFFF
+Triangel	=#126acc
+
+[Toolbar]
+Background	= #ffffff,gradiendHV:#e1e1e1,border:#333333
+
+[StatusBar]
+Background	= #ffff66,border:#666600
+Text		= #000000
+
+[FolderBar]
+Background	= #ffffff,gradiendHV:#ebebeb,border:#333333
+Text		= #000000
+
+

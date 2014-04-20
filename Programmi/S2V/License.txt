@@ -1,0 +1,7 @@
+S2V LICENSE AGREEMENT
+
+FREEWARE LICENSE
+This Software is being distributed as Freeware. It may be freely used, copied and distributed as long as it is not sold, and all original files are included, including this license. You are NOT allowed to make a charge for distributing this Software (either for profit or merely to recover your media and distribution costs) whether as a stand-alone product, or as part of a compilation or anthology, without explicit prior written permission. By using this Software, you agree to these terms and the terms of the Disclaimer below:
+
+DISCLAIMER
+This Software and any support from A_C are provided "AS IS" and without warranty, express or implied. A_C specifically disclaim any implied warranties of merchantability and fitness for a particular purpose. In no event will A_C be liable for any damages, including but not limited to any lost profits, lost savings or any incidental or consequential damages, whether resulting from impaired or lost data, software or computer failure or any other cause, or for any other claim by the user or for any third party claim.

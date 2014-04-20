@@ -1,0 +1,4 @@
+set MTYPE 1229
+set KERNEL "zImage6"
+set CMDLINE "root=/dev/mmcblk0p3 init=/linuxrc console=tty0 video=omapfb:accel fbcon=rotate:3"
+bootlinux

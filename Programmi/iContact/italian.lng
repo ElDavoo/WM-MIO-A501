@@ -1,0 +1,42 @@
+;iContact Italian language file
+;by Andrea Del Galdo - andrea@wizyweb.it
+
+[language]
+alphabet=ABCDEFGHIJKLMNOPQRSTUVWXYZ
+mobile=Cellulare
+home=Casa
+work=Ufficio
+company=Società
+car=Auto
+assistant=Assist.
+fax=Fax
+pager=Cercaper.
+radio=Radiotel.
+email=E-mail
+sms=SMS
+today=Oggi
+yesterday=Ieri
+monday=Lunedì
+tuesday=Martedì
+wednesday=Mercoledì
+thursday=Giovedì
+friday=Venerdì
+saturday=Sabato
+sunday=Domenica
+older=Meno recenti
+date=Data
+duration=Durata
+seconds=Secondi
+outgoing=In uscita
+missed=Non risposto
+incoming=In entrata
+unknown=Sconosciuto
+returncall=Richiama
+savecontact=Salva contatto
+managecontact=Dettagli contatto
+editcontact=Modifica contatto
+recents=Chiamate recenti
+allcontacts=Tutti i contatti
+details=Dettagli
+favorites=Preferiti
+categories=Categorie
