@@ -1,7 +1,0 @@
-Step 1: Copy msvcrtd.dll to C:\WINDOWS\system32 Directory
-
-Step 2:
-1. Unpack/Install                                     
-2. Execute "runme.bat" in installed directory       
-3. Use Keymaker to generate Valid Serial         
-4. Enjoy                                        
